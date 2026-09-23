@@ -97,20 +97,6 @@ Kao Android aplikacija: Capacitor omotač, `appId` `rs.mojetrke.app`, web sadrž
 
 ---
 
-## Poznati problemi
-
-**Rezultat može da se zaglavi** — klik na `Istrčano` kod već završene trke gasi status ali zadržava vreme. Rezultat se posle toga ne prikazuje, dugme `Ukloni` nestaje, a ponovni klik otvara prazan formular. Unos ostaje u `tracking` i korisnik ne može ni da ga vidi ni da ga obriše. **Najozbiljnija stavka.**
-
-**UTC vs lokalno vreme** — oznaka dana za obaveštenja koristi `toISOString()` (UTC), dok `daysUntil` računa lokalno. Između ponoći i 2h ujutru to su različiti datumi, pa je moguće dvostruko obaveštenje.
-
-**Fontovi ne rade offline** — učitavaju se sa Google Fonts preko `@import`, a `sw.js` kešira samo lokalne fajlove.
-
-**Sitnije** — `maskable-512.png` je u manifestu ali fali u listi keširanih fajlova; `.card-name { font-size }` dupliran u istom media bloku; `mine-${Date.now()}` može da se sudari ako se dve trke dodaju u istoj milisekundi; lokalno stanje kartice se ne osvežava posle `Obriši sve`.
-
-**Nepotpuni kalendari** — hrvatske predstojeće trke su verovatno nepotpune (myRaceland je odbio pristup), crnogorski kalendar nije pročitan u celini, makedonska scena je zastupljena sa svega 10 trka.
-
----
-
 ## Testiranje
 
 Logika filtriranja se testira izvlačenjem stvarnog koda iz `moje-trke.jsx` i puštanjem nad seed podacima, uz veštačke trke na granicama (juče, danas, sutra, pre 60 dana) — jer prave prošle trke padaju u tekući mesec i ne otkrivaju greške oko granice meseca.
