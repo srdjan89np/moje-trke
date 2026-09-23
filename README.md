@@ -32,13 +32,6 @@ Sve je prepisano sa objavljenih kalendara i sajtova organizatora. **Ništa nije 
 | [hac.si](https://hac.si/koledar-in-seznam-vseh-tekov-2026-v-sloveniji/) | Slovenija — datumi i mesta |
 | ljubljanskimaraton.si, zagreb-marathon.com, skopskimaraton.com.mk, podgorica.run, bokamarathon.com, utrka.com | veliki maratoni, direktno sa izvora |
 
-Dve konvencije:
-
-- `gain: 0` — organizator nije objavio uspon. Nije nula, nego nepoznato.
-- prazan `distances` — staze još nisu objavljene. Kartica tada prikazuje „staze uskoro", a upis vremena je blokiran. Trenutno 44 takve trke, većinom slovenačke.
-
-Ranija verzija seeda imala je izmišljene trke sa procenjenim datumima. Provereno je da neke od njih ne postoje, a da su datumi onih koje postoje bili pogrešni — Ljubljanski maraton za nedelju dana, Skopski maraton za pola godine. Ceo seed je zato zamenjen.
-
 ---
 
 ## Šta aplikacija radi
