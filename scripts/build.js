@@ -68,7 +68,7 @@ function buildHtml() {
   // JSX -> JS. Komponenta se izvozi kao default; u pregledaču nema modula,
   // pa import zamenjujemo globalnim React-om i dodajemo poziv za render.
   let s = fs.readFileSync(SRC, "utf8");
-  s = s.replace(/^import React[^\n]*\n/, "const { useState, useEffect, useMemo, useCallback, useRef } = React;\n");
+  s = s.replace(/^import React[^\n]*\n/, "const { useState, useEffect, useMemo, useCallback, useContext, useRef } = React;\n");
   s = s.replace("export default function App()", "function App()");
   s += `
 if (ReactDOM.createRoot) { ReactDOM.createRoot(document.getElementById("root")).render(React.createElement(App)); }

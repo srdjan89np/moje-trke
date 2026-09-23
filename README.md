@@ -46,6 +46,8 @@ Sve je prepisano sa objavljenih kalendara i sajtova organizatora. **Ništa nije 
 
 **Tvoje izmene** — dodaj svoju trku sa proizvoljnim brojem deonica, ili ispravi datum, mesto i deonice postojeće. Ispravke se čuvaju odvojeno od originala, pa se dugmetom `Vrati original` poništavaju.
 
+**Dva jezika** — srpski i engleski, prekidač `EN` / `SR` u zaglavlju pored zvonceta. Prvo otvaranje bira jezik po pregledaču: srpski, hrvatski i bosanski dobijaju srpski, ostali engleski. Izbor se pamti pod posebnim ključem `trke-lang`, pa ga `Obriši sve` ne resetuje. Nazivi trka i mesta se ne prevode — to su vlastita imena.
+
 **Greben na kartici** — generisan SVG čija strmina odgovara najtežoj deonici. Determinističan je, iz hasha ID-ja, pa je ista trka uvek isti oblik.
 
 ---
@@ -103,3 +105,4 @@ Interaktivni elementi imaju `data-testid`:
 | Dodavanje | `add-name`, `add-date`, `add-country`, `add-km-0`, `add-gain-0`, `add-add-row`, `add-submit` |
 | Ispravka | `edit-date`, `edit-km-0`, `edit-add-row`, `edit-submit`, `edit-reset`, `del-race` |
 | Greške | `err-name`, `err-date`, `err-dist` |
+| Jezik | `lang-toggle` |
