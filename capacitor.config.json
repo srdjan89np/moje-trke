@@ -1,0 +1,16 @@
+{
+  "appId": "rs.mojetrke.app",
+  "appName": "Moje trke",
+  "webDir": "www",
+  "backgroundColor": "#16202B",
+  "android": {
+    "backgroundColor": "#16202B",
+    "adjustMarginsForEdgeToEdge": "force"
+  },
+  "plugins": {
+    "LocalNotifications": {
+      "iconColor": "#E0A63C",
+      "smallIcon": "ic_stat_trke"
+    }
+  }
+}

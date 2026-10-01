@@ -1,0 +1,27 @@
+{
+  "name": "moje-trke",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Kalendar trka za trkače — web i Android (Capacitor).",
+  "scripts": {
+    "seed": "node scripts/build.js seed",
+    "build": "node scripts/build.js",
+    "build:android": "node scripts/build.js android",
+    "android:init": "npx cap add android && npx capacitor-assets generate --android",
+    "android:sync": "npm run build:android && npx cap sync android",
+    "android:open": "npx cap open android"
+  },
+  "dependencies": {
+    "@capacitor/android": "^7.0.0",
+    "@capacitor/app": "^7.0.0",
+    "@capacitor/core": "^7.0.0",
+    "@capacitor/local-notifications": "^7.0.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^7.0.0",
+    "typescript": "^5.4.0"
+  }
+}

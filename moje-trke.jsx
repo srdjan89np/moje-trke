@@ -74,6 +74,7 @@ const countryOf = (race) => race.country || REGIONS[race.region]?.c || "RS";
 
 const SEED_RACES = [
   { id: "bbkt", name: "BBKT", city: "Smederevska Palanka", country: "RS", type: "trail", date: "2026-01-11", distances: [{ km: 12, gain: 320 }, { km: 6, gain: 165 }, { km: 3, gain: 84 }] },
+  { id: "unusual-marathon-2026", name: "Unusual Marathon", city: "Vilsonovo šetalište, Sarajevo", country: "BA", type: "city", date: "2026-01-11", distances: [{ km: 30, gain: 0 }, { km: 15, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "sidski-maraton", name: "Šidski novogodišnji maraton", city: "Šid", country: "RS", type: "city", date: "2026-01-14", distances: [{ km: 42, gain: 0 }, { km: 32, gain: 0 }, { km: 16, gain: 0 }, { km: 12, gain: 0 }] },
   { id: "kapetanov-trail", name: "Kapetanov Trail", city: "Kumbor, Herceg Novi", country: "ME", type: "trail", date: "2026-01-17", distances: [{ km: 8.3, gain: 600 }] },
   { id: "vezirac-trejl", name: "Vezirac Trejl", city: "Petrovaradin", country: "RS", type: "trail", date: "2026-01-17", distances: [{ km: 16, gain: 330 }] },
@@ -96,22 +97,30 @@ const SEED_RACES = [
   { id: "titan-trail", name: "Titan Trail", city: "Goč, Vrnjačka Banja", country: "RS", type: "trail", date: "2026-03-21", distances: [{ km: 18, gain: 750 }, { km: 13, gain: 700 }, { km: 6, gain: 219 }] },
   { id: "kosutnjak-trail", name: "Košutnjak Trail", city: "Košutnjak", country: "RS", type: "trail", date: "2026-03-22", distances: [{ km: 10.7, gain: 358 }, { km: 7.4, gain: 180 }] },
   { id: "epic-fg-2", name: "Serbia Epic Fruška gora Trail 2", city: "Andrevlje", country: "RS", type: "trail", date: "2026-03-22", distances: [{ km: 13.7, gain: 400 }, { km: 5.4, gain: 180 }] },
+  { id: "viteska-utrka-2026", name: "Viteška utrka", city: "Vitez", country: "BA", type: "city", date: "2026-03-22", distances: [{ km: 5, gain: 0 }] },
   { id: "zagreb21", name: "ZAGREB21 — proljetni polumaraton", city: "Zagreb", country: "HR", type: "city", date: "2026-03-22", distances: [{ km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "kompas-trail", name: "Kompas Trail — staza po meri psa", city: "Košutnjak, Beograd", country: "RS", type: "trail", date: "2026-03-28", distances: [{ km: 11, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "trebinje-vertikal-2026", name: "Trebinje Vertikal — trka u kamenu", city: "Trebinje", country: "BA", type: "trail", date: "2026-03-28", distances: [] },
   { id: "vrsacke-planine", name: "Vršačke planine", city: "Vršac", country: "RS", type: "trail", date: "2026-03-28", distances: [{ km: 32.9, gain: 1626 }, { km: 24.1, gain: 1056 }, { km: 12.5, gain: 584 }] },
+  { id: "vodno-10k-2026", name: "Vodno 10K", city: "Sredno Vodno, Skoplje", country: "MK", type: "city", date: "2026-03-29", distances: [{ km: 10, gain: 0 }] },
   { id: "kablar-skyrace", name: "Kablar Skyrace", city: "Ovčar Banja", country: "RS", type: "trail", date: "2026-04-04", distances: [{ km: 22, gain: 1500 }] },
   { id: "vodno-matka", name: "Vodno Matka Trail Marathon", city: "Skoplje", country: "MK", type: "trail", date: "2026-04-05", distances: [{ km: 52, gain: 3014 }, { km: 31.6, gain: 1600 }, { km: 18.7, gain: 973 }] },
   { id: "sinjal", name: "Sinjal", city: "Dinara, Kijevo", country: "HR", type: "trail", date: "2026-04-06", distances: [{ km: 16.5, gain: 1350 }, { km: 5.8, gain: 1100 }] },
   { id: "istria-100-utmb", name: "Istria 100 by UTMB", city: "Istra", country: "HR", type: "trail", date: "2026-04-09", distances: [{ km: 168, gain: 7140 }, { km: 110, gain: 4070 }, { km: 69.6, gain: 2330 }, { km: 42.5, gain: 1150 }, { km: 21.5, gain: 157 }] },
+  { id: "tesanj-5k-2026", name: "Gradska trka Tešanj 5K", city: "Tešanj", country: "BA", type: "city", date: "2026-04-11", distances: [{ km: 5, gain: 0 }] },
   { id: "homoljski-maraton", name: "Homoljski maraton", city: "Ceremošnja, Homoljske planine", country: "RS", type: "trail", date: "2026-04-11", distances: [{ km: 36.9, gain: 1810 }, { km: 18, gain: 0 }] },
+  { id: "vivicitta-tuzla-2026", name: "Vivicitta", city: "Trg slobode, Tuzla", country: "BA", type: "city", date: "2026-04-12", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "blagaj-5k-2026", name: "Blagaj 5k", city: "Blagaj, Mostar", country: "BA", type: "city", date: "2026-04-18", distances: [{ km: 5, gain: 0 }] },
   { id: "rtanj-vertikal", name: "Rtanj Vertikal", city: "Rtanj", country: "RS", type: "trail", date: "2026-04-18", distances: [{ km: 4.6, gain: 950 }] },
   { id: "bu2-island", name: "BU2 Island Mini Trail", city: "Sveti Nikola, Budva", country: "ME", type: "trail", date: "2026-04-19", distances: [{ km: 5.8, gain: 188 }, { km: 2.8, gain: 94 }] },
+  { id: "konjuh-trail-2026", name: "Konjuh Trail", city: "Zlača, Konjuh", country: "BA", type: "trail", date: "2026-04-19", distances: [{ km: 21, gain: 1150 }, { km: 13.5, gain: 650 }, { km: 5, gain: 150 }] },
   { id: "bara-reva", name: "Bara Reva Trail", city: "Beograd", country: "RS", type: "trail", date: "2026-04-22", distances: [{ km: 12, gain: 0 }] },
   { id: "boka-bay", name: "Boka Bay Trail", city: "Boka Kotorska", country: "ME", type: "trail", date: "2026-04-25", distances: [{ km: 83, gain: 4100 }, { km: 60, gain: 3000 }, { km: 33, gain: 2050 }, { km: 17, gain: 800 }, { km: 6.8, gain: 550 }] },
   { id: "fruskogorski-maraton", name: "Fruškogorski maraton", city: "Popovica, Novi Sad", country: "RS", type: "trail", date: "2026-04-25", distances: [{ km: 134, gain: 5950 }, { km: 108, gain: 4270 }, { km: 59, gain: 2250 }, { km: 42, gain: 2100 }, { km: 22.7, gain: 900 }] },
   { id: "jablanik-trail", name: "Jablanik Trail", city: "Jablanik", country: "RS", type: "trail", date: "2026-04-25", distances: [{ km: 34, gain: 1800 }, { km: 15, gain: 880 }, { km: 8, gain: 400 }] },
   { id: "sivadije", name: "Sivadije", city: "Rujište, Prenj", country: "BA", type: "trail", date: "2026-04-25", distances: [{ km: 20, gain: 1200 }, { km: 12.5, gain: 650 }] },
   { id: "staza-snage", name: "Staza snage", city: "Adžine livade", country: "RS", type: "trail", date: "2026-04-25", distances: [{ km: 17.5, gain: 1000 }, { km: 8, gain: 450 }] },
+  { id: "sarajevo-marathon-2026", name: "Sarajevo Marathon", city: "Sarajevo", country: "BA", type: "city", date: "2026-04-26", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "tour-de-hvar", name: "Tour de Hvar", city: "Stari Grad, Hvar", country: "HR", type: "trail", date: "2026-05-01", distances: [{ km: 70, gain: 3300 }, { km: 42, gain: 2100 }, { km: 26, gain: 950 }, { km: 15, gain: 300 }, { km: 7.5, gain: 150 }] },
   { id: "trail-mljet", name: "Trail na Mljetu", city: "NP Mljet", country: "HR", type: "trail", date: "2026-05-02", distances: [{ km: 42, gain: 1400 }, { km: 23.4, gain: 840 }, { km: 13, gain: 527 }, { km: 6, gain: 200 }] },
   { id: "drina-trail", name: "Drina Trail", city: "Kravica, Bratunac", country: "BA", type: "trail", date: "2026-05-03", distances: [{ km: 17, gain: 640 }, { km: 7, gain: 0 }] },
@@ -120,153 +129,488 @@ const SEED_RACES = [
   { id: "bjelasica-vertical", name: "Bjelasica Half Vertical", city: "Kolašin 1600", country: "ME", type: "trail", date: "2026-05-09", distances: [{ km: 4.5, gain: 500 }] },
   { id: "fox-trail-cardak", name: "Fox Trail Čardak", city: "Čardak, Deliblatska peščara", country: "RS", type: "trail", date: "2026-05-09", distances: [{ km: 23.2, gain: 0 }, { km: 11.7, gain: 0 }, { km: 5.5, gain: 0 }] },
   { id: "kozomor", name: "Kozomor", city: "Kosjerić", country: "RS", type: "trail", date: "2026-05-10", distances: [{ km: 35.5, gain: 1746 }, { km: 23.5, gain: 1160 }, { km: 15.7, gain: 750 }] },
+  { id: "andorra-marathon-2026", name: "Andorra Marathon", city: "Andora la Velja", country: "AD", type: "city", date: "2026-05-16", distances: [{ km: 42.195, gain: 0 }] },
   { id: "nebeski-visovi", name: "Nebeski visovi", city: "Jablanica, Zlatibor", country: "RS", type: "trail", date: "2026-05-16", distances: [{ km: 21, gain: 1400 }, { km: 10, gain: 500 }] },
   { id: "sutica-kamen", name: "Šutica Kamen Trail", city: "Bihać, Plješevica", country: "BA", type: "trail", date: "2026-05-16", distances: [{ km: 15, gain: 660 }] },
+  { id: "trka-kroz-pale-2026", name: "Trka kroz Pale", city: "Pale", country: "BA", type: "city", date: "2026-05-17", distances: [{ km: 5, gain: 0 }] },
   { id: "ohrid-ultra", name: "Ohrid Ultra Trail", city: "Ohrid", country: "MK", type: "trail", date: "2026-05-22", distances: [{ km: 105, gain: 4800 }, { km: 65.5, gain: 3350 }, { km: 42, gain: 1950 }, { km: 21, gain: 1100 }, { km: 10, gain: 350 }] },
   { id: "ivanjica-trail", name: "Ivanjica Trail", city: "Katići, Ivanjica", country: "RS", type: "trail", date: "2026-05-23", distances: [{ km: 66, gain: 2100 }, { km: 29, gain: 1100 }, { km: 23, gain: 950 }, { km: 15, gain: 450 }, { km: 7, gain: 137 }] },
+  { id: "zenicka-trka-2026", name: "Zenička trka", city: "Zenica", country: "BA", type: "city", date: "2026-05-23", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "banjaluka-polumaraton-2026", name: "Banjaluka polumaraton (Vivia Run & More)", city: "Banja Luka", country: "BA", type: "city", date: "2026-05-24", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "ilidza-run-2026", name: "Ilidža Run 10K", city: "Ilidža", country: "BA", type: "city", date: "2026-05-24", distances: [{ km: 10, gain: 0 }] },
   { id: "tibuzde", name: "Trail trka Tibužde", city: "Tibužde, Vranje", country: "RS", type: "trail", date: "2026-05-24", distances: [{ km: 27, gain: 0 }, { km: 7, gain: 0 }] },
   { id: "kocevsko-outdoor", name: "Kočevsko Outdoor Festival", city: "Jezero Kočevje", country: "SI", type: "trail", date: "2026-05-29", distances: [{ km: 61.5, gain: 1916 }, { km: 31.7, gain: 1000 }, { km: 14, gain: 304 }, { km: 10, gain: 220 }, { km: 5.9, gain: 71 }] },
+  { id: "gracanica-5k-10k-2026", name: "Gračanica 5k & 10k", city: "Gračanica", country: "BA", type: "city", date: "2026-05-30", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "lovcen-trail", name: "Lovćen Trail", city: "NP Lovćen", country: "ME", type: "trail", date: "2026-05-30", distances: [{ km: 38, gain: 1900 }, { km: 20, gain: 710 }, { km: 6, gain: 130 }] },
   { id: "mokra-gora", name: "Mokra Gora Trail", city: "Mokra Gora", country: "RS", type: "trail", date: "2026-05-30", distances: [{ km: 12, gain: 670 }, { km: 6, gain: 470 }] },
   { id: "ozren-devica", name: "Ozren i Devica", city: "Sokobanja", country: "RS", type: "trail", date: "2026-05-30", distances: [{ km: 36, gain: 1835 }, { km: 27, gain: 1239 }, { km: 14.6, gain: 869 }, { km: 7.5, gain: 0 }] },
   { id: "tour-de-fruska", name: "Tour de Fruška", city: "Vrdnik, Fruška gora", country: "RS", type: "trail", date: "2026-05-30", distances: [{ km: 22, gain: 800 }, { km: 15, gain: 550 }, { km: 7, gain: 0 }] },
   { id: "oplenac-open", name: "Oplenac Open Trail Race", city: "Oplenac", country: "RS", type: "trail", date: "2026-05-31", distances: [{ km: 21, gain: 500 }, { km: 7.5, gain: 120 }] },
+  { id: "pyramid-trail-2026", name: "Pyramid Trail", city: "Visoko", country: "BA", type: "trail", date: "2026-05-31", distances: [{ km: 20, gain: 950 }, { km: 10, gain: 450 }] },
   { id: "epic-mionica-3", name: "Serbia Epic Mionica 3", city: "Mionica", country: "RS", type: "trail", date: "2026-05-31", distances: [{ km: 17.4, gain: 650 }, { km: 6, gain: 300 }] },
   { id: "vuk-karadzic", name: "Stazama Vuka Karadžića", city: "Tršić", country: "RS", type: "trail", date: "2026-05-31", distances: [{ km: 25, gain: 1000 }, { km: 13, gain: 500 }, { km: 8, gain: 250 }] },
+  { id: "trcame-za-racin-2026", name: "Trčame za Racin", city: "Veles", country: "MK", type: "city", date: "2026-05-31", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "dusan-milosevic", name: "Dušan Milošević Memorial Trail", city: "Rudnik, Stragari", country: "RS", type: "trail", date: "2026-06-06", distances: [{ km: 23, gain: 1063 }, { km: 16, gain: 597 }] },
   { id: "dva-vrha", name: "Dva vrha Trail", city: "Bihać", country: "BA", type: "trail", date: "2026-06-06", distances: [{ km: 28, gain: 1300 }] },
   { id: "kup-fg", name: "Kup Fruške gore", city: "Fruška gora", country: "RS", type: "trail", date: "2026-06-06", distances: [{ km: 24, gain: 1200 }, { km: 16, gain: 550 }] },
   { id: "plitvice-marathon", name: "Plitvice Marathon", city: "NP Plitvička jezera", country: "HR", type: "trail", date: "2026-06-06", distances: [{ km: 42, gain: 1100 }, { km: 21, gain: 500 }, { km: 9, gain: 260 }, { km: 5, gain: 150 }] },
+  { id: "sara-5k-kiseljak-2026", name: "SARA 5k", city: "Kiseljak", country: "BA", type: "city", date: "2026-06-06", distances: [{ km: 5, gain: 0 }] },
   { id: "epic-vrnjacka", name: "Serbia Epic Vrnjačka Banja", city: "Vrnjačka Banja", country: "RS", type: "trail", date: "2026-06-06", distances: [{ km: 19, gain: 0 }, { km: 6, gain: 0 }] },
   { id: "sinjavina-skyrace", name: "Sinjavina Skyrace", city: "Mojkovac", country: "ME", type: "trail", date: "2026-06-06", distances: [{ km: 43, gain: 2400 }, { km: 40, gain: 2000 }, { km: 10, gain: 1000 }] },
   { id: "dan-na-jezeru", name: "Dan na jezeru", city: "Palić", country: "RS", type: "city", date: "2026-06-07", distances: [{ km: 12.5, gain: 0 }, { km: 5, gain: 0 }, { km: 0.8, gain: 0 }] },
+  { id: "trebevic-trail-2026", name: "Trebević Trail", city: "Trebević, Sarajevo", country: "BA", type: "trail", date: "2026-06-07", distances: [] },
   { id: "village-trail", name: "Village Trail", city: "Višnjica, Beograd", country: "RS", type: "trail", date: "2026-06-07", distances: [{ km: 11.4, gain: 450 }, { km: 5.8, gain: 260 }] },
+  { id: "lgt-alpin-marathon-2026", name: "LGT Alpin Marathon", city: "Bendern", country: "LI", type: "trail", date: "2026-06-13", distances: [{ km: 42, gain: 1870 }, { km: 25, gain: 720 }] },
   { id: "stara-planina", name: "Stara planina", city: "Stara planina", country: "RS", type: "trail", date: "2026-06-13", distances: [{ km: 30.3, gain: 1250 }, { km: 23.8, gain: 1140 }, { km: 15.6, gain: 747 }] },
+  { id: "stojcevac-5k-2026", name: "Stojčevac 5k", city: "Ilidža", country: "BA", type: "city", date: "2026-06-13", distances: [{ km: 5, gain: 0 }] },
+  { id: "wild-race-livno-2026", name: "Wild Race Livno", city: "Livno", country: "BA", type: "trail", date: "2026-06-13", distances: [{ km: 30, gain: 1700 }, { km: 16, gain: 850 }, { km: 6, gain: 400 }, { km: 5, gain: 27 }] },
   { id: "vidra-gradac", name: "Vidra Gradac Trail", city: "Klisura reke Gradac", country: "RS", type: "trail", date: "2026-06-14", distances: [{ km: 19, gain: 920 }, { km: 10, gain: 450 }] },
   { id: "vucko-trail", name: "Vučko Trail", city: "Bjelašnica, Sarajevo", country: "BA", type: "trail", date: "2026-06-19", distances: [{ km: 105, gain: 5800 }, { km: 60, gain: 3700 }, { km: 40, gain: 1800 }, { km: 26, gain: 1300 }, { km: 14, gain: 650 }] },
+  { id: "bidi-svoja-2026", name: "Bidi svoja — noćna ženska trka", city: "Bitolj", country: "MK", type: "city", date: "2026-06-20", distances: [] },
   { id: "portonovi-rise", name: "Portonovi Summer Rise", city: "Portonovi", country: "ME", type: "trail", date: "2026-06-20", distances: [{ km: 4, gain: 400 }] },
+  { id: "ulicna-trka-modrica-2026", name: "Ulična trka Modriča", city: "Modriča", country: "BA", type: "city", date: "2026-06-20", distances: [{ km: 10, gain: 0 }, { km: 5.3, gain: 0 }] },
   { id: "iskra-kosmaj", name: "Iskra Trail Kosmaj", city: "Kosmaj", country: "RS", type: "trail", date: "2026-06-21", distances: [{ km: 19, gain: 1074 }, { km: 10.45, gain: 569 }, { km: 6, gain: 275 }] },
   { id: "titov-vrv", name: "Titov Vrv Skyrace", city: "Popova Šapka", country: "MK", type: "trail", date: "2026-06-21", distances: [{ km: 20, gain: 1900 }] },
   { id: "krushevo-challenge", name: "Krushevo Trail Challenge", city: "Kruševo", country: "MK", type: "trail", date: "2026-06-26", distances: [{ km: 42, gain: 0 }, { km: 21, gain: 1030 }, { km: 13, gain: 530 }, { km: 8, gain: 320 }] },
+  { id: "ilijas-5k-2026", name: "Ilijaš 5k Run Challenge", city: "Ilijaš", country: "BA", type: "city", date: "2026-06-27", distances: [{ km: 5, gain: 0 }] },
   { id: "last-one-alive", name: "Last One Alive Gusinje", city: "Gusinje", country: "ME", type: "trail", date: "2026-06-27", distances: [{ km: 2.5, gain: 0 }] },
   { id: "tornik-race", name: "Tornik Race", city: "Tornik, Zlatibor", country: "RS", type: "trail", date: "2026-06-27", distances: [{ km: 25, gain: 864 }, { km: 15, gain: 628 }, { km: 6, gain: 0 }, { km: 1, gain: 0 }] },
+  { id: "neumska-desetka-2026", name: "Neumska desetka", city: "Neum", country: "BA", type: "city", date: "2026-06-28", distances: [{ km: 10, gain: 0 }] },
   { id: "ok-trip", name: "OK Trip Trail", city: "Ovčar Banja", country: "RS", type: "trail", date: "2026-06-28", distances: [{ km: 15, gain: 0 }, { km: 7, gain: 0 }] },
+  { id: "konjicki-cener-2026", name: "Konjički cener", city: "Konjic", country: "BA", type: "city", date: "2026-07-03", distances: [{ km: 10, gain: 0 }, { km: 3.3, gain: 0 }] },
   { id: "tara-ultra", name: "Tara Ultra Trail", city: "Bajina Bašta", country: "RS", type: "trail", date: "2026-07-03", distances: [{ km: 62, gain: 2600 }, { km: 35.6, gain: 1900 }, { km: 13.6, gain: 550 }, { km: 9.5, gain: 330 }] },
   { id: "treska-trail", name: "Treska Trail", city: "Brus, Radunje", country: "RS", type: "trail", date: "2026-07-05", distances: [{ km: 30, gain: 1240 }, { km: 18, gain: 770 }, { km: 7, gain: 0 }] },
   { id: "durmitor-trail-run", name: "Durmitor Trail Run", city: "Žabljak", country: "ME", type: "trail", date: "2026-07-10", distances: [{ km: 65, gain: 2650 }, { km: 42, gain: 2094 }, { km: 21, gain: 858 }, { km: 10, gain: 259 }, { km: 5, gain: 121 }] },
   { id: "jadovnicki", name: "Jadovnički ultramaraton", city: "Prijepolje", country: "RS", type: "trail", date: "2026-07-10", distances: [{ km: 60.9, gain: 2477 }, { km: 24.8, gain: 1089 }, { km: 14.6, gain: 687 }] },
   { id: "sova-night", name: "Sova Night Trail", city: "Divčibare", country: "RS", type: "trail", date: "2026-07-11", distances: [{ km: 15, gain: 600 }, { km: 10, gain: 370 }] },
+  { id: "sarajevski-cener-2026", name: "Sarajevski cener", city: "Zetra, Sarajevo", country: "BA", type: "city", date: "2026-07-12", distances: [{ km: 10, gain: 0 }] },
   { id: "bisina-trail", name: "Bišina Trail", city: "Šekovići", country: "BA", type: "trail", date: "2026-07-18", distances: [{ km: 17, gain: 0 }, { km: 10, gain: 0 }, { km: 6, gain: 0 }] },
   { id: "dvije-drage", name: "Dvije Drage Trail", city: "Bihać, Plješevica", country: "BA", type: "trail", date: "2026-07-18", distances: [{ km: 10, gain: 330 }] },
+  { id: "gorazde-5k-2026", name: "Trka prijateljstva Goražde 5K", city: "Goražde", country: "BA", type: "city", date: "2026-07-18", distances: [{ km: 5, gain: 0 }] },
   { id: "kopaonik-trail", name: "Trail Race Kopaonik", city: "Kopaonik", country: "RS", type: "trail", date: "2026-07-24", distances: [{ km: 24.5, gain: 900 }, { km: 15.9, gain: 595 }, { km: 7, gain: 255 }] },
+  { id: "bugojno-5k-2026", name: "Bugojno 5k", city: "Bugojno", country: "BA", type: "city", date: "2026-07-25", distances: [{ km: 5, gain: 0 }] },
   { id: "cer-night", name: "Cer Night Trail", city: "Planina Cer", country: "RS", type: "trail", date: "2026-07-25", distances: [] },
+  { id: "comapedrosa-skyrace-2026", name: "Skyrace Comapedrosa", city: "Arinsal", country: "AD", type: "trail", date: "2026-07-25", distances: [{ km: 36, gain: 3300 }, { km: 24, gain: 2375 }, { km: 19, gain: 1456 }, { km: 8, gain: 1483 }] },
+  { id: "tuzlanska-nocna-2026", name: "Tuzlanska noćna 5k", city: "Tuzla", country: "BA", type: "city", date: "2026-07-25", distances: [{ km: 5, gain: 0 }] },
+  { id: "hadzici-5k-2026", name: "Hadžići 5k", city: "Hadžići", country: "BA", type: "city", date: "2026-07-26", distances: [{ km: 5, gain: 0 }] },
+  { id: "duvanjska-desetka-2026", name: "Duvanjska desetka", city: "Tomislavgrad", country: "BA", type: "city", date: "2026-08-01", distances: [{ km: 10, gain: 0 }, { km: 3.3, gain: 0 }] },
   { id: "night-challenge-fg", name: "Night Challenge Fruška gora", city: "Fruška gora, Novi Sad", country: "RS", type: "trail", date: "2026-08-01", distances: [{ km: 19, gain: 963 }, { km: 11, gain: 323 }, { km: 7, gain: 270 }] },
+  { id: "zavidovici-5k-2026", name: "Zavidovići 5k", city: "Zavidovići", country: "BA", type: "city", date: "2026-08-02", distances: [{ km: 5, gain: 0 }] },
   { id: "bjelasica-ultra", name: "Bjelasica Ultra Trail", city: "Kolašin", country: "ME", type: "trail", date: "2026-08-08", distances: [{ km: 62, gain: 2100 }, { km: 45, gain: 2300 }, { km: 23, gain: 1120 }, { km: 12, gain: 450 }] },
+  { id: "olovo-5k-2026", name: "Olovo 5k", city: "Olovo", country: "BA", type: "city", date: "2026-08-08", distances: [{ km: 5, gain: 0 }] },
+  { id: "buzimska-petica-2026", name: "Bužimska noćna petica", city: "Bužim", country: "BA", type: "city", date: "2026-08-09", distances: [{ km: 5, gain: 0 }] },
+  { id: "igmanski-cener-2026", name: "Igmanski čener", city: "Veliko polje, Igman", country: "BA", type: "trail", date: "2026-08-09", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "epic-stara-planina", name: "Serbia Epic Škoda Stara planina", city: "Stara planina", country: "RS", type: "trail", date: "2026-08-09", distances: [{ km: 15, gain: 0 }] },
   { id: "rostushe-trails", name: "Rostushe Trails", city: "Rostuše", country: "MK", type: "trail", date: "2026-08-15", distances: [{ km: 27, gain: 1700 }, { km: 11, gain: 520 }] },
   { id: "bobija-trail", name: "Bobija Trail", city: "Bobija", country: "RS", type: "trail", date: "2026-08-16", distances: [{ km: 26, gain: 1250 }, { km: 15, gain: 620 }, { km: 12, gain: 0 }] },
   { id: "6h-zavalja", name: "6H Zavalja", city: "Bihać, Plješevica", country: "BA", type: "trail", date: "2026-08-22", distances: [{ km: 4, gain: 100 }] },
+  { id: "reykjavik-marathon-2026", name: "Reykjavik Marathon", city: "Rejkjavik", country: "IS", type: "city", date: "2026-08-22", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
   { id: "kosutnjak-night", name: "Serbia Epic Košutnjak Night Trail", city: "Košutnjak, Beograd", country: "RS", type: "trail", date: "2026-08-22", distances: [{ km: 6, gain: 0 }] },
   { id: "tara-sky", name: "Tara Extreme Skychallenge", city: "Bajina Bašta", country: "RS", type: "trail", date: "2026-08-22", distances: [{ km: 46, gain: 3300 }, { km: 24, gain: 1700 }, { km: 10, gain: 700 }] },
   { id: "triglav-trail-run", name: "Triglav Trail Run", city: "Mojstrana, TNP", country: "SI", type: "trail", date: "2026-08-22", distances: [{ km: 101, gain: 6200 }, { km: 44, gain: 2600 }, { km: 26, gain: 1100 }, { km: 14, gain: 450 }] },
+  { id: "stockholm-half-2026", name: "adidas Stockholm Half Marathon", city: "Stokholm", country: "SE", type: "city", date: "2026-08-29", distances: [{ km: 21.097, gain: 0 }] },
   { id: "avala-nocna", name: "Avala noćna trail", city: "Avalski toranj, Beograd", country: "RS", type: "trail", date: "2026-08-29", distances: [{ km: 10, gain: 527 }, { km: 6, gain: 319 }] },
   { id: "cvrsnica-ultra", name: "Čvrsnica Ultra Trail", city: "Park prirode Blidinje", country: "BA", type: "trail", date: "2026-08-29", distances: [{ km: 50, gain: 4000 }, { km: 34, gain: 2300 }, { km: 25, gain: 1500 }, { km: 10, gain: 380 }] },
   { id: "dunavske-carolije", name: "Dunavske čarolije", city: "Čortanovci", country: "RS", type: "trail", date: "2026-08-29", distances: [{ km: 23.4, gain: 0 }, { km: 13.4, gain: 0 }] },
   { id: "prokletije-gusinje", name: "Planinska trka Prokletije Trail", city: "Gusinje", country: "ME", type: "trail", date: "2026-08-29", distances: [{ km: 18.5, gain: 1090 }] },
+  { id: "stavanger-marathon-2026", name: "Stavanger Marathon", city: "Stavanger", country: "NO", type: "city", date: "2026-08-29", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "travnik-nocna-2026", name: "Travnik noćna utrka", city: "Travnik", country: "BA", type: "city", date: "2026-08-29", distances: [{ km: 5, gain: 0 }] },
+  { id: "visegrad-5k-2026", name: "Višegrad 5K", city: "Višegrad", country: "BA", type: "city", date: "2026-08-29", distances: [{ km: 5, gain: 0 }] },
   { id: "avala-trail", name: "Avala Trail", city: "Avalski toranj, Beograd", country: "RS", type: "trail", date: "2026-08-30", distances: [{ km: 10, gain: 527 }, { km: 6, gain: 319 }] },
+  { id: "atletist-5k-2026", name: "Atletist 5k", city: "Istočno Sarajevo", country: "BA", type: "city", date: "2026-09-05", distances: [{ km: 5, gain: 0 }] },
   { id: "cacalica", name: "Čačalica Trail", city: "Požarevac", country: "RS", type: "trail", date: "2026-09-05", distances: [{ km: 12, gain: 0 }] },
   { id: "durmitor-skyrace", name: "Durmitor Skyrace", city: "Žabljak, Durmitor", country: "ME", type: "trail", date: "2026-09-05", distances: [{ km: 33, gain: 3000 }, { km: 16, gain: 1000 }] },
   { id: "golija-trail", name: "Golija Trail", city: "Planina Golija", country: "RS", type: "trail", date: "2026-09-05", distances: [{ km: 22, gain: 0 }, { km: 9, gain: 0 }, { km: 4, gain: 0 }] },
+  { id: "sirokobrijeska-petica-2026", name: "Širokobriješka petica", city: "Široki Brijeg", country: "BA", type: "city", date: "2026-09-05", distances: [{ km: 5, gain: 0 }] },
   { id: "vlasina", name: "Vlasina", city: "Vladičin Han", country: "RS", type: "trail", date: "2026-09-06", distances: [{ km: 35.4, gain: 1186 }, { km: 27.6, gain: 823 }, { km: 16.9, gain: 445 }] },
+  { id: "zlatni-krug-visoko-2026", name: "Zlatni krug Sparkasse Bank", city: "Visoko", country: "BA", type: "city", date: "2026-09-06", distances: [{ km: 5.9, gain: 0 }] },
+  { id: "pirin-ultra-2026", name: "Pirin Extreme & Pirin Ultra", city: "Bansko", country: "BG", type: "trail", date: "2026-09-11", distances: [{ km: 160.93, gain: 11000 }, { km: 68, gain: 4400 }, { km: 38, gain: 3300 }, { km: 25, gain: 0 }, { km: 15, gain: 0 }] },
   { id: "azbuka-trail", name: "Azbuka Trail", city: "Tršić, Loznica", country: "RS", type: "trail", date: "2026-09-12", distances: [{ km: 16.5, gain: 0 }, { km: 7.5, gain: 0 }] },
+  { id: "brodska-trka-2026", name: "Brodska trka", city: "Brod", country: "BA", type: "city", date: "2026-09-12", distances: [{ km: 5, gain: 0 }] },
   { id: "bukovacki-maraton", name: "Bukovački maraton", city: "Bukovac", country: "RS", type: "trail", date: "2026-09-12", distances: [{ km: 23.7, gain: 780 }, { km: 16.7, gain: 529 }] },
+  { id: "corfu-old-town-2026", name: "Corfu Old Town Trail", city: "Krf", country: "GR", type: "trail", date: "2026-09-12", distances: [{ km: 14, gain: 0 }, { km: 7, gain: 0 }] },
+  { id: "finlandia-marathon-2026", name: "Finlandia Marathon", city: "Jiveskile", country: "FI", type: "city", date: "2026-09-12", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "kupreska-utrka-2026", name: "Kupreška petica", city: "Kupres", country: "BA", type: "city", date: "2026-09-12", distances: [{ km: 5, gain: 0 }] },
+  { id: "nn-night-run-prague-2026", name: "NN Night Run Praha", city: "Prag", country: "CZ", type: "city", date: "2026-09-12", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }, { km: 3, gain: 0 }] },
+  { id: "oslo-marathon-2026", name: "Oslo Maraton", city: "Oslo", country: "NO", type: "city", date: "2026-09-12", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
   { id: "zlatibor-night-6", name: "Serbia Epic Zlatibor Night Trail 6", city: "Zlatibor", country: "RS", type: "trail", date: "2026-09-12", distances: [{ km: 10, gain: 0 }, { km: 6, gain: 0 }] },
+  { id: "tallinn-marathon-2026", name: "Tallinn Marathon", city: "Talin", country: "EE", type: "city", date: "2026-09-12", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "fortuna-summer-run-2026", name: "Fortuna Summer Run", city: "Laktaši", country: "BA", type: "city", date: "2026-09-13", distances: [{ km: 5, gain: 0 }] },
+  { id: "porto-half-2026", name: "Hyundai Porto Half Marathon", city: "Porto", country: "PT", type: "city", date: "2026-09-13", distances: [{ km: 21.097, gain: 0 }] },
   { id: "ljuboten-skyrace", name: "Ljuboten Skyrace", city: "Staro Selo, Šar planina", country: "MK", type: "trail", date: "2026-09-13", distances: [{ km: 23.5, gain: 1680 }] },
+  { id: "chisinau-marathon-2026", name: "maib Chișinău Marathon", city: "Kišinjev", country: "MD", type: "city", date: "2026-09-13", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10.5, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "sarajevo-polumaraton-2026", name: "Sarajevo polumaraton", city: "Marijin Dvor, Sarajevo", country: "BA", type: "city", date: "2026-09-13", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "tampere-marathon-2026", name: "Tampere Marathon", city: "Tampere", country: "FI", type: "city", date: "2026-09-13", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10.5, gain: 0 }] },
+  { id: "vilnius-marathon-2026", name: "Vilnius Marathon", city: "Vilnjus", country: "LT", type: "city", date: "2026-09-13", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "arilje-trail", name: "Arilje Trail", city: "Arilje", country: "RS", type: "trail", date: "2026-09-18", distances: [{ km: 81, gain: 0 }, { km: 31, gain: 0 }, { km: 18, gain: 0 }, { km: 8, gain: 0 }] },
   { id: "julian-alps-utmb", name: "Julian Alps Trail Run by UTMB", city: "Kranjska Gora", country: "SI", type: "trail", date: "2026-09-18", distances: [{ km: 124, gain: 5893 }, { km: 80, gain: 3826 }, { km: 50, gain: 3058 }, { km: 25, gain: 1028 }, { km: 15, gain: 553 }, { km: 10, gain: 319 }] },
   { id: "prokletije-plav", name: "Prokletije Trail", city: "Plav", country: "ME", type: "trail", date: "2026-09-18", distances: [{ km: 49, gain: 2800 }, { km: 29.6, gain: 1700 }, { km: 10, gain: 0 }] },
   { id: "radmilovac", name: "Radmilovac Trail", city: "Beograd", country: "RS", type: "trail", date: "2026-09-19", distances: [{ km: 10, gain: 220 }, { km: 5, gain: 110 }] },
   { id: "raska-trail", name: "Raška Trail", city: "Raška", country: "RS", type: "trail", date: "2026-09-19", distances: [{ km: 8.5, gain: 277 }] },
   { id: "soko-covka", name: "Soko Čovka Trail No2", city: "Županjac, Lazarevac", country: "RS", type: "trail", date: "2026-09-19", distances: [{ km: 28, gain: 0 }, { km: 20, gain: 0 }, { km: 12, gain: 0 }, { km: 7, gain: 0 }] },
+  { id: "sos-humanitarna-2026", name: "SOS humanitarna trka", city: "Gradski park, Skoplje", country: "MK", type: "city", date: "2026-09-19", distances: [{ km: 4, gain: 0 }] },
+  { id: "volvo-run-vogosca-2026", name: "Volvo Run Vogošća 5K", city: "Vogošća", country: "BA", type: "city", date: "2026-09-19", distances: [{ km: 5, gain: 0 }] },
+  { id: "brocanska-desetka-2026", name: "Broćanska desetka", city: "Međugorje — Čitluk", country: "BA", type: "city", date: "2026-09-20", distances: [{ km: 10, gain: 0 }] },
+  { id: "copenhagen-half-2026", name: "Copenhagen Half Marathon", city: "Kopenhagen", country: "DK", type: "city", date: "2026-09-20", distances: [{ km: 21.097, gain: 0 }] },
   { id: "croatie-montenegro", name: "Croatie Montenegro Trail Challenge", city: "Dubrovnik — Herceg Novi", country: "HR", type: "trail", date: "2026-09-20", distances: [{ km: 96, gain: 3500 }] },
+  { id: "dublin-half-2026", name: "Dublin Half Marathon", city: "Dablin", country: "IE", type: "city", date: "2026-09-20", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "antwerp-great-half-2026", name: "Great Half Antwerpen", city: "Antverpen", country: "BE", type: "city", date: "2026-09-20", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "altotting-half-2026", name: "Halbmarathon Altötting", city: "Altetting", country: "DE", type: "city", date: "2026-09-20", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "udine-half-2026", name: "Maratonina Città di Udine", city: "Udine", country: "IT", type: "city", date: "2026-09-20", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "mythical-odyssey-2026", name: "Mythical Odyssey", city: "Meteori", country: "GR", type: "trail", date: "2026-09-20", distances: [{ km: 150, gain: 6200 }] },
   { id: "rudnik-trail", name: "Rudnik Trail", city: "Varoš Rudnik", country: "RS", type: "trail", date: "2026-09-20", distances: [{ km: 9.6, gain: 450 }] },
+  { id: "azbuka-izazov-2026", name: "Azbuka izazov", city: "Etno selo Azbuka", country: "RS", type: "trail", date: "2026-09-26", distances: [] },
   { id: "javornjaca", name: "Javornjača Trail", city: "Bihać, Plješevica", country: "BA", type: "trail", date: "2026-09-26", distances: [{ km: 19, gain: 1000 }], reg: "https://ontime-timing.com/?p=1646" },
   { id: "medvoski-tek", name: "Medvoški tek", city: "Medvode", country: "SI", type: "city", date: "2026-09-26", distances: [], reg: "http://www.medvoskitek.si/" },
   { id: "rekord-smarne-gore", name: "Rekord Šmarne gore", city: "Tacen pod Šmarno goro", country: "SI", type: "trail", date: "2026-09-26", distances: [], reg: "https://www.smarnogorski-teki.si/" },
   { id: "polhove-stopinje", name: "Tek po polhovih stopinjah", city: "Kozarišče", country: "SI", type: "trail", date: "2026-09-26", distances: [] },
   { id: "vzpon-hlevise", name: "Vzpon na Hleviše", city: "Idrija", country: "SI", type: "trail", date: "2026-09-26", distances: [] },
   { id: "zupska-vinska", name: "Župska vinska trka", city: "Aleksandrovac", country: "RS", type: "trail", date: "2026-09-26", distances: [{ km: 19, gain: 0 }, { km: 13, gain: 0 }, { km: 7.5, gain: 0 }], reg: "https://trka.rs/events/871-10-%C5%BEupska-vinska-trka/" },
+  { id: "loch-ness-marathon-2026", name: "Baxters Loch Ness Marathon", city: "Invernes, Škotska", country: "GB", type: "city", date: "2026-09-27", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "berlin-marathon-2026", name: "BMW Berlin-Marathon", city: "Berlin", country: "DE", type: "city", date: "2026-09-27", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "derventska-desetka-2026", name: "Derventska desetka", city: "Derventa", country: "BA", type: "city", date: "2026-09-27", distances: [{ km: 10, gain: 0 }, { km: 5.3, gain: 0 }] },
   { id: "divca-trail", name: "Divča Trail", city: "Divčibare", country: "RS", type: "trail", date: "2026-09-27", distances: [{ km: 28, gain: 1350 }, { km: 17, gain: 820 }, { km: 12, gain: 0 }], reg: "https://trka.rs/events/803-divca-trail/" },
+  { id: "gracanica-trail-2026", name: "Gračanica Trail", city: "Gornja Lohinja, Gračanica", country: "BA", type: "trail", date: "2026-09-27", distances: [{ km: 22.5, gain: 840 }, { km: 11.5, gain: 400 }, { km: 7, gain: 200 }] },
+  { id: "hc-andersen-marathon-2026", name: "H.C. Andersen Marathon", city: "Odense", country: "DK", type: "city", date: "2026-09-27", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 4.2, gain: 0 }] },
   { id: "konjiski-maraton", name: "Konjiški maraton", city: "Slovenske Konjice", country: "SI", type: "city", date: "2026-09-27", distances: [], reg: "https://konjiskimaraton.si/" },
   { id: "rajac", name: "Rajac", city: "Rajac", country: "RS", type: "trail", date: "2026-09-27", distances: [{ km: 35.2, gain: 1332 }, { km: 26.1, gain: 1034 }, { km: 16.9, gain: 670 }], reg: "https://www.baznikamp.pss.rs/treking/prijava?trka=25" },
+  { id: "tbilisi-marathon-2026", name: "Tbilisi Marathon", city: "Tbilisi", country: "GE", type: "city", date: "2026-09-27", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
   { id: "tek-na-smarno-goro", name: "Tek na Šmarno goro", city: "Tacen pod Šmarno goro", country: "SI", type: "trail", date: "2026-09-27", distances: [], reg: "https://www.smarnogorski-teki.si/sl/tek-na-smarno-goro" },
+  { id: "trento-half-2026", name: "Trento Half Marathon", city: "Trento", country: "IT", type: "city", date: "2026-09-27", distances: [{ km: 21.097, gain: 0 }] },
   { id: "zlati-tek", name: "Zlati tek — Irenin tek", city: "Zlatoličje", country: "SI", type: "city", date: "2026-09-27", distances: [] },
-  { id: "tek-za-kranj", name: "Tek za Kranj — Memorial Vincenca Drakslerja", city: "Kranj", country: "SI", type: "city", date: "2026-10-02", distances: [], reg: "https://www.tekzakranj.si/" },
-  { id: "24-ur-smarne-gore", name: "24 ur Šmarne gore", city: "Tacen pod Šmarno goro", country: "SI", type: "trail", date: "2026-10-03", distances: [] },
+  { id: "b2run-zagreb-2026", name: "B2Run Zagreb", city: "Zagreb", country: "HR", type: "city", date: "2026-10-01", distances: [{ km: 5, gain: 0 }], reg: "https://www.utrka.com/utrke/b2bzagreb/2026/" },
+  { id: "ruzicasti-listopad-2026", name: "Ulična utrka Ružičasti listopad", city: "Livno", country: "BA", type: "city", date: "2026-10-01", distances: [{ km: 10, gain: 0 }], reg: "https://gb3timing.com/dogadjaj/ulicna-utrka-ruzicasti-listopad-2026" },
+  { id: "imbera-24h-2026", name: "24 sata Imbera", city: "Borak", country: "HR", type: "trail", date: "2026-10-02", distances: [{ km: 4.8, gain: 0 }] },
+  { id: "tek-za-kranj", name: "Tek za Kranj — Memorial Vincenca Drakslerja", city: "Kranj", country: "SI", type: "city", date: "2026-10-02", distances: [{ km: 5, gain: 0 }], reg: "https://www.tekzakranj.si/" },
+  { id: "archipelago-trail-2026", name: "Archipelago Trail Run", city: "Pašman, Ugljan, Dugi otok", country: "HR", type: "trail", date: "2026-10-03", distances: [] },
+  { id: "glow-run-split-2026", name: "Glow Run Split", city: "Split", country: "HR", type: "city", date: "2026-10-03", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "kalnik-trail-2026", name: "Kalnik Trail", city: "Kalnik", country: "HR", type: "trail", date: "2026-10-03", distances: [{ km: 27, gain: 0 }, { km: 14, gain: 0 }, { km: 6, gain: 0 }] },
   { id: "kras-kros", name: "Kras kros trail run — tek 11 črnih vrhov", city: "Cerje", country: "SI", type: "trail", date: "2026-10-03", distances: [] },
+  { id: "linijom-obrane-zadra-2026", name: "Linijom obrane grada Zadra", city: "Zadar", country: "HR", type: "city", date: "2026-10-03", distances: [{ km: 8.7, gain: 0 }] },
+  { id: "skagen-marathon-2026", name: "Marathon in Skagen", city: "Skagen", country: "DK", type: "city", date: "2026-10-03", distances: [{ km: 42.195, gain: 0 }, { km: 30, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "liberec-trail-run-2026", name: "Mattoni Liberec Trail Run", city: "Liberec", country: "CZ", type: "trail", date: "2026-10-03", distances: [{ km: 22, gain: 900 }, { km: 12, gain: 0 }], reg: "https://www.runczech.com/en/events" },
+  { id: "vukovar-tovarnik-2026", name: "Memorijalna utrka Vukovar – Tovarnik", city: "Vukovar — Tovarnik", country: "HR", type: "city", date: "2026-10-03", distances: [{ km: 27, gain: 0 }] },
+  { id: "mnogi-za-rijetke-2026", name: "Mnogi za rijetke", city: "Zagreb", country: "HR", type: "city", date: "2026-10-03", distances: [], reg: "https://www.utrka.com/utrke/MNOGIZARIJETKE/2026/" },
+  { id: "niski-polumaraton-2026", name: "Niški polumaraton", city: "Niš", country: "RS", type: "city", date: "2026-10-03", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "noc-na-jezeru", name: "Noć na jezeru", city: "Jezero Palić", country: "RS", type: "city", date: "2026-10-03", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }, { km: 1, gain: 0 }, { km: 0.3, gain: 0 }] },
+  { id: "sanska-petica-2026", name: "Sanska petica", city: "Sanski Most", country: "BA", type: "city", date: "2026-10-03", distances: [{ km: 5, gain: 0 }], reg: "https://gb3timing.com/dogadjaj/2-medjunarodna-utrka-sanska-petica" },
   { id: "serbia-backyard", name: "Serbia Backyard Ultra", city: "Pančevo", country: "RS", type: "trail", date: "2026-10-03", distances: [{ km: 6.7, gain: 0 }], reg: "https://trka.rs/events/937-serbia-backyard-ultra-beyond-limits/" },
-  { id: "tek-celjskih-knezov", name: "Tek celjskih knezov", city: "Celje", country: "SI", type: "city", date: "2026-10-03", distances: [] },
-  { id: "prekmurski-mali", name: "Prekmurski mali maraton", city: "Moravske Toplice", country: "SI", type: "city", date: "2026-10-04", distances: [], reg: "https://prekmurskimaraton.com/" },
+  { id: "tartu-city-marathon-2026", name: "Tartu City Marathon", city: "Tartu", country: "EE", type: "city", date: "2026-10-03", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "tek-celjskih-knezov", name: "Tek celjskih knezov", city: "Celje", country: "SI", type: "city", date: "2026-10-03", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://protime.si/dogodek/tek-celjskih-knezov2026/" },
+  { id: "mig21-trail-2026", name: "Trail trka MIG21", city: "Pribislavec", country: "HR", type: "trail", date: "2026-10-03", distances: [{ km: 7, gain: 0 }], reg: "https://www.utrka.com/utrke/mig23/2026/" },
+  { id: "trunsylvania-brasov-2026", name: "tRUNsylvania 10K", city: "Brašov", country: "RO", type: "city", date: "2026-10-03", distances: [{ km: 12, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "umag-run-2026", name: "Umag Run", city: "Umag", country: "HR", type: "city", date: "2026-10-03", distances: [{ km: 21.097, gain: 0 }, { km: 10.5, gain: 0 }, { km: 5, gain: 0 }], reg: "https://protime.si/dogodek/umag-run-2026/" },
+  { id: "vatrogasna-bregana-2026", name: "Vatrogasna utrka Bregana", city: "Bregana", country: "HR", type: "city", date: "2026-10-03", distances: [{ km: 5, gain: 0 }] },
+  { id: "z-fit-run-2026", name: "Z Fit run", city: "Zagreb", country: "HR", type: "city", date: "2026-10-03", distances: [], reg: "https://www.utrka.com/utrke/zfitrun/2026/" },
+  { id: "bodrum-half-2026", name: "Bodrum Yarı Maratonu", city: "Bodrum", country: "TR", type: "city", date: "2026-10-04", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "eker-i-run-2026", name: "Eker I Run", city: "Uludağ, Bursa", country: "TR", type: "trail", date: "2026-10-04", distances: [{ km: 42, gain: 0 }, { km: 15, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "esbjerg-half-2026", name: "Esbjerg City Half Marathon", city: "Esbjerg", country: "DK", type: "city", date: "2026-10-04", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "cologne-marathon-2026", name: "Generali Köln Marathon", city: "Keln", country: "DE", type: "city", date: "2026-10-04", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "hradec-kralove-maraton-2026", name: "Hradecký maraton", city: "Hradec Kralove", country: "CZ", type: "city", date: "2026-10-04", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "kosice-marathon-2026", name: "Medzinárodný maratón mieru", city: "Košice", country: "SK", type: "city", date: "2026-10-04", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }] },
+  { id: "crete-half-2026", name: "Polumaraton Krita", city: "Arkalohori, Krit", country: "GR", type: "city", date: "2026-10-04", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "prekmurski-mali", name: "Prekmurski mali maraton", city: "Moravske Toplice", country: "SI", type: "city", date: "2026-10-04", distances: [{ km: 21, gain: 0 }, { km: 11, gain: 0 }, { km: 5.5, gain: 0 }], reg: "https://prekmurskimaraton.com/" },
+  { id: "run-in-lyon-2026", name: "Run in Lyon", city: "Lion", country: "FR", type: "city", date: "2026-10-04", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "sinj-run-challenge-2026", name: "Sinj Run Challenge", city: "Sinj", country: "HR", type: "city", date: "2026-10-04", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://www.utrka.com/utrke/sinjrunchallenge/2026/" },
   { id: "tek-za-krof", name: "Tek za krof", city: "Krašnja", country: "SI", type: "city", date: "2026-10-04", distances: [] },
   { id: "skopski-maraton", name: "Wizz Air Skopski maraton", city: "Skoplje", country: "MK", type: "city", date: "2026-10-04", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }], reg: "http://skopskimaraton.com.mk/prijavuvanje/" },
+  { id: "dalmacija-ultra-trail-2026", name: "Dalmacija Ultra Trail", city: "Omiš", country: "HR", type: "trail", date: "2026-10-09", distances: [{ km: 121.8, gain: 5440 }, { km: 56.5, gain: 2850 }, { km: 26.4, gain: 1030 }, { km: 14.7, gain: 670 }] },
+  { id: "andorra-trail-2026", name: "Dynafit Andorra Trail", city: "Escaldes-Engordany", country: "AD", type: "trail", date: "2026-10-09", distances: [{ km: 47, gain: 3350 }, { km: 26, gain: 1890 }, { km: 17, gain: 1200 }, { km: 5, gain: 260 }], reg: "https://www.avaibooksports.com/inscripcion/dynafit-andorra-trail-2026/?lang=en" },
+  { id: "graz-marathon-2026", name: "Graz Marathon", city: "Grac", country: "AT", type: "city", date: "2026-10-09", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10.55, gain: 0 }, { km: 5, gain: 0 }], reg: "https://www.grazmarathon.at/" },
+  { id: "nocni-tek-kalvarija-2026", name: "Nočni tek na Kalvarijo", city: "Maribor", country: "SI", type: "trail", date: "2026-10-09", distances: [], reg: "https://protime.si/dogodek/16-nocni-tek-na-kalvarijo-2026/" },
   { id: "petrovaradin-night", name: "Petrovaradin Fortress Night Trail", city: "Petrovaradinska tvrđava", country: "RS", type: "trail", date: "2026-10-09", distances: [{ km: 5, gain: 0 }], reg: "https://trka.rs/events/835-petrovaradin-fortress-night-trail-serbia-epic-2026/" },
-  { id: "backyard-ljubljana", name: "Backyard Ultra Ljubljana", city: "Ljubljana", country: "SI", type: "trail", date: "2026-10-10", distances: [] },
-  { id: "dobrepoljski-tek", name: "Dobrepoljski tek", city: "Videm", country: "SI", type: "city", date: "2026-10-10", distances: [] },
+  { id: "backyard-ljubljana", name: "Backyard Ultra Ljubljana", city: "Ljubljana", country: "SI", type: "trail", date: "2026-10-10", distances: [{ km: 6.7, gain: 0 }] },
+  { id: "bucharest-marathon-2026", name: "Bucharest Marathon", city: "Bukurešt", country: "RO", type: "city", date: "2026-10-10", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "budapest-marathon-2026", name: "Budapest Marathon", city: "Budimpešta", country: "HU", type: "city", date: "2026-10-10", distances: [{ km: 42.195, gain: 0 }, { km: 30, gain: 0 }, { km: 21.097, gain: 0 }, { km: 14, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "dobrepoljski-tek", name: "Dobrepoljski tek", city: "Videm", country: "SI", type: "city", date: "2026-10-10", distances: [{ km: 10, gain: 0 }], reg: "https://protime.si/dogodek/16-dobrepoljski-tek-2026/" },
   { id: "green-gate", name: "Green Gate Trail", city: "Jošanička Banja", country: "RS", type: "trail", date: "2026-10-10", distances: [{ km: 15, gain: 0 }, { km: 7, gain: 0 }], reg: "https://trka.rs/events/896-1-green-gate-trail/" },
+  { id: "javornicka-stovka-2026", name: "Javornícka stovka", city: "Vysoká nad Kysucou", country: "SK", type: "trail", date: "2026-10-10", distances: [{ km: 57, gain: 2450 }] },
+  { id: "kostolacki-polumaraton-2026", name: "Kostolački polumaraton", city: "Kostolac", country: "RS", type: "city", date: "2026-10-10", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "krkn-trail-2026", name: "Krk'n'Trail", city: "Baška, Krk", country: "HR", type: "trail", date: "2026-10-10", distances: [{ km: 24, gain: 0 }, { km: 14, gain: 0 }, { km: 8, gain: 0 }] },
+  { id: "lisbon-marathon-2026", name: "Lisbon Marathon", city: "Lisabon", country: "PT", type: "city", date: "2026-10-10", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 8.5, gain: 0 }] },
+  { id: "mammothtrail-2026", name: "Mammothtrail", city: "Mohovo", country: "HR", type: "trail", date: "2026-10-10", distances: [{ km: 8.7, gain: 0 }] },
+  { id: "okolo-pryglu-2026", name: "Okolo Prýglu", city: "Brno", country: "CZ", type: "trail", date: "2026-10-10", distances: [{ km: 14.1, gain: 0 }] },
+  { id: "run-the-forests-lednice-2026", name: "Run the Forests Lednice", city: "Lednice", country: "CZ", type: "trail", date: "2026-10-10", distances: [{ km: 42, gain: 0 }, { km: 21, gain: 0 }, { km: 14, gain: 0 }, { km: 7, gain: 0 }] },
+  { id: "stazama-bosne-srebrene-2026", name: "Stazama Bosne Srebrene", city: "Srebrenica", country: "BA", type: "city", date: "2026-10-10", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://ontime-timing.com/?p=2438" },
   { id: "subotica-trail", name: "Subotica Trail", city: "Subotica", country: "RS", type: "trail", date: "2026-10-10", distances: [{ km: 29.8, gain: 0 }, { km: 19.5, gain: 0 }], reg: "https://www.baznikamp.pss.rs/treking/prijava?trka=34" },
+  { id: "mentalno-zdravlje-osijek-2026", name: "Trčimo za mentalno zdravlje", city: "Osijek", country: "HR", type: "city", date: "2026-10-10", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "sveta-nedelja-2026", name: "Utrka građana Sveta Nedelja", city: "Sveta Nedelja", country: "HR", type: "city", date: "2026-10-10", distances: [{ km: 5.5, gain: 0 }] },
+  { id: "sofia-marathon-2026", name: "Wizz Air Sofijski maraton", city: "Sofija", country: "BG", type: "city", date: "2026-10-10", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "zmajev-tek", name: "Zmajev tek", city: "Ljubljana", country: "SI", type: "city", date: "2026-10-10", distances: [] },
+  { id: "eindhoven-marathon-2026", name: "ASML Marathon Eindhoven", city: "Ajndhoven", country: "NL", type: "city", date: "2026-10-11", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 15, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "bruges-marathon-2026", name: "Athora Bruges Marathon", city: "Brige", country: "BE", type: "city", date: "2026-10-11", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 8, gain: 0 }] },
+  { id: "ladies-running-club-2026", name: "Ladies Running Club 10K", city: "Siđijevi", country: "MT", type: "city", date: "2026-10-11", distances: [{ km: 10, gain: 0 }] },
+  { id: "munich-marathon-2026", name: "München Marathon", city: "Minhen", country: "DE", type: "city", date: "2026-10-11", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "novosadski-maraton-2026", name: "Novosadski maraton", city: "Novi Sad", country: "RS", type: "city", date: "2026-10-11", distances: [{ km: 42.195, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "royal-parks-half-2026", name: "Royal Parks Half Marathon", city: "London", country: "GB", type: "city", date: "2026-10-11", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "runkara-2026", name: "Runkara", city: "Ankara", country: "TR", type: "city", date: "2026-10-11", distances: [{ km: 21.097, gain: 0 }, { km: 10.4, gain: 0 }, { km: 4.2, gain: 0 }] },
   { id: "tek-miru", name: "Tek miru", city: "Slovenj Gradec", country: "SI", type: "city", date: "2026-10-11", distances: [] },
   { id: "biba-planina", name: "Tek na Bibo planino", city: "Okrog pri Motniku", country: "SI", type: "trail", date: "2026-10-11", distances: [] },
   { id: "grad-podsreda", name: "Tek na grad Podsreda", city: "Podsreda", country: "SI", type: "trail", date: "2026-10-11", distances: [] },
   { id: "vinska-cesta", name: "Tek po vinski cesti", city: "Bušeča vas", country: "SI", type: "city", date: "2026-10-11", distances: [] },
   { id: "pod-storzic", name: "Tek pod Storžič", city: "Grahovše", country: "SI", type: "trail", date: "2026-10-11", distances: [] },
+  { id: "lazaro-kardenasa-2026", name: "Trka Lazaro Kardenasa", city: "Novi Beograd", country: "RS", type: "city", date: "2026-10-11", distances: [{ km: 5, gain: 0 }] },
   { id: "zagrebacki-maraton", name: "Zagrebački maraton", city: "Ban Jelačić, Zagreb", country: "HR", type: "city", date: "2026-10-11", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }], reg: "https://www.zagreb-marathon.com/" },
-  { id: "nocni-portoroz", name: "Nočni tek Portorož", city: "Portorož", country: "SI", type: "city", date: "2026-10-13", distances: [], reg: "https://fatburn.si/product/9-nocni-tek-portoroz/" },
+  { id: "nocni-portoroz", name: "Nočni tek Portorož", city: "Portorož", country: "SI", type: "city", date: "2026-10-13", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://fatburn.si/product/9-nocni-tek-portoroz/" },
+  { id: "cappadocia-ultra-2026", name: "Cappadocia Ultra-Trail", city: "Irgup, Kapadokija", country: "TR", type: "trail", date: "2026-10-16", distances: [{ km: 119, gain: 0 }, { km: 63, gain: 0 }, { km: 38, gain: 0 }] },
+  { id: "blitva-run-2026", name: "Blitva Run", city: "Podgora", country: "HR", type: "trail", date: "2026-10-17", distances: [{ km: 17.7, gain: 0 }, { km: 5.6, gain: 0 }] },
+  { id: "hytteplanmila-2026", name: "Hytteplanmila", city: "Hole", country: "NO", type: "trail", date: "2026-10-17", distances: [{ km: 10, gain: 0 }] },
   { id: "jesenji-fg-maraton", name: "Jesenji planinarski maraton na Fruškoj gori", city: "Popovica, Novi Sad", country: "RS", type: "trail", date: "2026-10-17", distances: [{ km: 25, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://trka.rs/events/874-12-jesenji-planinarski-maraton-na-fru%C5%A1koj-gori/" },
+  { id: "ludi-brav-2026", name: "Ludi Brav", city: "Rab", country: "HR", type: "trail", date: "2026-10-17", distances: [{ km: 22, gain: 0 }] },
+  { id: "psotka-memorial-2026", name: "Memoriál Psotku", city: "Štrbské Pleso", country: "SK", type: "trail", date: "2026-10-17", distances: [{ km: 37.9, gain: 2490 }, { km: 25.3, gain: 1540 }] },
   { id: "lj-maraton-10k", name: "NLB Ljubljanski maraton — Garmin tek 10 km", city: "Ljubljana", country: "SI", type: "city", date: "2026-10-17", distances: [{ km: 10, gain: 0 }], reg: "https://ljubljanskimaraton.si/" },
+  { id: "nn-night-run-cb-2026", name: "NN Night Run České Budějovice", city: "Češke Budjejovice", country: "CZ", type: "city", date: "2026-10-17", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }, { km: 3, gain: 0 }] },
+  { id: "ozalj-vrhovac-2026", name: "Ozalj i Vrhovac Trail", city: "Ozalj", country: "HR", type: "trail", date: "2026-10-17", distances: [{ km: 23.5, gain: 0 }, { km: 16.5, gain: 0 }, { km: 7.9, gain: 0 }] },
+  { id: "kozjak-2026", name: "Planinska utrka Kozjak", city: "Kaštel Sućurac", country: "HR", type: "trail", date: "2026-10-17", distances: [{ km: 8, gain: 0 }] },
+  { id: "sibenskih-deset-2026", name: "Šibenskih deset & Draženova četvorka", city: "Šibenik", country: "HR", type: "city", date: "2026-10-17", distances: [{ km: 10, gain: 0 }, { km: 4, gain: 0 }], reg: "https://www.utrka.com/utrke/sibenskadesetka/2026/" },
+  { id: "smamni-janjac-2026", name: "Smamni Janjac", city: "Rab", country: "HR", type: "trail", date: "2026-10-17", distances: [{ km: 12, gain: 0 }] },
+  { id: "thessaloniki-night-half-2026", name: "Thessaloniki Night Half Marathon", city: "Solun", country: "GR", type: "city", date: "2026-10-17", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "uppsala-marathon-2026", name: "Uppsala Marathon", city: "Upsala", country: "SE", type: "city", date: "2026-10-17", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }] },
   { id: "velez", name: "Velež", city: "Nevesinje", country: "BA", type: "trail", date: "2026-10-17", distances: [{ km: 23, gain: 1900 }] },
+  { id: "amsterdam-marathon-2026", name: "Amsterdam Marathon", city: "Amsterdam", country: "NL", type: "city", date: "2026-10-18", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 7.5, gain: 0 }], reg: "https://www.tcsamsterdammarathon.nl/" },
+  { id: "apatinski-polumaraton-2026", name: "Apatinski dunavski polumaraton", city: "Banja Junaković, Apatin", country: "RS", type: "city", date: "2026-10-18", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "kamenica-trejl-2", name: "Kamenica Trejl 2", city: "Kamenica, Niš", country: "RS", type: "trail", date: "2026-10-18", distances: [{ km: 20.7, gain: 807 }, { km: 5.6, gain: 243 }], reg: "https://trkesrbija.rs/dogadjaji/kamenica-trejl-2026" },
   { id: "lj-maraton", name: "NLB Ljubljanski maraton", city: "Ljubljana", country: "SI", type: "city", date: "2026-10-18", distances: [{ km: 42.2, gain: 0 }, { km: 21.1, gain: 0 }], reg: "https://ljubljanskimaraton.si/" },
   { id: "povlen-trail", name: "Povlen Trail", city: "Povlen", country: "RS", type: "trail", date: "2026-10-18", distances: [{ km: 27, gain: 1010 }, { km: 18, gain: 0 }, { km: 12, gain: 0 }], reg: "https://trka.rs/events/804-povlen-trail/" },
+  { id: "pustolovac-run-2026", name: "Pustolovac Run", city: "Draganovec", country: "HR", type: "city", date: "2026-10-18", distances: [{ km: 5.3, gain: 0 }] },
+  { id: "salzkammergut-marathon-2026", name: "Salzkammergut Marathon", city: "Salzkammergut", country: "AT", type: "city", date: "2026-10-18", distances: [{ km: 42.195, gain: 0 }, { km: 27, gain: 0 }, { km: 10, gain: 0 }, { km: 5.2, gain: 0 }] },
+  { id: "trail-novi-grad-2026", name: "Trail Novi Grad", city: "Novi Grad", country: "BA", type: "trail", date: "2026-10-18", distances: [] },
+  { id: "antwerp-marathon-2026", name: "TREK Antwerp Marathon", city: "Antverpen", country: "BE", type: "city", date: "2026-10-18", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "palma-marathon-2026", name: "TUI Palma Marathon Mallorca", city: "Palma, Majorka", country: "ES", type: "city", date: "2026-10-18", distances: [{ km: 42.195, gain: 0 }] },
   { id: "dubrovnik-spartan", name: "Dubrovnik Spartan Trail", city: "Dubrovnik", country: "HR", type: "trail", date: "2026-10-23", distances: [{ km: 50, gain: 0 }, { km: 21, gain: 0 }, { km: 10, gain: 0 }], reg: "https://www.spartan.com/en/race/detail/10098/overview" },
+  { id: "ostrava-golden-marathon-2026", name: "Emil Zátopek Ostrava Golden Marathon", city: "Ostrava", country: "CZ", type: "city", date: "2026-10-24", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "kas-half-2026", name: "Kaş Yarı Maratonu", city: "Kaš", country: "TR", type: "city", date: "2026-10-24", distances: [{ km: 21.097, gain: 0 }, { km: 12, gain: 0 }, { km: 6, gain: 0 }] },
+  { id: "komiza-trail-2026", name: "Komiža Trail", city: "Komiža, Vis", country: "HR", type: "trail", date: "2026-10-24", distances: [{ km: 22, gain: 0 }, { km: 16, gain: 0 }, { km: 7, gain: 0 }] },
+  { id: "luzec-trail-2026", name: "Lužec Trail", city: "Novi Marof", country: "HR", type: "trail", date: "2026-10-24", distances: [{ km: 20, gain: 0 }, { km: 8, gain: 0 }], reg: "https://www.utrka.com/utrke/luzectrail/2026/" },
+  { id: "nn-night-run-olomouc-2026", name: "NN Night Run Olomouc", city: "Olomouc", country: "CZ", type: "city", date: "2026-10-24", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }, { km: 3, gain: 0 }] },
   { id: "nocni-vrijesak", name: "Noćni Vrijesak Trail", city: "Bihać, Plješevica", country: "BA", type: "trail", date: "2026-10-24", distances: [{ km: 14, gain: 760 }], reg: "https://ontime-timing.com/?p=1650" },
   { id: "ovcar", name: "Ovčar", city: "Ovčarska Banja", country: "RS", type: "trail", date: "2026-10-24", distances: [] },
   { id: "salamander", name: "Salamander Trail", city: "Rudo", country: "BA", type: "trail", date: "2026-10-24", distances: [{ km: 21.5, gain: 1050 }, { km: 12, gain: 600 }], reg: "https://gb3timing.com/dogadjaj/4-salamander-trail-2026/" },
+  { id: "striga-trail-2026", name: "Štriga trail", city: "Svetvinčenat", country: "HR", type: "trail", date: "2026-10-24", distances: [{ km: 17, gain: 0 }, { km: 6, gain: 0 }] },
+  { id: "podsused-zagreb-2026", name: "Utrka Podsused – Zagreb", city: "Zagreb", country: "HR", type: "city", date: "2026-10-24", distances: [{ km: 12.5, gain: 0 }] },
   { id: "viking-challenge", name: "Viking Challenge Trail", city: "Fruška gora", country: "RS", type: "trail", date: "2026-10-24", distances: [], reg: "https://trka.rs/events/827-viking-challenge-trail-2026/" },
   { id: "vipavskih-nocnih-7", name: "Vipavskih nočnih 7", city: "Vipava", country: "SI", type: "trail", date: "2026-10-24", distances: [] },
+  { id: "retro-run-2026", name: "360 Retro Run", city: "Zagreb", country: "HR", type: "city", date: "2026-10-25", distances: [] },
+  { id: "banja-luka-maraton-2026", name: "Banjalučki maraton", city: "Banja Luka", country: "BA", type: "city", date: "2026-10-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "dublin-marathon-2026", name: "Dublin Marathon", city: "Dablin", country: "IE", type: "city", date: "2026-10-25", distances: [{ km: 42.195, gain: 205 }] },
+  { id: "frankfurt-marathon-2026", name: "Frankfurt Marathon", city: "Frankfurt", country: "DE", type: "city", date: "2026-10-25", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "hamburg-half-2026", name: "hella hamburg halbmarathon", city: "Hamburg", country: "DE", type: "city", date: "2026-10-25", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "lykos-half-2026", name: "Lykos Yarı Maratonu", city: "Pamukale", country: "TR", type: "city", date: "2026-10-25", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "makarska-half-2026", name: "Makarska Half Marathon", city: "Makarska", country: "HR", type: "city", date: "2026-10-25", distances: [{ km: 21.097, gain: 0 }], reg: "https://www.utrka.com/utrke/apfelhalf/2026/" },
+  { id: "valencia-half-2026", name: "Medio Maratón Valencia", city: "Valensija", country: "ES", type: "city", date: "2026-10-25", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "sv-martin-fundrace-2026", name: "Terme Sveti Martin FundRace", city: "Sveti Martin na Muri", country: "HR", type: "city", date: "2026-10-25", distances: [], reg: "https://www.utrka.com/utrke/fundrace/2026/" },
+  { id: "tuzlanski-maraton-2026", name: "Tuzlanski maraton", city: "Panonska jezera, Tuzla", country: "BA", type: "city", date: "2026-10-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }], reg: "https://ontime-timing.com/?p=1461" },
+  { id: "venice-marathon-2026", name: "Venicemarathon", city: "Venecija", country: "IT", type: "city", date: "2026-10-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "tirana-marathon-2026", name: "Wizz Air Tirana Marathon", city: "Tirana", country: "AL", type: "city", date: "2026-10-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }], reg: "https://www.tiranamarathon.com/en" },
+  { id: "cres-losinj-trail-2026", name: "Cres & Lošinj Trail", city: "Cres", country: "HR", type: "trail", date: "2026-10-31", distances: [], reg: "https://www.utrka.com/utrke/cresilosinjtrail/2026/" },
+  { id: "fethiye-ultra-2026", name: "Fethiye Ultra Trail", city: "Fetije", country: "TR", type: "trail", date: "2026-10-31", distances: [{ km: 25, gain: 0 }, { km: 10, gain: 0 }] },
   { id: "gledic-ultra", name: "Gledić Ultra Trejl", city: "Gledićke planine, Kragujevac", country: "RS", type: "trail", date: "2026-10-31", distances: [{ km: 58, gain: 2100 }, { km: 22, gain: 930 }, { km: 12, gain: 530 }], reg: "https://myrace.rs/?eventzs=2026-10-24-gledic-ultra-trejl&occurrence=2026-10-24" },
-  { id: "obala-ultra", name: "Obala ultra trail", city: "Lonka, Izola", country: "SI", type: "trail", date: "2026-11-06", distances: [{ km: 108, gain: 4000 }, { km: 64, gain: 2000 }, { km: 35, gain: 1000 }, { km: 17, gain: 450 }, { km: 11, gain: 200 }], reg: "https://www.obalaultratrail.si/" },
-  { id: "go4trail", name: "GO4trail", city: "Solkan", country: "SI", type: "trail", date: "2026-11-07", distances: [], reg: "http://www.go4trail.si/" },
-  { id: "lahinja-trail", name: "Lahinja trail", city: "Dragatuš", country: "SI", type: "trail", date: "2026-11-07", distances: [] },
-  { id: "pozdrav-jeseni-kras", name: "Tekaški pozdrav jeseni na Krasu", city: "Lipica", country: "SI", type: "trail", date: "2026-11-07", distances: [], reg: "https://www.tekaskipozdrav.si/" },
-  { id: "celjski-mali-maraton", name: "Celjski mali maraton", city: "Celje", country: "SI", type: "city", date: "2026-11-08", distances: [], reg: "https://fatburn.si/celjski-mali-maraton/" },
+  { id: "halloween-run-2026", name: "Halloween Run", city: "Zagreb", country: "HR", type: "city", date: "2026-10-31", distances: [], reg: "https://www.utrka.com/utrke/halloween/2026/" },
+  { id: "istanbul-marathon-2026", name: "Istanbul Marathon", city: "Istanbul", country: "TR", type: "city", date: "2026-11-01", distances: [{ km: 42.195, gain: 0 }, { km: 15.5, gain: 0 }] },
+  { id: "pazarski-polumaraton-2026", name: "Pazarski polumaraton", city: "Novi Pazar", country: "RS", type: "city", date: "2026-11-01", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "strumica-na-ulica-2026", name: "Polumaraton Strumica na ulica", city: "Strumica", country: "MK", type: "city", date: "2026-11-01", distances: [{ km: 21.097, gain: 0 }], reg: "https://trki.mk/mk/e/strumica-na-ulica-2026/register" },
+  { id: "obala-ultra", name: "Obala ultra trail", city: "Lonka, Izola", country: "SI", type: "trail", date: "2026-11-06", distances: [{ km: 108, gain: 4000 }, { km: 64, gain: 2000 }, { km: 35, gain: 1000 }, { km: 17, gain: 450 }, { km: 11, gain: 200 }], reg: "https://in.njuko.com/obala-ultra-trail-powered-by-i-feel-slovenia1764580651280" },
+  { id: "go4trail", name: "GO4trail", city: "Solkan", country: "SI", type: "trail", date: "2026-11-07", distances: [{ km: 64, gain: 0 }, { km: 28, gain: 0 }, { km: 10, gain: 0 }], reg: "http://www.go4trail.si/" },
+  { id: "lahinja-trail", name: "Lahinja trail", city: "Dragatuš", country: "SI", type: "trail", date: "2026-11-07", distances: [{ km: 30, gain: 546 }, { km: 18, gain: 298 }, { km: 10, gain: 152 }], reg: "https://www.belakrajina.si/en/outdoor/lahinja-trail/" },
+  { id: "ploce-trail-2026", name: "Ploče Trail", city: "Ploče", country: "HR", type: "trail", date: "2026-11-07", distances: [{ km: 17, gain: 0 }, { km: 7, gain: 0 }] },
+  { id: "spilja-vindija-2026", name: "Špilja Vindija trail", city: "Donja Voća", country: "HR", type: "trail", date: "2026-11-07", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "stavanger-three-lakes-2026", name: "Stavanger Three Lakes Run", city: "Stavanger", country: "NO", type: "city", date: "2026-11-07", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "pozdrav-jeseni-kras", name: "Tekaški pozdrav jeseni na Krasu", city: "Lipica", country: "SI", type: "trail", date: "2026-11-07", distances: [{ km: 10, gain: 0 }, { km: 6, gain: 0 }], reg: "https://www.tekaskipozdrav.si/" },
+  { id: "ultra-12-sati-2026", name: "Ultra maraton 12 sati", city: "Zagreb", country: "HR", type: "city", date: "2026-11-07", distances: [{ km: 42.195, gain: 0 }], reg: "https://www.utrka.com/utrke/ultra12sati/2026/" },
+  { id: "athens-marathon-2026", name: "Athens Marathon — The Authentic", city: "Maraton — Atina", country: "GR", type: "city", date: "2026-11-08", distances: [{ km: 42.195, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "celjski-mali-maraton", name: "Celjski mali maraton", city: "Celje", country: "SI", type: "city", date: "2026-11-08", distances: [{ km: 21, gain: 0 }, { km: 14, gain: 0 }, { km: 11, gain: 0 }, { km: 6.2, gain: 0 }], reg: "https://fatburn.si/celjski-mali-maraton/" },
+  { id: "nice-cannes-2026", name: "French Riviera Marathon Nice-Cannes", city: "Nica — Kan", country: "FR", type: "city", date: "2026-11-08", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "gouda-half-2026", name: "Halve Marathon Gouda", city: "Gauda", country: "NL", type: "city", date: "2026-11-08", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
   { id: "podgorica-millennium", name: "NLB Podgorica Millennium Run", city: "Most Milenijum, Podgorica", country: "ME", type: "city", date: "2026-11-08", distances: [{ km: 42.2, gain: 0 }, { km: 21.1, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://www.podgorica.run/" },
   { id: "otvoreno-fg", name: "Otvoreno prvenstvo Fruške gore", city: "Planinarski dom Zanatlija", country: "RS", type: "trail", date: "2026-11-08", distances: [], reg: "https://trka.rs/events/836-14-otvoreno-prvenstvo-fru%C5%A1ke-gore-u-planinskom-tr%C4%8D/" },
-  { id: "zg-nocni-cener", name: "Zagrebački noćni cener", city: "Zagreb", country: "HR", type: "city", date: "2026-11-08", distances: [{ km: 10, gain: 0 }] },
-  { id: "novo-mesto-polmaraton", name: "Novo mesto 1/2 maraton", city: "Novo mesto", country: "SI", type: "city", date: "2026-11-15", distances: [], reg: "https://www.novomesto21.si/" },
+  { id: "porto-marathon-2026", name: "Porto Marathon", city: "Porto", country: "PT", type: "city", date: "2026-11-08", distances: [{ km: 42.195, gain: 0 }, { km: 10, gain: 0 }, { km: 6, gain: 0 }] },
+  { id: "ravenna-marathon-2026", name: "Ravenna Marathon City of Art", city: "Ravena", country: "IT", type: "city", date: "2026-11-08", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "zg-nocni-cener", name: "Zagrebački noćni cener", city: "Zagreb", country: "HR", type: "city", date: "2026-11-08", distances: [{ km: 10, gain: 0 }], reg: "https://www.utrka.com/utrke/zgnocni10k/2026/" },
+  { id: "banja-luka-run-weekend-2026", name: "Banja Luka Run Weekend", city: "Banja Luka", country: "BA", type: "city", date: "2026-11-14", distances: [{ km: 5, gain: 0 }], reg: "https://gb3timing.com/dogadjaj/banja-luka-run-weekend" },
+  { id: "skabrnja-vukovar-2026", name: "Dani sjećanja od Škabrnje do Vukovara", city: "Škabrnja", country: "HR", type: "city", date: "2026-11-14", distances: [{ km: 5, gain: 0 }] },
+  { id: "olea-trail-2026", name: "Olea Trail", city: "Stara Novalja, Pag", country: "HR", type: "trail", date: "2026-11-14", distances: [{ km: 45.4, gain: 0 }, { km: 25, gain: 0 }, { km: 17.2, gain: 0 }, { km: 12, gain: 0 }] },
+  { id: "tanuhegyek-trail-2026", name: "Tanúhegyek Trail", city: "Badacsonytomaj", country: "HU", type: "trail", date: "2026-11-14", distances: [{ km: 41.9, gain: 1470 }, { km: 21, gain: 880 }, { km: 7.2, gain: 335 }] },
+  { id: "burgas-marathon-2026", name: "Burgas Marathon", city: "Burgas", country: "BG", type: "city", date: "2026-11-15", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10.5, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "larnaca-marathon-2026", name: "Larnaca International Marathon", city: "Larnaka", country: "CY", type: "city", date: "2026-11-15", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "novo-mesto-polmaraton", name: "Novo mesto 1/2 maraton", city: "Novo mesto", country: "SI", type: "city", date: "2026-11-15", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://www.novomesto21.si/" },
+  { id: "ivan-starek-2026", name: "Polumaraton Ivan Starek", city: "Jarun, Zagreb", country: "HR", type: "city", date: "2026-11-15", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "boulogne-half-2026", name: "Semi-marathon de Boulogne-Billancourt", city: "Boulogne-Billancourt, Pariz", country: "FR", type: "city", date: "2026-11-15", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "verona-marathon-2026", name: "Verona Run Marathon", city: "Verona", country: "IT", type: "city", date: "2026-11-15", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "zurrieq-half-2026", name: "Żurrieq Half Marathon", city: "Žurijek", country: "MT", type: "city", date: "2026-11-15", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "nin-zadar-2026", name: "Polumaraton Nin – Zadar", city: "Nin — Zadar", country: "HR", type: "city", date: "2026-11-22", distances: [{ km: 21.097, gain: 0 }], reg: "https://www.utrka.com/utrke/ninzadar/2026/" },
+  { id: "milano-half-2026", name: "Powerade Milano Half Marathon", city: "Milano", country: "IT", type: "city", date: "2026-11-22", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "florence-marathon-2026", name: "Firenze Marathon", city: "Firenca", country: "IT", type: "city", date: "2026-11-28", distances: [{ km: 42.195, gain: 0 }, { km: 10, gain: 0 }] },
   { id: "movember-tek", name: "Movember tek", city: "Ljubljana", country: "SI", type: "city", date: "2026-11-28", distances: [] },
   { id: "zimski-jamatlon", name: "Zimski jamatlon", city: "Hrastnik", country: "SI", type: "trail", date: "2026-11-28", distances: [] },
+  { id: "discoveries-half-2026", name: "Discoveries Half Marathon", city: "Lisabon", country: "PT", type: "city", date: "2026-11-29", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "krapinski-cener-2026", name: "Krapinski cener", city: "Krapina", country: "HR", type: "trail", date: "2026-11-29", distances: [], reg: "https://www.utrka.com/utrke/cener/2026/" },
+  { id: "la-rochelle-marathon-2026", name: "Marathon de La Rochelle", city: "La Rošel", country: "FR", type: "city", date: "2026-11-29", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "seville-half-2026", name: "Medio Maratón de Sevilla", city: "Sevilja", country: "ES", type: "city", date: "2026-11-29", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "olympia-marathon-2026", name: "Olympia Marathon", city: "Olimpija", country: "GR", type: "city", date: "2026-11-29", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
   { id: "zapad-fg", name: "Zapad Fruške gore", city: "Grgurevci", country: "RS", type: "trail", date: "2026-11-29", distances: [] },
-  { id: "goricatlon", name: "Goricatlon", city: "Nova Gorica", country: "SI", type: "city", date: "2026-12-05", distances: [], reg: "https://www.goricatlon.si/" },
+  { id: "policnik-2026", name: "Atletska utrka Poličnik", city: "Poličnik", country: "HR", type: "city", date: "2026-12-05", distances: [{ km: 10, gain: 0 }] },
+  { id: "bozicna-vrbak-2026", name: "Božićna utrka oko Vrbaka", city: "Semeljci", country: "HR", type: "city", date: "2026-12-05", distances: [{ km: 5, gain: 0 }] },
+  { id: "jested-winter-skyrace-2026", name: "Leki Ještěd Winter SkyRace", city: "Liberec", country: "CZ", type: "trail", date: "2026-12-05", distances: [{ km: 22, gain: 1180 }, { km: 12, gain: 520 }, { km: 6, gain: 220 }] },
   { id: "miklavzev-tek", name: "Miklavžev tek", city: "Snovik", country: "SI", type: "trail", date: "2026-12-05", distances: [] },
+  { id: "omiska-transverzala-2026", name: "Omiška transverzala", city: "Omiš", country: "HR", type: "trail", date: "2026-12-05", distances: [{ km: 24, gain: 0 }] },
+  { id: "rudarski-cener-2026", name: "Rudarski cener", city: "Ivanec", country: "HR", type: "city", date: "2026-12-05", distances: [{ km: 10, gain: 0 }, { km: 2.8, gain: 0 }] },
+  { id: "sibenik-half-2026", name: "Šibenik Half Marathon RUNESCO", city: "Šibenik", country: "HR", type: "city", date: "2026-12-05", distances: [{ km: 21.097, gain: 0 }], reg: "https://www.utrka.com/utrke/unescohalf/2026/" },
+  { id: "st-nicholas-half-2026", name: "St. Nicholas Half Marathon", city: "Demre", country: "TR", type: "city", date: "2026-12-05", distances: [{ km: 21.097, gain: 0 }, { km: 12, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "stanjelski-tek", name: "Štanjelski tek", city: "Hruševica", country: "SI", type: "trail", date: "2026-12-05", distances: [] },
   { id: "gucevo-winter", name: "Gučevo Winter Trail", city: "Gučevo", country: "RS", type: "trail", date: "2026-12-06", distances: [{ km: 13, gain: 700 }, { km: 7.5, gain: 340 }], reg: "https://runtrace.net/?event=gucevo2026" },
+  { id: "valencia-marathon-2026", name: "Maratón Valencia", city: "Valensija", country: "ES", type: "city", date: "2026-12-06", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "zg-advent-run", name: "Zagreb Advent Run", city: "Zagreb", country: "HR", type: "city", date: "2026-12-06", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://www.utrka.com/utrke/adventrun/2026/" },
+  { id: "advent-karlovac-2026", name: "Adventska utrka Karlovac", city: "Karlovac", country: "HR", type: "city", date: "2026-12-12", distances: [], reg: "https://www.utrka.com/utrke/adventkarlovac/2026/" },
+  { id: "zagrepcanka-2026", name: "Zagrepčanka 512", city: "Zagreb", country: "HR", type: "city", date: "2026-12-12", distances: [{ km: 5, gain: 0 }], reg: "https://www.utrka.com/utrke/zagrepcanka/2026/" },
   { id: "bokeski-maraton", name: "Bokeški maraton", city: "Tivat, Boka Kotorska", country: "ME", type: "city", date: "2026-12-13", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }], reg: "https://bokamarathon.com/" },
   { id: "deliblatska-pescara", name: "Deliblatska peščara", city: "Čardak", country: "RS", type: "trail", date: "2026-12-13", distances: [] },
-  { id: "zg-advent-run", name: "Zagreb Advent Run", city: "Zagreb", country: "HR", type: "city", date: "2026-12-13", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "hopexchange-2026", name: "The HopeXchange", city: "Birkirkara", country: "MT", type: "city", date: "2026-12-13", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "bozickov-tek", name: "Božičkov tek", city: "Ljubljana", country: "SI", type: "city", date: "2026-12-17", distances: [] },
+  { id: "advent-cakovec-2026", name: "Advent Run Čakovec", city: "Čakovec", country: "HR", type: "city", date: "2026-12-19", distances: [], reg: "https://www.utrka.com/utrke/adventcakovec/2026/" },
+  { id: "advent-run-sarajevo-2026", name: "Advent Run Sarajevo", city: "Vilsonovo šetalište, Sarajevo", country: "BA", type: "city", date: "2026-12-19", distances: [{ km: 5, gain: 0 }], reg: "https://ontime-timing.com/?p=2440" },
+  { id: "bozicna-kotoriba-2026", name: "Božićna utrka Kotoriba", city: "Kotoriba", country: "HR", type: "city", date: "2026-12-19", distances: [{ km: 3.3, gain: 0 }], reg: "https://www.utrka.com/utrke/bozicnakotoriba/2026/" },
   { id: "bozickov-brezovica", name: "Dobrodelni Božičkov tek", city: "Brezovica pri Ljubljani", country: "SI", type: "city", date: "2026-12-19", distances: [] },
   { id: "cudesna-suma", name: "Čudesna šuma", city: "Šuma Makove sedmice", country: "RS", type: "trail", date: "2026-12-20", distances: [] },
+  { id: "mdina-spinola-2026", name: "Mdina 2 Spinola Xmas Race", city: "Mdina — Spinola", country: "MT", type: "city", date: "2026-12-20", distances: [{ km: 18.6, gain: 0 }] },
   { id: "novoletni-stari-trg", name: "Dobrodelni novoletni tek in hoja", city: "Stari trg pri Ložu", country: "SI", type: "city", date: "2026-12-26", distances: [] },
+  { id: "christmas-run-zapresic-2026", name: "Christmas Run AK Fit", city: "Zaprešić", country: "HR", type: "city", date: "2026-12-27", distances: [], reg: "https://www.utrka.com/utrke/wgbozicna/2026/" },
   { id: "winter-fg", name: "Winter Trail Race Fruška gora", city: "Fruška gora", country: "RS", type: "trail", date: "2026-12-27", distances: [{ km: 17, gain: 0 }, { km: 10, gain: 0 }], reg: "https://trka.rs/events/872-7-winter-trail-race-na-fru%C5%A1koj-gori/" },
+  { id: "sylvester-zagreb-2026", name: "Sylvester Zagreb Run", city: "Zagreb", country: "HR", type: "city", date: "2026-12-31", distances: [], reg: "https://www.utrka.com/utrke/sylvester/2026/" },
+  { id: "polarnight-marathon-2027", name: "PolarNight Marathon", city: "Tromse", country: "NO", type: "city", date: "2027-01-09", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "attard-10k-2027", name: "Attard 10K", city: "Birkirkara", country: "MT", type: "city", date: "2027-01-10", distances: [{ km: 10, gain: 0 }] },
   { id: "bbkt-2027", name: "BBKT", city: "Smederevska Palanka", country: "RS", type: "trail", date: "2027-01-10", distances: [{ km: 12, gain: 320 }, { km: 6, gain: 165 }, { km: 3, gain: 0 }], reg: "https://runtrace.net/?event=bbkt2027" },
+  { id: "egmond-half-2027", name: "NN Egmond Halve Marathon", city: "Egmond an Ze", country: "NL", type: "city", date: "2027-01-10", distances: [{ km: 21.097, gain: 0 }, { km: 10.55, gain: 0 }], reg: "https://www.egmondhalvemarathon.nl/" },
+  { id: "unusual-marathon-2027", name: "Unusual Marathon", city: "Vilsonovo šetalište, Sarajevo", country: "BA", type: "city", date: "2027-01-10", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }], reg: "https://ontime-timing.com/?p=2450" },
+  { id: "maslenica-2027", name: "Atletski polumaraton Maslenica", city: "Maslenica", country: "HR", type: "city", date: "2027-01-23", distances: [{ km: 21.097, gain: 0 }], reg: "https://www.utrka.com/utrke/maslenicanovigrad/2027/" },
+  { id: "santa-pola-half-2027", name: "Mitja Marató Vila de Santa Pola", city: "Santa Pola", country: "ES", type: "city", date: "2027-01-24", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "nicosia-marathon-2027", name: "Nicosia Marathon", city: "Nikozija", country: "CY", type: "city", date: "2027-01-24", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "zuzmara-2027", name: "Zúzmara félmaraton", city: "Budimpešta", country: "HU", type: "city", date: "2027-01-24", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "hammer-trail-winter-2027", name: "Salomon Hammer Trail Winter", city: "Sandvig, Bornholm", country: "DK", type: "trail", date: "2027-01-30", distances: [{ km: 84, gain: 3770 }, { km: 63, gain: 2830 }, { km: 42, gain: 1880 }, { km: 21, gain: 940 }] },
+  { id: "funchal-marathon-2027", name: "Funchal Marathon", city: "Funšal, Madeira", country: "PT", type: "city", date: "2027-01-31", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "bad-fussing-marathon-2027", name: "Johannesbad Thermen-Marathon", city: "Bad Fising", country: "DE", type: "city", date: "2027-01-31", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "zg-winter-classic-2027", name: "Zagreb Winter Classic", city: "Zagreb", country: "HR", type: "city", date: "2027-01-31", distances: [{ km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://www.utrka.com/utrke/winterclasicc/2027/" },
+  { id: "northern-light-run-2027", name: "The Northern Light Run", city: "Rejkjavik", country: "IS", type: "city", date: "2027-02-06", distances: [{ km: 5, gain: 0 }] },
+  { id: "cascais-half-2027", name: "Meia Maratona de Cascais", city: "Kaškaiš", country: "PT", type: "city", date: "2027-02-07", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "zimske-varazdinske-2027", name: "Zimske varaždinske utrke", city: "Varaždin", country: "HR", type: "city", date: "2027-02-07", distances: [], reg: "https://www.utrka.com/utrke/zimskavz/2027/" },
+  { id: "valentine-run-prague-2027", name: "Valentýnský běh", city: "Prag", country: "CZ", type: "city", date: "2027-02-13", distances: [{ km: 7, gain: 0 }], reg: "https://www.runczech.com/en/events" },
+  { id: "barcelona-half-2027", name: "Mitja Marató de Barcelona", city: "Barselona", country: "ES", type: "city", date: "2027-02-14", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "romeo-giulietta-half-2027", name: "Romeo&Giulietta Run Half Marathon", city: "Bovolone, Verona", country: "IT", type: "city", date: "2027-02-14", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "slavonska-trka-2027", name: "Slavonska trka", city: "Slavonija", country: "HR", type: "city", date: "2027-02-14", distances: [], reg: "https://www.utrka.com/utrke/slavonskatrka/2027/" },
+  { id: "split-marathon-2027", name: "Split Marathon", city: "Split", country: "HR", type: "city", date: "2027-02-14", distances: [{ km: 42.195, gain: 220 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "jablanicki-polumaraton-2027", name: "Jablanički polumaraton", city: "Jablanica", country: "BA", type: "city", date: "2027-02-20", distances: [{ km: 21.097, gain: 0 }, { km: 5, gain: 0 }], reg: "https://gb3timing.com/dogadjaj/7-jablanicki-polumaraton-2027" },
+  { id: "seville-marathon-2027", name: "Maratón de Sevilla", city: "Sevilja", country: "ES", type: "city", date: "2027-02-21", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "terni-marathon-2027", name: "Maratona di San Valentino", city: "Terni", country: "IT", type: "city", date: "2027-02-21", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "napoli-half-2027", name: "Napoli City Half Marathon", city: "Napulj", country: "IT", type: "city", date: "2027-02-21", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "lapland-boreal-2027", name: "Lapland Boreal Winter Trail", city: "Ivalo", country: "FI", type: "trail", date: "2027-02-27", distances: [{ km: 100, gain: 0 }, { km: 65, gain: 0 }] },
+  { id: "cyprus-marathon-2027", name: "Cyprus Marathon", city: "Pafos", country: "CY", type: "city", date: "2027-02-28", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }, { km: 4, gain: 0 }] },
+  { id: "malta-marathon-2027", name: "Lifestar Malta Marathon", city: "Mdina", country: "MT", type: "city", date: "2027-02-28", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "roma-ostia-2027", name: "Roma-Ostia Half Marathon", city: "Rim — Ostija", country: "IT", type: "city", date: "2027-02-28", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "hegnet-half-2027", name: "Hegnet Half", city: "Liseleje", country: "DK", type: "trail", date: "2027-03-06", distances: [{ km: 21.097, gain: 0 }] },
   { id: "krali-marko-2027", name: "Krali Marko Trails", city: "Varoš, Prilep", country: "MK", type: "trail", date: "2027-03-07", distances: [{ km: 63, gain: 3710 }, { km: 40, gain: 2330 }, { km: 23, gain: 1380 }, { km: 13, gain: 780 }], reg: "https://kmt.mk/mk/doma/" },
+  { id: "lisbon-half-2027", name: "Lisbon Half Marathon", city: "Lisabon", country: "PT", type: "city", date: "2027-03-07", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 7, gain: 0 }] },
+  { id: "malaga-half-2027", name: "Medio Maratón de Málaga", city: "Malaga", country: "ES", type: "city", date: "2027-03-07", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "paris-half-2027", name: "Semi-marathon de Paris", city: "Pariz", country: "FR", type: "city", date: "2027-03-07", distances: [{ km: 21.097, gain: 0 }] },
   { id: "avala-trail-race-2027", name: "Avala Trail Race", city: "Avala", country: "RS", type: "trail", date: "2027-03-13", distances: [{ km: 18, gain: 790 }, { km: 12, gain: 520 }, { km: 7.5, gain: 300 }, { km: 1.5, gain: 90 }], reg: "https://runtrace.net/?event=avala2027" },
+  { id: "zg-proljetni-cener-2027", name: "Zagrebački proljetni cener", city: "Zagreb", country: "HR", type: "city", date: "2027-03-13", distances: [{ km: 10, gain: 0 }], reg: "https://www.utrka.com/utrke/proljetnicener/2027/" },
+  { id: "krusevacki-polumaraton-2027", name: "Kruševački polumaraton", city: "Kruševac", country: "RS", type: "city", date: "2027-03-14", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "rome-marathon-2027", name: "Maratona di Roma", city: "Rim", country: "IT", type: "city", date: "2027-03-14", distances: [{ km: 42.195, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "cpc-den-haag-2027", name: "NN CPC Loop Den Haag", city: "Hag", country: "NL", type: "city", date: "2027-03-14", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://nncpcloopdenhaag.nl/" },
+  { id: "sri-chinmoy-skopje-2027", name: "Sri Chinmoy maraton", city: "Skoplje", country: "MK", type: "city", date: "2027-03-14", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "barcelona-marathon-2027", name: "Zurich Marató Barcelona", city: "Barselona", country: "ES", type: "city", date: "2027-03-14", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "frozen-lake-marathon-2027", name: "Frozen Lake Marathon", city: "Gol", country: "NO", type: "trail", date: "2027-03-20", distances: [{ km: 42, gain: 0 }, { km: 21, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "ipoly-marathon-2027", name: "Ipoly maraton", city: "Szob", country: "HU", type: "city", date: "2027-03-20", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 15, gain: 0 }, { km: 8, gain: 0 }] },
+  { id: "mostar-run-2027", name: "Mostar Run", city: "Mostar", country: "BA", type: "city", date: "2027-03-20", distances: [{ km: 21.097, gain: 0 }, { km: 4, gain: 0 }], reg: "https://mostar.run/en/races/half-marathon/" },
+  { id: "venloop-2027", name: "Arrow Venloop", city: "Venlo", country: "NL", type: "city", date: "2027-03-21", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }], reg: "https://www.venloop.nl/" },
+  { id: "coast-to-coast-2027", name: "Coast to Coast Race", city: "Ijerapetra, Krit", country: "GR", type: "city", date: "2027-03-21", distances: [{ km: 21.1, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "ghent-marathon-2027", name: "Ghent Marathon", city: "Gent", country: "BE", type: "city", date: "2027-03-21", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }] },
+  { id: "amstelveen-marathon-2027", name: "KPMG Amstelveen Spring Marathon", city: "Amstelven", country: "NL", type: "city", date: "2027-03-21", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "stramilano-2027", name: "Stramilano", city: "Milano", country: "IT", type: "city", date: "2027-03-21", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "swansea-half-2027", name: "Swansea Half Marathon", city: "Svonsi, Vels", country: "GB", type: "city", date: "2027-03-21", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "zagreb21-2027", name: "ZAGREB21 — proljetni polumaraton", city: "Zagreb", country: "HR", type: "city", date: "2027-03-21", distances: [{ km: 21.097, gain: 0 }], reg: "https://www.utrka.com/utrke/zg21/2027/" },
   { id: "istria-100-utmb-2027", name: "Istria 100 by UTMB", city: "Istra", country: "HR", type: "trail", date: "2027-04-01", distances: [], reg: "https://istria.utmb.world/" },
+  { id: "prague-half-2027", name: "Generali 1/2Maraton Praha", city: "Prag", country: "CZ", type: "city", date: "2027-04-03", distances: [{ km: 21.097, gain: 0 }], reg: "https://www.runczech.com/en/events" },
+  { id: "kojsovska-hola-2027", name: "Kojšovská hoľa Spartan Trail", city: "Kojšov", country: "SK", type: "trail", date: "2027-04-03", distances: [{ km: 50, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "arctic-wildmarathon-2027", name: "Arctic Wildmarathon", city: "Rovaniemi", country: "FI", type: "trail", date: "2027-04-04", distances: [{ km: 42, gain: 0 }, { km: 21, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "berlin-half-2027", name: "Berliner Halbmarathon", city: "Berlin", country: "DE", type: "city", date: "2027-04-04", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "paris-marathon-2027", name: "Marathon de Paris", city: "Pariz", country: "FR", type: "city", date: "2027-04-04", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "madrid-half-2027", name: "Medio Maratón de Madrid", city: "Madrid", country: "ES", type: "city", date: "2027-04-04", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "milano-marathon-2027", name: "Milano Marathon", city: "Milano", country: "IT", type: "city", date: "2027-04-04", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "warsaw-half-2027", name: "Warsaw Half Marathon", city: "Varšava", country: "PL", type: "city", date: "2027-04-04", distances: [{ km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "vivicitta-budapest-2027", name: "Telekom Vivicittá polumaraton", city: "Budimpešta", country: "HU", type: "city", date: "2027-04-10", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 7, gain: 0 }, { km: 6, gain: 0 }] },
+  { id: "hannover-marathon-2027", name: "ADAC Marathon Hannover", city: "Hanover", country: "DE", type: "city", date: "2027-04-11", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "enschede-marathon-2027", name: "Enschede Marathon", city: "Enshede", country: "NL", type: "city", date: "2027-04-11", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "linz-marathon-2027", name: "Linz Marathon", city: "Linc", country: "AT", type: "city", date: "2027-04-11", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10.55, gain: 0 }, { km: 5, gain: 0 }], reg: "https://www.linzmarathon.at/" },
+  { id: "rotterdam-marathon-2027", name: "NN Marathon Rotterdam", city: "Roterdam", country: "NL", type: "city", date: "2027-04-11", distances: [{ km: 42.195, gain: 0 }, { km: 10, gain: 0 }, { km: 4.2, gain: 0 }], reg: "https://www.nnmarathonrotterdam.nl/" },
+  { id: "rovinj-run-2027", name: "Rovinj Run — Popolana", city: "Rovinj", country: "HR", type: "city", date: "2027-04-11", distances: [], reg: "https://www.utrka.com/utrke/rovinjrunpopolana/2027/" },
+  { id: "vodno-matka-2027", name: "Vodno Matka Trail Marathon", city: "Skoplje", country: "MK", type: "trail", date: "2027-04-11", distances: [{ km: 40, gain: 3150 }, { km: 27, gain: 1630 }, { km: 10, gain: 0 }] },
+  { id: "cluj-marathon-2027", name: "Wizz Air Cluj-Napoca Marathon", city: "Kluž-Napoka", country: "RO", type: "city", date: "2027-04-11", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "osjecki-ferivi-2027", name: "Osječki Ferivi polumaraton", city: "Osijek", country: "HR", type: "city", date: "2027-04-16", distances: [{ km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "beogradski-maraton-2027", name: "Beogradski maraton", city: "Beograd", country: "RS", type: "city", date: "2027-04-17", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "vienna-marathon-2027", name: "Vienna City Marathon", city: "Beč", country: "AT", type: "city", date: "2027-04-17", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "manchester-marathon-2027", name: "Manchester Marathon", city: "Mančester", country: "GB", type: "city", date: "2027-04-18", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "padova-marathon-2027", name: "Padova Marathon", city: "Padova", country: "IT", type: "city", date: "2027-04-18", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "rhodes-marathon-2027", name: "Rhodes Marathon", city: "Rodos", country: "GR", type: "city", date: "2027-04-18", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "utvv-2027", name: "Ultra Trail Vipava Valley", city: "Ajdovščina", country: "SI", type: "trail", date: "2027-04-23", distances: [{ km: 165, gain: 6400 }, { km: 107, gain: 4500 }, { km: 59, gain: 2400 }, { km: 30, gain: 1600 }, { km: 15, gain: 250 }, { km: 10, gain: 150 }] },
   { id: "boka-bay-2027", name: "Boka Bay Trail", city: "Boka Kotorska", country: "ME", type: "trail", date: "2027-04-24", distances: [{ km: 83, gain: 4100 }, { km: 60, gain: 3000 }, { km: 34, gain: 2050 }, { km: 16, gain: 800 }, { km: 7.5, gain: 440 }], reg: "https://live.3hercegnovi.me/event/BBT27/register" },
+  { id: "bergen-marathon-2027", name: "Fjordkraft Bergen City Marathon", city: "Bergen", country: "NO", type: "city", date: "2027-04-24", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
   { id: "fruskogorski-maraton-2027", name: "Fruškogorski maraton", city: "Popovica, Novi Sad", country: "RS", type: "trail", date: "2027-04-24", distances: [{ km: 134, gain: 5950 }, { km: 108, gain: 4270 }, { km: 59, gain: 2250 }, { km: 42, gain: 2100 }, { km: 22.7, gain: 900 }], reg: "https://www.fruskogorski-maraton.com/prijave/" },
+  { id: "kodzha-kaya-2027", name: "Kodzha Kaya", city: "Bilka", country: "BG", type: "trail", date: "2027-04-24", distances: [{ km: 74, gain: 4430 }, { km: 41.9, gain: 2610 }, { km: 25, gain: 1600 }, { km: 14, gain: 1050 }, { km: 3.6, gain: 500 }] },
+  { id: "athens-half-2027", name: "Athens Half Marathon (Poseidon)", city: "Atina", country: "GR", type: "city", date: "2027-04-25", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "bucharest-half-2027", name: "Bucharest International Half Marathon", city: "Bukurešt", country: "RO", type: "city", date: "2027-04-25", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 3.5, gain: 0 }] },
+  { id: "charleroi-marathon-2027", name: "Charleroi International Marathon", city: "Šarloa", country: "BE", type: "city", date: "2027-04-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "connemara-marathon-2027", name: "Connemara Marathon", city: "Maam Cross", country: "IE", type: "city", date: "2027-04-25", distances: [{ km: 63, gain: 0 }, { km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }] },
+  { id: "hamburg-marathon-2027", name: "Hamburg Marathon", city: "Hamburg", country: "DE", type: "city", date: "2027-04-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }] },
+  { id: "kaunas-marathon-2027", name: "Kaunas Marathon", city: "Kaunas", country: "LT", type: "city", date: "2027-04-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "london-marathon-2027", name: "London Marathon", city: "London", country: "GB", type: "city", date: "2027-04-25", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "madrid-marathon-2027", name: "Madrid Marathon", city: "Madrid", country: "ES", type: "city", date: "2027-04-25", distances: [{ km: 42.195, gain: 370 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "om-half-chisinau-2027", name: "OM Half Marathon", city: "Kišinjev", country: "MD", type: "city", date: "2027-04-25", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "zrinski-2027", name: "Polumaraton Zrinskih", city: "Međimurje", country: "HR", type: "city", date: "2027-04-25", distances: [{ km: 21.097, gain: 0 }], reg: "https://www.utrka.com/utrke/polumaratonzrinskih/2027/" },
+  { id: "sarajevo-marathon-2027", name: "Sarajevo Marathon", city: "Sarajevo", country: "BA", type: "city", date: "2027-04-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }], reg: "https://ontime-timing.com/?p=2455" },
+  { id: "kortrijk-marathon-2027", name: "Skylux Marathon Kortrijk", city: "Kortrajk", country: "BE", type: "city", date: "2027-04-25", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }] },
+  { id: "hammer-trail-2027", name: "Salomon Hammer Trail", city: "Sandvig, Bornholm", country: "DK", type: "trail", date: "2027-05-01", distances: [{ km: 79, gain: 2890 }, { km: 52, gain: 1930 }, { km: 33, gain: 1300 }, { km: 25, gain: 965 }] },
+  { id: "belfast-marathon-2027", name: "Belfast City Marathon", city: "Belfast, S. Irska", country: "GB", type: "city", date: "2027-05-02", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "great-limerick-run-2027", name: "Great Limerick Run", city: "Limerik", country: "IE", type: "city", date: "2027-05-02", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "prague-marathon-2027", name: "Prague Marathon", city: "Prag", country: "CZ", type: "city", date: "2027-05-02", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "milton-keynes-marathon-2027", name: "Milton Keynes Marathon & Half Marathon", city: "Milton Kins", country: "GB", type: "city", date: "2027-05-03", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }] },
+  { id: "innsbruck-trailrun-2027", name: "Innsbruck Alpine Trailrun Festival", city: "Inzbruk", country: "AT", type: "trail", date: "2027-05-05", distances: [{ km: 110, gain: 0 }, { km: 85, gain: 0 }, { km: 65, gain: 0 }, { km: 42, gain: 0 }, { km: 25, gain: 0 }, { km: 15, gain: 0 }, { km: 7, gain: 0 }] },
+  { id: "helsinki-city-running-2027", name: "Helsinki City Running", city: "Helsinki", country: "FI", type: "city", date: "2027-05-07", distances: [{ km: 63.3, gain: 0 }, { km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "corfu-mountain-trail-2027", name: "Corfu Mountain Trail", city: "Krf", country: "GR", type: "trail", date: "2027-05-08", distances: [{ km: 103, gain: 4200 }, { km: 44, gain: 2200 }, { km: 24, gain: 1200 }, { km: 12, gain: 300 }] },
+  { id: "ing-night-marathon-2027", name: "ING Night Marathon Luxembourg", city: "Luksemburg", country: "LU", type: "city", date: "2027-05-08", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 5, gain: 0 }, { km: 4.2, gain: 0 }], reg: "https://www.ing-night-marathon.lu/" },
+  { id: "leiden-marathon-2027", name: "Leiden Marathon", city: "Lajden", country: "NL", type: "city", date: "2027-05-08", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "copenhagen-marathon-2027", name: "Copenhagen Marathon", city: "Kopenhagen", country: "DK", type: "city", date: "2027-05-09", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "three-hearts-marathon-2027", name: "Maraton treh src", city: "Radenci", country: "SI", type: "city", date: "2027-05-15", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "riga-marathon-2027", name: "Rimi Riga Marathon", city: "Riga", country: "LV", type: "city", date: "2027-05-15", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }], reg: "https://rimirigamarathon.com/en/" },
+  { id: "viski-polumaraton-2027", name: "Viški polumaraton", city: "Vis", country: "HR", type: "city", date: "2027-05-15", distances: [{ km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "roeselare-marathon-2027", name: "Marathon Roeselare", city: "Ruselare", country: "BE", type: "city", date: "2027-05-16", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 12, gain: 0 }, { km: 6, gain: 0 }] },
+  { id: "trka-kroz-pale-2027", name: "Trka kroz Pale", city: "Pale", country: "BA", type: "city", date: "2027-05-16", distances: [], reg: "https://ontime-timing.com/?p=2540" },
+  { id: "varna-marathon-2027", name: "Varna Marathon", city: "Varna", country: "BG", type: "city", date: "2027-05-16", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10.5, gain: 0 }] },
+  { id: "goteborgsvarvet-2027", name: "Göteborgsvarvet", city: "Geteborg", country: "SE", type: "city", date: "2027-05-22", distances: [{ km: 21.097, gain: 0 }], reg: "https://www.goteborgsvarvet.se/" },
+  { id: "litice-virovitica-2027", name: "Litice oko Virovitice trail", city: "Virovitica", country: "HR", type: "trail", date: "2027-05-22", distances: [{ km: 24, gain: 0 }, { km: 14, gain: 0 }, { km: 7, gain: 0 }], reg: "https://www.utrka.com/utrke/liticevirovitice/2027/" },
+  { id: "moonlight-half-2027", name: "Moonlight Half Marathon", city: "Mestre, Venecija", country: "IT", type: "city", date: "2027-05-22", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "salzburg-marathon-2027", name: "Salzburg Marathon", city: "Salcburg", country: "AT", type: "city", date: "2027-05-23", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5.5, gain: 0 }], reg: "https://www.salzburg-marathon.at/" },
+  { id: "wurzburg-marathon-2027", name: "WVV Marathon Würzburg", city: "Vircburg", country: "DE", type: "city", date: "2027-05-23", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "nuts-karhunkierros-2027", name: "NUTS Karhunkierros Trail", city: "Kuusamo", country: "FI", type: "trail", date: "2027-05-28", distances: [{ km: 169.6, gain: 3910 }, { km: 85.2, gain: 2040 }, { km: 57, gain: 1640 }, { km: 34.8, gain: 900 }] },
   { id: "mokra-gora-2027", name: "Mokra Gora Trail", city: "Mokra Gora", country: "RS", type: "trail", date: "2027-05-29", distances: [{ km: 12, gain: 0 }, { km: 6, gain: 0 }], reg: "https://trka.rs/events/916-3-mokra-gora-trail/" },
+  { id: "dva-slapa-2027", name: "Polumaraton Dva slapa", city: "Ljubuški", country: "BA", type: "city", date: "2027-05-29", distances: [{ km: 21.1, gain: 0 }, { km: 10.4, gain: 0 }], reg: "https://gb3timing.com/dogadjaj/ljubuski-outdoor-festival-2027" },
+  { id: "stockholm-marathon-2027", name: "Stockholm Marathon", city: "Stokholm", country: "SE", type: "city", date: "2027-05-29", distances: [{ km: 42.195, gain: 0 }], reg: "https://www.stockholmmarathon.se/" },
+  { id: "odense-city-half-2027", name: "Odense City Half", city: "Odense", country: "DK", type: "city", date: "2027-05-30", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "hengill-ultra-2027", name: "Hengill Ultra-Trail", city: "Hveragerdi", country: "IS", type: "trail", date: "2027-06-04", distances: [{ km: 161.7, gain: 5550 }, { km: 106, gain: 3890 }, { km: 53, gain: 1930 }, { km: 26, gain: 630 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "banska-bystrica-marathon-2027", name: "Maratón Banská Bystrica", city: "Banska Bistrica", country: "SK", type: "city", date: "2027-06-05", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "cork-marathon-2027", name: "Cork City Marathon", city: "Kork", country: "IE", type: "city", date: "2027-06-06", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "karlovacki-cener-2027", name: "Karlovački cener", city: "Karlovac", country: "HR", type: "city", date: "2027-06-11", distances: [{ km: 10, gain: 0 }], reg: "https://www.utrka.com/utrke/karlovackicener/2027/" },
+  { id: "trail-100-andorra-2027", name: "Trail 100 Andorra by UTMB", city: "Ordino", country: "AD", type: "trail", date: "2027-06-11", distances: [{ km: 105.9, gain: 6900 }, { km: 79, gain: 3900 }, { km: 50, gain: 3400 }, { km: 24.9, gain: 1350 }, { km: 10, gain: 500 }] },
+  { id: "helsinki-half-2027", name: "Björn Borg Helsinki Half Marathon", city: "Helsinki", country: "FI", type: "city", date: "2027-06-12", distances: [{ km: 21.097, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "pelister-trail-2027", name: "Pelister Unique Trail Marathon", city: "Bitolj", country: "MK", type: "trail", date: "2027-06-12", distances: [{ km: 65, gain: 4000 }, { km: 42, gain: 2454 }, { km: 21, gain: 1200 }] },
+  { id: "midnight-sun-marathon-2027", name: "Midnight Sun Marathon", city: "Tromse", country: "NO", type: "city", date: "2027-06-19", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "midnight-sun-run-2027", name: "Suzuki Midnight Sun Run", city: "Rejkjavik", country: "IS", type: "city", date: "2027-06-24", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }, { km: 5, gain: 0 }] },
+  { id: "croatia-backyard-2027", name: "Croatia Backyard Ultra", city: "Našice", country: "HR", type: "trail", date: "2027-06-25", distances: [{ km: 6.7, gain: 0 }] },
+  { id: "stockholm-half-2027", name: "adidas Stockholm Half Marathon", city: "Stokholm", country: "SE", type: "city", date: "2027-08-21", distances: [{ km: 21.097, gain: 0 }] },
+  { id: "visegrad-5k-2027", name: "Višegrad 5K", city: "Višegrad", country: "BA", type: "city", date: "2027-08-21", distances: [{ km: 5, gain: 0 }], reg: "https://ontime-timing.com/?p=2753" },
+  { id: "helsinki-marathon-2027", name: "Björn Borg Helsinki Marathon", city: "Helsinki", country: "FI", type: "city", date: "2027-08-28", distances: [{ km: 42.195, gain: 0 }, { km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "ramski-polumaraton-2027", name: "Ramski polumaraton", city: "Rama", country: "BA", type: "city", date: "2027-08-29", distances: [{ km: 21.097, gain: 0 }, { km: 5, gain: 0 }], reg: "https://gb3timing.com/dogadjaj/10-ramski-polumaraton-2027" },
+  { id: "budapest-half-2027", name: "Budapest Half Marathon", city: "Budimpešta", country: "HU", type: "city", date: "2027-09-05", distances: [{ km: 21.097, gain: 0 }, { km: 10, gain: 0 }] },
+  { id: "munster-marathon-2027", name: "Volksbank-Münster-Marathon", city: "Minster", country: "DE", type: "city", date: "2027-09-12", distances: [{ km: 42.195, gain: 0 }] },
+  { id: "copenhagen-half-2027", name: "Copenhagen Half Marathon (WRRC)", city: "Kopenhagen", country: "DK", type: "city", date: "2027-09-19", distances: [{ km: 21.097, gain: 0 }] },
 ];
 
 
@@ -328,9 +672,13 @@ const STR = {
     stEntered: "prijavljen", stInterested: "zanima me",
     bellAsk: "Uključi obaveštenja",
     bellGranted: "Obaveštenje stiže kad otvoriš aplikaciju, jednom dnevno po trci.",
+    bellNative: "Podsetnik stiže u 9 ujutru, nedelju dana i dan pre trke, i kad je aplikacija zatvorena.",
+    inAWeek: "za nedelju dana",
     bellDefault: "Podsetnik se vidi ovde svaki put kad otvoriš aplikaciju.",
     backToTop: "Nazad na vrh",
     addTitle: "Dodaj trku", name: "Naziv", place: "Mesto", date: "Datum",
+    regLink: "Link za prijavu", regHint: "Nije obavezno. Dugme „Prijava\" se prikazuje do dana trke.",
+    errUrl: "Link mora da počinje sa http:// ili https://.",
     surface: "Podloga", surfaceTrail: "Trail", surfaceCity: "Asfalt / grad",
     legs: "Deonice", addLeg: "+ Dodaj deonicu", km: "km", gainM: "uspon m",
     cancel: "Otkaži", submitAdd: "Dodaj trku",
@@ -398,9 +746,13 @@ const STR = {
     stEntered: "entered", stInterested: "interested",
     bellAsk: "Turn on notifications",
     bellGranted: "A notification arrives when you open the app, once a day per race.",
+    bellNative: "Reminders arrive at 9 am a week and a day before the race, even when the app is closed.",
+    inAWeek: "in a week",
     bellDefault: "Reminders show up here every time you open the app.",
     backToTop: "Back to top",
     addTitle: "Add race", name: "Name", place: "Place", date: "Date",
+    regLink: "Registration link", regHint: "Optional. The sign-up button shows until race day.",
+    errUrl: "The link must start with http:// or https://.",
     surface: "Surface", surfaceTrail: "Trail", surfaceCity: "Road / city",
     legs: "Distances", addLeg: "+ Add distance", km: "km", gainM: "climb m",
     cancel: "Cancel", submitAdd: "Add race",
@@ -471,6 +823,13 @@ function hash(str) {
   }
   return h >>> 0;
 }
+
+// Android aplikacija (Capacitor) postavlja window.__nativeLN — lokalna obaveštenja
+// koja stižu i kad je aplikacija zatvorena. U pregledaču ga nema.
+function nativeLN() {
+  return (typeof window !== "undefined" && window.__nativeLN) || null;
+}
+const lnPerm = (r) => (r && r.display === "granted" ? "granted" : r && r.display === "denied" ? "denied" : "default");
 
 function mulberry32(a) {
   return function () {
@@ -557,6 +916,8 @@ async function loadState() {
 }
 
 // A saved correction replaces the seeded guess and retires the "nepotvrđeno" flag.
+const URL_RE = /^https?:\/\/[^\s.]+\.\S+$/i;
+
 function applyEdit(race, edit) {
   if (!edit) return race;
   return {
@@ -564,6 +925,7 @@ function applyEdit(race, edit) {
     date: edit.date || race.date,
     city: edit.city || race.city,
     distances: Array.isArray(edit.distances) && edit.distances.length ? edit.distances : race.distances,
+    reg: typeof edit.reg === "string" ? edit.reg || undefined : race.reg,
     unconfirmed: false,
     edited: true,
   };
@@ -857,6 +1219,7 @@ function EditRace({ race, hasEdit, onSave, onReset, onDelete, onClose }) {
   const [date, setDate] = useState(race.date);
   const [city, setCity] = useState(race.city === "—" ? "" : race.city);
   const [rows, setRows] = useState(race.distances.map((d) => ({ km: String(d.km), gain: String(d.gain) })));
+  const [reg, setReg] = useState(race.reg || "");
   const [err, setErr] = useState("");
   const [confirm, setConfirm] = useState(false);
   const mine = String(race.id).startsWith("mine-");
@@ -890,8 +1253,10 @@ function EditRace({ race, hasEdit, onSave, onReset, onDelete, onClose }) {
       parsed.push({ km, gain });
     }
     if (!parsed.length) return setErr(t.errOneLeg);
+    const link = reg.trim();
+    if (link && !URL_RE.test(link)) return setErr(t.errUrl);
     parsed.sort((a, b) => b.km - a.km);
-    onSave(race.id, { date, city: city.trim(), distances: parsed });
+    onSave(race.id, { date, city: city.trim(), distances: parsed, reg: link });
   };
 
   return (
@@ -908,6 +1273,10 @@ function EditRace({ race, hasEdit, onSave, onReset, onDelete, onClose }) {
           <div className="fld">
             <label className="lab" htmlFor="e-city">{t.place}</label>
             <input id="e-city" className="input" value={city} onChange={(e) => setCity(e.target.value)} placeholder={race.city} />
+          </div>
+          <div className="fld fld-wide">
+            <label className="lab" htmlFor="e-reg">{t.regLink}</label>
+            <input id="e-reg" className="input" type="url" inputMode="url" autoComplete="off" value={reg} onChange={(e) => setReg(e.target.value)} placeholder="https://…" data-testid="edit-reg" />
           </div>
         </div>
 
@@ -1018,7 +1387,7 @@ function Bell({ items, permission, onAsk }) {
           )}
           <p className="bell-note">
             {permission === "granted"
-              ? t.bellGranted
+              ? nativeLN() ? t.bellNative : t.bellGranted
               : t.bellDefault}
           </p>
         </div>
@@ -1065,7 +1434,7 @@ function ConfirmWipe({ count, onConfirm, onClose }) {
 function AddRace({ onAdd, onClose }) {
   const t = useT();
   const lang = useLang();
-  const [f, setF] = useState({ name: "", city: "", date: "", type: "trail", country: "RS" });
+  const [f, setF] = useState({ name: "", city: "", date: "", type: "trail", country: "RS", reg: "" });
   const [rows, setRows] = useState([{ km: "", gain: "" }]);
   const [err, setErr] = useState({ field: "", row: -1, msg: "" });
   const first = useRef(null);
@@ -1117,6 +1486,8 @@ function AddRace({ onAdd, onClose }) {
       parsed.push({ km, gain });
     }
     if (!parsed.length) return setErr({ field: "dist", row: 0, msg: t.errOneLeg });
+    const reg = f.reg.trim();
+    if (reg && !URL_RE.test(reg)) return setErr({ field: "reg", row: -1, msg: t.errUrl });
     parsed.sort((a, b) => b.km - a.km);
     onAdd({
       id: `mine-${Date.now()}`,
@@ -1126,6 +1497,7 @@ function AddRace({ onAdd, onClose }) {
       type: f.type,
       date: f.date,
       distances: parsed,
+      ...(reg ? { reg } : {}),
     });
   };
 
@@ -1174,6 +1546,12 @@ function AddRace({ onAdd, onClose }) {
               </optgroup>
             </select>
           </div>
+          <div className="fld fld-wide">
+            <label className="lab" htmlFor="a-reg">{t.regLink}</label>
+            <input id="a-reg" className={`input${bad("reg")}`} aria-invalid={err.field === "reg"} type="url" inputMode="url" autoComplete="off" value={f.reg} onChange={set("reg")} placeholder="https://…" aria-describedby="a-reg-hint" data-testid="add-reg" />
+            <span id="a-reg-hint" className="hint">{t.regHint}</span>
+            <Msg k="reg" />
+          </div>
         </div>
 
         <div className="rows">
@@ -1219,7 +1597,7 @@ export default function App() {
   const [editing, setEditing] = useState(null);
   const [wiping, setWiping] = useState(false);
   const [permission, setPermission] = useState(
-    typeof Notification !== "undefined" ? Notification.permission : "unsupported"
+    nativeLN() ? "default" : typeof Notification !== "undefined" ? Notification.permission : "unsupported"
   );
   const [toast, setToast] = useState("");
   const ready = useRef(false);
@@ -1417,16 +1795,60 @@ export default function App() {
     return out.sort((a, b) => a.days - b.days);
   }, [races, state.tracking]);
 
+  useEffect(() => {
+    const ln = nativeLN();
+    if (ln) ln.checkPermissions().then((r) => setPermission(lnPerm(r))).catch(() => {});
+  }, []);
+
   const askPermission = useCallback(() => {
+    const ln = nativeLN();
+    if (ln) {
+      ln.requestPermissions().then((r) => setPermission(lnPerm(r))).catch(() => setPermission("denied"));
+      return;
+    }
     if (typeof Notification === "undefined") return;
     Notification.requestPermission()
       .then(setPermission)
       .catch(() => setPermission("denied"));
   }, []);
 
+  // Android: zakaži podsetnike unapred (9:00, nedelju dana i dan pre trke) za trke
+  // označene sa „Zanima me" ili „Prijavljen". Pri svakoj promeni sve se zakazuje iznova.
+  const nativePlan = useMemo(() => {
+    if (!nativeLN() || permission !== "granted") return [];
+    const now = Date.now();
+    const out = [];
+    for (const race of races) {
+      const status = state.tracking[race.id]?.status;
+      if (status !== "interested" && status !== "registered") continue;
+      for (const before of [7, 1]) {
+        const at = parseDate(race.date);
+        at.setDate(at.getDate() - before);
+        at.setHours(9, 0, 0, 0);
+        if (at.getTime() <= now) continue;
+        out.push({
+          id: hash(`${race.id}|${before}`) % 2147483647,
+          title: t.appTitle,
+          body: `${race.name} — ${before === 1 ? t.tomorrow : t.inAWeek}, ${race.city}`,
+          schedule: { at, allowWhileIdle: true },
+        });
+      }
+    }
+    return out.sort((a, b) => a.schedule.at - b.schedule.at).slice(0, 60);
+  }, [races, state.tracking, permission, t]);
+
+  useEffect(() => {
+    const ln = nativeLN();
+    if (!ln || permission !== "granted") return;
+    ln.getPending()
+      .then((p) => (p.notifications.length ? ln.cancel({ notifications: p.notifications.map((n) => ({ id: n.id })) }) : null))
+      .then(() => (nativePlan.length ? ln.schedule({ notifications: nativePlan }) : null))
+      .catch(() => {});
+  }, [nativePlan, permission]);
+
   // Fire at most one system notification per race per day, and only while the app is open.
   useEffect(() => {
-    if (permission !== "granted" || !reminders.length) return;
+    if (nativeLN() || permission !== "granted" || !reminders.length) return;
     const today = new Date().toISOString().slice(0, 10);
     const fresh = reminders.filter(({ race }) => state.notified[race.id] !== today);
     if (!fresh.length) return;
@@ -1464,13 +1886,11 @@ export default function App() {
   }, []);
 
   const countryChips = useMemo(() => {
-    const priority = ["RS", "BA", "ME"];
-    return [...new Set(races.map(countryOf))].sort((a, b) => {
-      const ia = priority.indexOf(a) < 0 ? 99 : priority.indexOf(a);
-      const ib = priority.indexOf(b) < 0 ? 99 : priority.indexOf(b);
-      return ia !== ib ? ia - ib : countryName(a).localeCompare(countryName(b), "sr");
-    });
-  }, [races]);
+    // Alphabetical by the label the dropdown shows, in the current language.
+    return [...new Set(races.map(countryOf))].sort((a, b) =>
+      countryShort(a, lang).localeCompare(countryShort(b, lang), lang === "sr" ? "sr-Latn" : lang)
+    );
+  }, [races, lang]);
 
   useEffect(() => {
     if (country !== "all" && !countryChips.includes(country)) setCountry("all");
@@ -1964,6 +2384,7 @@ input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
 .fld { display: grid; gap: 5px; }
 .fld-wide { grid-column: 1 / -1; }
+.hint { font-size: 12px; color: var(--muted); }
 .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
 
 .to-top {

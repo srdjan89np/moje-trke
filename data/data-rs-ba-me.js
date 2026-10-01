@@ -1,4 +1,6 @@
 // Trke iz kalendara trci.rs — Srbija, BiH, Crna Gora, sezona 2026.
+// BiH dopuna: kalendar trk.ba, detalji sa stranica merenja vremena (ontime-timing.com, gb3timing.com).
+// BiH gradske trke: ontime-timing.com (kalendar i završene trke, preuzeto 30.9.2026).
 // gain: 0 znači da uspon nije objavljen na izvoru. Ništa nije procenjivano.
 // [id, naziv, mesto, zemlja, tip, datum, [[km, uspon], ...]]
 
@@ -127,4 +129,86 @@ module.exports = [
   ["kapetanov-trail", "Kapetanov Trail", "Kumbor, Herceg Novi", "ME", "trail", "2026-01-17", [[8.3,600]]],
   ["sidski-maraton", "Šidski novogodišnji maraton", "Šid", "RS", "city", "2026-01-14", [[42,0],[32,0],[16,0],[12,0]]],
   ["bbkt", "BBKT", "Smederevska Palanka", "RS", "trail", "2026-01-11", [[12,320],[6,165],[3,84]]],
+
+  // --- BiH, dopuna sa trk.ba (sve odrađene) ---
+  // Gračanica Trail: trk.ba navodi 7.6, ontime-timing.com 27.9.2026 — uzet datum sa stranice prijave.
+  // Trebević Trail: trk.ba navodi 6.6, ontime-timing.com nedelja 7.6.2026 — uzet 7.6.
+  ["gracanica-trail-2026", "Gračanica Trail", "Gornja Lohinja, Gračanica", "BA", "trail", "2026-09-27", [[22.5,840],[11.5,400],[7,200]]],
+  ["igmanski-cener-2026", "Igmanski čener", "Veliko polje, Igman", "BA", "trail", "2026-08-09", [[10,0],[5,0]]],
+  ["wild-race-livno-2026", "Wild Race Livno", "Livno", "BA", "trail", "2026-06-13", [[30,1700],[16,850],[6,400],[5,27]]],
+  ["trebevic-trail-2026", "Trebević Trail", "Trebević, Sarajevo", "BA", "trail", "2026-06-07", []],
+  ["pyramid-trail-2026", "Pyramid Trail", "Visoko", "BA", "trail", "2026-05-31", [[20,950],[10,450]]],
+  ["konjuh-trail-2026", "Konjuh Trail", "Zlača, Konjuh", "BA", "trail", "2026-04-19", [[21,1150],[13.5,650],[5,150]]],
+  ["trebinje-vertikal-2026", "Trebinje Vertikal — trka u kamenu", "Trebinje", "BA", "trail", "2026-03-28", []],
+
+  // --- BiH, dopuna: gb3timing.com (kalendar) i mostar.run, preuzeto 30.9.2026 ---
+  ["ruzicasti-listopad-2026", "Ulična utrka Ružičasti listopad", "Livno", "BA", "city", "2026-10-01", [[10,0]]],
+  ["sanska-petica-2026", "Sanska petica", "Sanski Most", "BA", "city", "2026-10-03", [[5,0]]],
+  ["banja-luka-run-weekend-2026", "Banja Luka Run Weekend", "Banja Luka", "BA", "city", "2026-11-14", [[5,0]]],
+  ["jablanicki-polumaraton-2027", "Jablanički polumaraton", "Jablanica", "BA", "city", "2027-02-20", [[21.097,0],[5,0]]],
+  ["mostar-run-2027", "Mostar Run", "Mostar", "BA", "city", "2027-03-20", [[21.097,0],[4,0]]],
+  ["dva-slapa-2027", "Polumaraton Dva slapa", "Ljubuški", "BA", "city", "2027-05-29", [[21.1,0],[10.4,0]]],
+  ["ramski-polumaraton-2027", "Ramski polumaraton", "Rama", "BA", "city", "2027-08-29", [[21.097,0],[5,0]]],
+
+  // --- dopuna sa spisaktrka.com (preuzeto 30.9.2026) ---
+  ["banja-luka-maraton-2026", "Banjalučki maraton", "Banja Luka", "BA", "city", "2026-10-25", [[42.195,0],[21.097,0],[10,0]]],  // finishers.com
+  ["niski-polumaraton-2026", "Niški polumaraton", "Niš", "RS", "city", "2026-10-03", [[21.097,0],[10,0],[5,0]]],
+  ["kostolacki-polumaraton-2026", "Kostolački polumaraton", "Kostolac", "RS", "city", "2026-10-10", [[21.097,0],[10,0]]],
+  ["lazaro-kardenasa-2026", "Trka Lazaro Kardenasa", "Novi Beograd", "RS", "city", "2026-10-11", [[5,0]]],
+  ["novosadski-maraton-2026", "Novosadski maraton", "Novi Sad", "RS", "city", "2026-10-11", [[42.195,0],[10,0],[5,0]]],
+  ["apatinski-polumaraton-2026", "Apatinski dunavski polumaraton", "Banja Junaković, Apatin", "RS", "city", "2026-10-18", [[21.097,0],[10,0],[5,0]]],
+  ["trail-novi-grad-2026", "Trail Novi Grad", "Novi Grad", "BA", "trail", "2026-10-18", []],
+  ["pazarski-polumaraton-2026", "Pazarski polumaraton", "Novi Pazar", "RS", "city", "2026-11-01", [[21.097,0],[10,0],[5,0]]],
+  ["azbuka-izazov-2026", "Azbuka izazov", "Etno selo Azbuka", "RS", "trail", "2026-09-26", []],
+
+  // --- BiH, gradske trke sa ontime-timing.com ---
+  // Izostavljeno: triatloni, duatloni, akvatloni, OCR, Red Bull 400, trka uz neboder,
+  // beer/wine mile, trke na vreme (6h/12h), dečje trke i Evona Business Run (samo firme).
+  // predstojeće
+  ["stazama-bosne-srebrene-2026", "Stazama Bosne Srebrene", "Srebrenica", "BA", "city", "2026-10-10", [[10,0],[5,0]]],
+  ["tuzlanski-maraton-2026", "Tuzlanski maraton", "Panonska jezera, Tuzla", "BA", "city", "2026-10-25", [[42.195,0],[21.097,0],[10,0]]],
+  ["advent-run-sarajevo-2026", "Advent Run Sarajevo", "Vilsonovo šetalište, Sarajevo", "BA", "city", "2026-12-19", [[5,0]]],
+  ["unusual-marathon-2027", "Unusual Marathon", "Vilsonovo šetalište, Sarajevo", "BA", "city", "2027-01-10", [[42.195,0],[21.097,0],[10,0]]],
+  ["sarajevo-marathon-2027", "Sarajevo Marathon", "Sarajevo", "BA", "city", "2027-04-25", [[42.195,0],[21.097,0],[5,0]]],
+  ["trka-kroz-pale-2027", "Trka kroz Pale", "Pale", "BA", "city", "2027-05-16", []],
+  ["visegrad-5k-2027", "Višegrad 5K", "Višegrad", "BA", "city", "2027-08-21", [[5,0]]],
+  // odrađene
+  ["derventska-desetka-2026", "Derventska desetka", "Derventa", "BA", "city", "2026-09-27", [[10,0],[5.3,0]]],
+  ["brocanska-desetka-2026", "Broćanska desetka", "Međugorje — Čitluk", "BA", "city", "2026-09-20", [[10,0]]],
+  ["volvo-run-vogosca-2026", "Volvo Run Vogošća 5K", "Vogošća", "BA", "city", "2026-09-19", [[5,0]]],
+  ["sarajevo-polumaraton-2026", "Sarajevo polumaraton", "Marijin Dvor, Sarajevo", "BA", "city", "2026-09-13", [[21.097,0]]],
+  ["fortuna-summer-run-2026", "Fortuna Summer Run", "Laktaši", "BA", "city", "2026-09-13", [[5,0]]],
+  ["kupreska-utrka-2026", "Kupreška petica", "Kupres", "BA", "city", "2026-09-12", [[5,0]]],
+  ["brodska-trka-2026", "Brodska trka", "Brod", "BA", "city", "2026-09-12", [[5,0]]],
+  ["zlatni-krug-visoko-2026", "Zlatni krug Sparkasse Bank", "Visoko", "BA", "city", "2026-09-06", [[5.9,0]]],
+  ["atletist-5k-2026", "Atletist 5k", "Istočno Sarajevo", "BA", "city", "2026-09-05", [[5,0]]],
+  ["sirokobrijeska-petica-2026", "Širokobriješka petica", "Široki Brijeg", "BA", "city", "2026-09-05", [[5,0]]],
+  ["visegrad-5k-2026", "Višegrad 5K", "Višegrad", "BA", "city", "2026-08-29", [[5,0]]],
+  ["travnik-nocna-2026", "Travnik noćna utrka", "Travnik", "BA", "city", "2026-08-29", [[5,0]]],
+  ["buzimska-petica-2026", "Bužimska noćna petica", "Bužim", "BA", "city", "2026-08-09", [[5,0]]],
+  ["olovo-5k-2026", "Olovo 5k", "Olovo", "BA", "city", "2026-08-08", [[5,0]]],
+  ["zavidovici-5k-2026", "Zavidovići 5k", "Zavidovići", "BA", "city", "2026-08-02", [[5,0]]],
+  ["duvanjska-desetka-2026", "Duvanjska desetka", "Tomislavgrad", "BA", "city", "2026-08-01", [[10,0],[3.3,0]]],
+  ["hadzici-5k-2026", "Hadžići 5k", "Hadžići", "BA", "city", "2026-07-26", [[5,0]]],
+  ["bugojno-5k-2026", "Bugojno 5k", "Bugojno", "BA", "city", "2026-07-25", [[5,0]]],
+  ["tuzlanska-nocna-2026", "Tuzlanska noćna 5k", "Tuzla", "BA", "city", "2026-07-25", [[5,0]]],
+  ["gorazde-5k-2026", "Trka prijateljstva Goražde 5K", "Goražde", "BA", "city", "2026-07-18", [[5,0]]],
+  ["sarajevski-cener-2026", "Sarajevski cener", "Zetra, Sarajevo", "BA", "city", "2026-07-12", [[10,0]]],
+  ["konjicki-cener-2026", "Konjički cener", "Konjic", "BA", "city", "2026-07-03", [[10,0],[3.3,0]]],
+  ["neumska-desetka-2026", "Neumska desetka", "Neum", "BA", "city", "2026-06-28", [[10,0]]],
+  ["ilijas-5k-2026", "Ilijaš 5k Run Challenge", "Ilijaš", "BA", "city", "2026-06-27", [[5,0]]],
+  ["ulicna-trka-modrica-2026", "Ulična trka Modriča", "Modriča", "BA", "city", "2026-06-20", [[10,0],[5.3,0]]],
+  ["stojcevac-5k-2026", "Stojčevac 5k", "Ilidža", "BA", "city", "2026-06-13", [[5,0]]],
+  ["sara-5k-kiseljak-2026", "SARA 5k", "Kiseljak", "BA", "city", "2026-06-06", [[5,0]]],
+  ["gracanica-5k-10k-2026", "Gračanica 5k & 10k", "Gračanica", "BA", "city", "2026-05-30", [[10,0],[5,0]]],
+  ["banjaluka-polumaraton-2026", "Banjaluka polumaraton (Vivia Run & More)", "Banja Luka", "BA", "city", "2026-05-24", [[21.097,0],[10,0],[5,0]]],
+  ["ilidza-run-2026", "Ilidža Run 10K", "Ilidža", "BA", "city", "2026-05-24", [[10,0]]],
+  ["zenicka-trka-2026", "Zenička trka", "Zenica", "BA", "city", "2026-05-23", [[10,0],[5,0]]],
+  ["trka-kroz-pale-2026", "Trka kroz Pale", "Pale", "BA", "city", "2026-05-17", [[5,0]]],
+  ["sarajevo-marathon-2026", "Sarajevo Marathon", "Sarajevo", "BA", "city", "2026-04-26", [[42.195,0],[21.097,0],[5,0]]],
+  ["blagaj-5k-2026", "Blagaj 5k", "Blagaj, Mostar", "BA", "city", "2026-04-18", [[5,0]]],
+  ["vivicitta-tuzla-2026", "Vivicitta", "Trg slobode, Tuzla", "BA", "city", "2026-04-12", [[10,0],[5,0]]],
+  ["tesanj-5k-2026", "Gradska trka Tešanj 5K", "Tešanj", "BA", "city", "2026-04-11", [[5,0]]],
+  ["viteska-utrka-2026", "Viteška utrka", "Vitez", "BA", "city", "2026-03-22", [[5,0]]],
+  ["unusual-marathon-2026", "Unusual Marathon", "Vilsonovo šetalište, Sarajevo", "BA", "city", "2026-01-11", [[30,0],[15,0],[5,0]]],
 ];

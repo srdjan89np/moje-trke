@@ -8,18 +8,52 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 
 ## Kalendar
 
-194 trke iz šest zemalja, sezona 2026. plus prve objavljene trke za 2027.
+538 trka iz 40 zemalja: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. plus prve objavljene trke za 2027.
 
 | Zemlja | Ukupno | Predstojećih |
 |---|---|---|
-| Srbija | 96 | 24 |
-| Slovenija | 42 | 39 |
+| Srbija | 105 | 33 |
+| Hrvatska | 81 | 72 |
+| Bosna i Hercegovina | 75 | 22 |
+| Slovenija | 43 | 40 |
 | Crna Gora | 18 | 3 |
-| Hrvatska | 14 | 5 |
-| Bosna i Hercegovina | 14 | 4 |
-| Severna Makedonija | 10 | 2 |
+| Severna Makedonija | 18 | 6 |
+| Italija | 16 | 15 |
+| Češka | 12 | 11 |
+| Nemačka | 12 | 11 |
+| Španija | 11 | 11 |
+| Grčka | 10 | 8 |
+| Danska | 10 | 9 |
+| Holandija | 10 | 10 |
+| Turska | 9 | 9 |
+| Finska | 8 | 6 |
+| Norveška | 8 | 6 |
+| Belgija | 7 | 6 |
+| Velika Britanija | 7 | 7 |
+| Portugal | 7 | 6 |
+| Austrija | 6 | 6 |
+| Francuska | 6 | 6 |
+| Mađarska | 6 | 6 |
+| Malta | 6 | 6 |
+| Bugarska | 5 | 4 |
+| Irska | 5 | 4 |
+| Slovačka | 5 | 5 |
+| Švedska | 5 | 4 |
+| Island | 4 | 3 |
+| Rumunija | 4 | 4 |
+| Andora | 4 | 2 |
+| Kipar | 3 | 3 |
+| Estonija | 2 | 1 |
+| Litvanija | 2 | 1 |
+| Moldavija | 2 | 1 |
+| Albanija | 1 | 1 |
+| Gruzija | 1 | 1 |
+| Letonija | 1 | 1 |
+| Lihtenštajn | 1 | 0 |
+| Luksemburg | 1 | 1 |
+| Poljska | 1 | 1 |
 
-45 predstojećih trka ima direktan link za prijavu.
+106 predstojećih trka ima link za prijavu (stanje 1.10.2026) — dugme se ne prikazuje kad trka prođe.
 
 ### Odakle podaci
 
@@ -28,6 +62,17 @@ Sve je prepisano sa objavljenih kalendara i sajtova organizatora. **Ništa nije 
 | Izvor | Šta daje |
 |---|---|
 | [trci.rs](https://trci.rs/kalendar-trka/) | RS, BA, ME, HR, MK — datumi, dužine, usponi |
+| [runners.hr](https://runners.hr/utrke/) | HR — predstojeće trke za 2026. i 2027, datumi i dužine |
+| [trki.mk](https://trki.mk/mk) | MK — gradske trke sa potvrđenim datumom |
+| [trk.ba](https://trk.ba/kalendar/) | BiH — trail kalendar; dužine i usponi sa stranica prijave |
+| [ontime-timing.com](https://ontime-timing.com/) | BiH — gradske trke, 2026. i najave za 2027. |
+| [spisaktrka.com](https://www.spisaktrka.com/trke) | gradske trke i polumaratoni u Srbiji, Sofijski maraton |
+| [finishers.com](https://www.finishers.com/en/destinations) | veliki evropski maratoni i polumaratoni, BG/RO/HU/GR, provera regiona — samo potvrđeni datumi |
+| [gb3timing.com](https://gb3timing.com/kalendar), [mostar.run](https://mostar.run/) | BiH — gradske trke i polumaratoni |
+| [runczech.com](https://www.runczech.com/en/events) | Češka — Prag, Liberec |
+| [turkeysforlife.com](https://www.turkeysforlife.com/running-events-marathons-races-ultras.html) | Turska — kalendar trka |
+| [protime.si](https://protime.si/), [timingljubljana.si](https://www.timingljubljana.si/Koledar.aspx) | Slovenija — deonice |
+| [AIMS](https://aims-worldrunning.org/directory.html) | maratoni i polumaratoni — SE, NO, GB, ES, IT, DE, FR, PT, DK, NL, BE |
 | [mountain-race.rs](https://mountain-race.rs/kalendar-trka/) | sezona 2027, linkovi za prijavu, ispravke |
 | [hac.si](https://hac.si/koledar-in-seznam-vseh-tekov-2026-v-sloveniji/) | Slovenija — datumi i mesta |
 | ljubljanskimaraton.si, zagreb-marathon.com, skopskimaraton.com.mk, podgorica.run, bokamarathon.com, utrka.com | veliki maratoni, direktno sa izvora |
@@ -44,7 +89,7 @@ Sve je prepisano sa objavljenih kalendara i sajtova organizatora. **Ništa nije 
 
 **Podsetnici** — zvonce prikazuje trke u narednih 7 dana sa statusom `zanima me` ili `prijavljen`, uz opciono sistemsko obaveštenje, jednom po trci.
 
-**Tvoje izmene** — dodaj svoju trku sa proizvoljnim brojem deonica, ili ispravi datum, mesto i deonice postojeće. Ispravke se čuvaju odvojeno od originala, pa se dugmetom `Vrati original` poništavaju.
+**Tvoje izmene** — dodaj svoju trku sa proizvoljnim brojem deonica, ili ispravi datum, mesto, deonice i link za prijavu postojeće. Link nije obavezan i mora da počinje sa `http://` ili `https://`; prazno polje u ispravci uklanja dugme `Prijava`. Ispravke se čuvaju odvojeno od originala, pa se dugmetom `Vrati original` poništavaju.
 
 **Dva jezika** — srpski i engleski, prekidač `EN` / `SR` u zaglavlju pored zvonceta. Prvo otvaranje bira jezik po pregledaču: srpski, hrvatski i bosanski dobijaju srpski, ostali engleski. Izbor se pamti pod posebnim ključem `trke-lang`, pa ga `Obriši sve` ne resetuje. Nazivi trka i mesta se ne prevode — to su vlastita imena.
 
@@ -88,7 +133,35 @@ Build puca na dupliranom ID-u, lošem datumu ili tipu, negativnoj dužini i link
 
 Komponenta se izvozi kao `export default function App()` i traži React 18. Očekuje globalni `window.storage` — asinhroni key-value sloj sa `get`, `set`, `delete`, `list`. U pregledaču je to omotač nad `localStorage`; `scripts/shell.html` ga već sadrži. Bez njega se aplikacija i dalje otvara, ali javlja da čuvanje ne radi.
 
-Kao Android aplikacija: Capacitor omotač, `appId` `rs.mojetrke.app`, web sadržaj u `assets/public`, `window.storage` se postavlja u `index.html` pre učitavanja.
+Kao Android aplikacija: vidi [Android (APK)](#android-apk).
+
+## Android (APK)
+
+Capacitor omotač (`appId` `rs.mojetrke.app`). APK pravi GitHub Actions (`.github/workflows/android.yml`) — na računaru ne treba ništa da se instalira.
+
+1. **Jednom:** u GitHub-u, `Settings → Secrets and variables → Actions`, upiši 4 tajna podatka za potpis: `ANDROID_KEYSTORE_BASE64`, `ANDROID_KEYSTORE_PASSWORD`, `ANDROID_KEY_ALIAS`, `ANDROID_KEY_PASSWORD`. Ključ (`moje-trke.jks`) čuvaj van repozitorijuma — bez njega nova verzija ne može da se instalira preko stare. Bez tajnih podataka pravi se debug APK; on radi, ali za svaku novu verziju staru treba obrisati (gube se oznake i vremena).
+2. **Svaki put:** pošalji izmene (push). Za trku, link ili kod, Actions sam pravi novi APK, ili ga pokreni ručno: `Actions → Android APK → Run workflow`.
+3. **Na telefonu:** `Releases → Moje trke 1.0.N → moje-trke.apk`, preuzmi i instaliraj (prvi put Android traži dozvolu „Instaliraj nepoznate aplikacije”).
+
+Šta je drugačije u APK-u:
+
+- radi bez interneta: React i Capacitor su ugrađeni u stranicu (`node scripts/build.js android` → `www/index.html`), umesto da se vuku sa CDN-a;
+- podsetnici su prava Android obaveštenja: u 9 ujutru, nedelju dana i dan pre trke označene sa „Zanima me” ili „Prijavljen”, i kad je aplikacija zatvorena;
+- dugme Nazad zatvara otvoren prozor, pa vraća na vrh, pa izlazi;
+- linkovi za prijavu se otvaraju u pregledaču telefona;
+- ikonica i splash se prave iz `assets/` (`icon-only.png`, `icon-foreground.png`, `icon-background.png`, `splash.png`), ikonica obaveštenja je `assets/android/ic_stat_trke.png`.
+
+Lokalno, sa Android Studiom (nije potrebno za Actions):
+
+```bash
+npm install
+npm run build:android
+npm run android:init      # jednom: pravi android/ i ikonice
+npx cap sync android
+npm run android:open      # otvara Android Studio → Build → Build APK
+```
+
+`www/` i `android/` se ne čuvaju u repozitorijumu, prave se pri svakom buildu.
 
 ---
 
@@ -102,7 +175,7 @@ Interaktivni elementi imaju `data-testid`:
 |---|---|
 | Filteri | `f-toggle`, `f-all`, `f-trail`, `f-city`, `f-mine`, `f-interested`, `f-past`, `f-reset`, `f-country`, `f-month` |
 | Status trke | `int-<id>`, `reg-<id>`, `done-<id>`, `save-<id>`, `clear-<id>`, `prijava-<id>` |
-| Dodavanje | `add-name`, `add-date`, `add-country`, `add-km-0`, `add-gain-0`, `add-add-row`, `add-submit` |
-| Ispravka | `edit-date`, `edit-km-0`, `edit-add-row`, `edit-submit`, `edit-reset`, `del-race` |
-| Greške | `err-name`, `err-date`, `err-dist` |
+| Dodavanje | `add-name`, `add-date`, `add-country`, `add-km-0`, `add-gain-0`, `add-reg`, `add-add-row`, `add-submit` |
+| Ispravka | `edit-date`, `edit-reg`, `edit-km-0`, `edit-add-row`, `edit-submit`, `edit-reset`, `del-race` |
+| Greške | `err-name`, `err-date`, `err-dist`, `err-reg`, `edit-err` |
 | Jezik | `lang-toggle` |
