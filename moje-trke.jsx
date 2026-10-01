@@ -1342,7 +1342,7 @@ function Bell({ items, permission, onAsk }) {
   }, [open]);
 
   return (
-    <div className="bell-wrap" ref={ref}>
+    <div className={`bell-wrap${open ? " open" : ""}`} ref={ref}>
       <button
         type="button"
         className="bell"
@@ -2185,6 +2185,7 @@ const CSS = `
 .lang-btn:hover { border-color: var(--ochre); color: var(--ochre); }
 .lang-btn:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; }
 .bell-wrap { position: absolute; top: 14px; right: 14px; right: max(14px, env(safe-area-inset-right)); z-index: 12; }
+.bell-wrap.open { z-index: 30; }
 .bell {
   width: 42px; height: 42px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
   background: rgba(22,32,43,.72); -webkit-backdrop-filter: blur(6px); backdrop-filter: blur(6px);
@@ -2202,6 +2203,8 @@ const CSS = `
   position: absolute; top: 50px; right: 0; width: 290px; max-width: calc(100vw - 28px);
   background: var(--panel); border: 1px solid var(--contour); border-radius: 12px; padding: 14px;
   box-shadow: 0 14px 40px rgba(0,0,0,.5); animation: rise .18s ease;
+  max-height: calc(100vh - 90px); max-height: calc(100dvh - 90px);
+  overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch;
 }
 .bell-h { font-family: var(--disp); font-size: 18px; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; margin-bottom: 10px; }
 .bell-empty { font-size: 13px; color: var(--muted); line-height: 1.55; }

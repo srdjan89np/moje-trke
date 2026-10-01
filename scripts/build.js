@@ -125,8 +125,8 @@ function androidShell(shell) {
   var APP = (window.capacitorApp && window.capacitorApp.App) || P.App;
   if (LN) window.__nativeLN = LN;
   if (APP) APP.addListener("backButton", function () {
-    // Nazad zatvara otvoren prozor (kao Esc), pa vraća na vrh, pa izlazi.
-    if (document.querySelector('[aria-modal="true"]')) {
+    // Nazad zatvara otvoren prozor ili obaveštenja (kao Esc), pa vraća na vrh, pa izlazi.
+    if (document.querySelector('[aria-modal="true"], [data-testid="bell-panel"]')) {
       window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
     } else if (window.scrollY > 300) {
       window.scrollTo({ top: 0, behavior: "smooth" });
