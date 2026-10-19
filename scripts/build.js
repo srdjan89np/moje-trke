@@ -124,6 +124,27 @@ function androidShell(shell) {
   var LN = (window.capacitorLocalNotifications && window.capacitorLocalNotifications.LocalNotifications) || P.LocalNotifications;
   var APP = (window.capacitorApp && window.capacitorApp.App) || P.App;
   if (LN) window.__nativeLN = LN;
+
+  // Google AdMob baner na dnu ekrana. ID dolazi iz ADMOB_BANNER_ID (GitHub Secrets),
+  // a bez njega se koristi Google-ov probni baner („Test Ad").
+  var reg = (window.capacitorExports && window.capacitorExports.registerPlugin) || C.registerPlugin;
+  var AD = P.AdMob || (reg ? reg("AdMob") : null);
+  var BANNER = ${JSON.stringify(process.env.ADMOB_BANNER_ID || "ca-app-pub-3940256099942544/6300978111")};
+  var TESTING = ${JSON.stringify(!process.env.ADMOB_BANNER_ID)};
+  var setH = function (h) { document.documentElement.style.setProperty("--ad-h", (h || 0) + "px"); };
+  if (AD) {
+    AD.addListener("bannerAdSizeChanged", function (s) { setH(s && s.height); });
+    AD.addListener("bannerAdFailedToLoad", function () { setH(0); });
+    AD.initialize({ initializeForTesting: TESTING })
+      .then(function () { return AD.requestConsentInfo ? AD.requestConsentInfo().catch(function () { return null; }) : null; })
+      .then(function (c) {
+        if (c && c.isConsentFormAvailable && c.status === "REQUIRED") return AD.showConsentForm().catch(function () {});
+      })
+      .then(function () {
+        return AD.showBanner({ adId: BANNER, adSize: "ADAPTIVE_BANNER", position: "BOTTOM_CENTER", margin: 0, isTesting: TESTING });
+      })
+      .catch(function () { setH(0); });
+  }
   if (APP) APP.addListener("backButton", function () {
     // Nazad zatvara otvoren prozor ili obaveštenja (kao Esc), pa vraća na vrh, pa izlazi.
     if (document.querySelector('[aria-modal="true"], [data-testid="bell-panel"]')) {

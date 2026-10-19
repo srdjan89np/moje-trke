@@ -8,52 +8,52 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 
 ## Kalendar
 
-538 trka iz 40 zemalja: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. plus prve objavljene trke za 2027.
+655 trka iz 40 zemalja: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. plus prve objavljene trke za 2027.
 
 | Zemlja | Ukupno | Predstojećih |
 |---|---|---|
-| Srbija | 105 | 33 |
-| Hrvatska | 81 | 72 |
-| Bosna i Hercegovina | 75 | 22 |
-| Slovenija | 43 | 40 |
+| Srbija | 105 | 20 |
+| Hrvatska | 81 | 53 |
+| Bosna i Hercegovina | 75 | 16 |
+| Slovenija | 43 | 18 |
+| Italija | 40 | 37 |
+| Španija | 32 | 32 |
+| Francuska | 24 | 21 |
+| Nemačka | 23 | 17 |
+| Velika Britanija | 22 | 20 |
 | Crna Gora | 18 | 3 |
-| Severna Makedonija | 18 | 6 |
-| Italija | 16 | 15 |
-| Češka | 12 | 11 |
-| Nemačka | 12 | 11 |
-| Španija | 11 | 11 |
-| Grčka | 10 | 8 |
-| Danska | 10 | 9 |
-| Holandija | 10 | 10 |
-| Turska | 9 | 9 |
+| Severna Makedonija | 18 | 5 |
+| Portugal | 16 | 13 |
+| Austrija | 15 | 14 |
+| Češka | 12 | 7 |
+| Poljska | 11 | 9 |
+| Danska | 10 | 6 |
+| Grčka | 10 | 7 |
+| Holandija | 10 | 9 |
+| Turska | 9 | 5 |
 | Finska | 8 | 6 |
 | Norveška | 8 | 6 |
-| Belgija | 7 | 6 |
-| Velika Britanija | 7 | 7 |
-| Portugal | 7 | 6 |
-| Austrija | 6 | 6 |
-| Francuska | 6 | 6 |
-| Mađarska | 6 | 6 |
-| Malta | 6 | 6 |
-| Bugarska | 5 | 4 |
+| Belgija | 7 | 5 |
+| Mađarska | 6 | 5 |
+| Malta | 6 | 5 |
+| Bugarska | 5 | 3 |
 | Irska | 5 | 4 |
-| Slovačka | 5 | 5 |
+| Slovačka | 5 | 3 |
 | Švedska | 5 | 4 |
+| Andora | 4 | 1 |
 | Island | 4 | 3 |
-| Rumunija | 4 | 4 |
-| Andora | 4 | 2 |
+| Rumunija | 4 | 2 |
 | Kipar | 3 | 3 |
-| Estonija | 2 | 1 |
+| Estonija | 2 | 0 |
 | Litvanija | 2 | 1 |
 | Moldavija | 2 | 1 |
 | Albanija | 1 | 1 |
-| Gruzija | 1 | 1 |
+| Gruzija | 1 | 0 |
 | Letonija | 1 | 1 |
 | Lihtenštajn | 1 | 0 |
 | Luksemburg | 1 | 1 |
-| Poljska | 1 | 1 |
 
-106 predstojećih trka ima link za prijavu (stanje 1.10.2026) — dugme se ne prikazuje kad trka prođe.
+182 predstojećih trka ima link za prijavu (stanje 17.10.2026) — dugme se ne prikazuje kad trka prođe.
 
 ### Odakle podaci
 
@@ -148,6 +148,7 @@ Capacitor omotač (`appId` `rs.mojetrke.app`). APK pravi GitHub Actions (`.githu
 - radi bez interneta: React i Capacitor su ugrađeni u stranicu (`node scripts/build.js android` → `www/index.html`), umesto da se vuku sa CDN-a;
 - podsetnici su prava Android obaveštenja: u 9 ujutru, nedelju dana i dan pre trke označene sa „Zanima me” ili „Prijavljen”, i kad je aplikacija zatvorena;
 - dugme Nazad zatvara otvoren prozor, pa vraća na vrh, pa izlazi;
+- Google AdMob baner na dnu ekrana (samo u APK-u, web verzija je bez oglasa). Bez tajnih podataka `ADMOB_APP_ID` i `ADMOB_BANNER_ID` u GitHub Secrets prikazuje se Google-ov probni baner „Test Ad”; kad ih upišeš, idu pravi oglasi. Ako je potrebno (EU), Google pre prvog oglasa pita za saglasnost;
 - linkovi za prijavu se otvaraju u pregledaču telefona;
 - ikonica i splash se prave iz `assets/` (`icon-only.png`, `icon-foreground.png`, `icon-background.png`, `splash.png`), ikonica obaveštenja je `assets/android/ic_stat_trke.png`.
 
