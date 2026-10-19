@@ -9,7 +9,8 @@
     "build:android": "node scripts/build.js android",
     "android:init": "npx cap add android && npx capacitor-assets generate --android",
     "android:sync": "npm run build:android && npx cap sync android",
-    "android:open": "npx cap open android"
+    "android:open": "npx cap open android",
+    "capacitor:copy:after": "node scripts/admob-manifest.js"
   },
   "dependencies": {
     "@capacitor-community/admob": "^7.0.0",
