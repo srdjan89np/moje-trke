@@ -6,4 +6,6 @@
 module.exports = [
   ["podgorica-millennium", "NLB Podgorica Millennium Run", "Most Milenijum, Podgorica", "ME", "city", "2026-11-08", [[42.2,0],[21.1,0],[10,0],[5,0]]],
   ["bokeski-maraton", "Bokeški maraton", "Tivat, Boka Kotorska", "ME", "city", "2026-12-13", [[42.195,0],[21.097,0]]],
+  // --- Nedeljno ažuriranje 26.10.2026 ---
+  ["ostroski-polumaraton-2027", "Ostroški polumaraton", "Nikšić", "ME", "city", "2027-04-11", [[21.097,0],[9,0]]],
 ];

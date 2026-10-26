@@ -8,52 +8,52 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 
 ## Kalendar
 
-655 trka iz 40 zemalja: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. plus prve objavljene trke za 2027.
+797 trka iz 40 zemalja: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. i 2027. (poslednje ažuriranje 26.10.2026; „Predstojećih” = od tog datuma)
 
 | Zemlja | Ukupno | Predstojećih |
 |---|---|---|
-| Srbija | 105 | 20 |
-| Hrvatska | 81 | 53 |
-| Bosna i Hercegovina | 75 | 16 |
-| Slovenija | 43 | 18 |
-| Italija | 40 | 37 |
-| Španija | 32 | 32 |
-| Francuska | 24 | 21 |
-| Nemačka | 23 | 17 |
-| Velika Britanija | 22 | 20 |
-| Crna Gora | 18 | 3 |
+| Srbija | 134 | 43 |
+| Hrvatska | 119 | 76 |
+| Bosna i Hercegovina | 87 | 22 |
+| Slovenija | 52 | 24 |
+| Italija | 43 | 36 |
+| Španija | 42 | 39 |
+| Francuska | 30 | 24 |
+| Nemačka | 29 | 19 |
+| Velika Britanija | 27 | 21 |
+| Austrija | 19 | 14 |
+| Crna Gora | 19 | 4 |
+| Portugal | 18 | 14 |
 | Severna Makedonija | 18 | 5 |
-| Portugal | 16 | 13 |
-| Austrija | 15 | 14 |
-| Češka | 12 | 7 |
-| Poljska | 11 | 9 |
+| Češka | 18 | 10 |
+| Poljska | 12 | 8 |
+| Grčka | 11 | 7 |
+| Holandija | 11 | 9 |
 | Danska | 10 | 6 |
-| Grčka | 10 | 7 |
-| Holandija | 10 | 9 |
-| Turska | 9 | 5 |
+| Turska | 10 | 4 |
 | Finska | 8 | 6 |
-| Norveška | 8 | 6 |
-| Belgija | 7 | 5 |
+| Norveška | 8 | 5 |
+| Belgija | 7 | 4 |
+| Malta | 7 | 6 |
+| Švedska | 7 | 5 |
 | Mađarska | 6 | 5 |
-| Malta | 6 | 5 |
+| Slovačka | 6 | 3 |
 | Bugarska | 5 | 3 |
-| Irska | 5 | 4 |
-| Slovačka | 5 | 3 |
-| Švedska | 5 | 4 |
+| Irska | 5 | 3 |
+| Rumunija | 5 | 3 |
 | Andora | 4 | 1 |
 | Island | 4 | 3 |
-| Rumunija | 4 | 2 |
-| Kipar | 3 | 3 |
+| Kipar | 4 | 4 |
 | Estonija | 2 | 0 |
+| Letonija | 2 | 2 |
 | Litvanija | 2 | 1 |
 | Moldavija | 2 | 1 |
-| Albanija | 1 | 1 |
+| Albanija | 1 | 0 |
 | Gruzija | 1 | 0 |
-| Letonija | 1 | 1 |
 | Lihtenštajn | 1 | 0 |
 | Luksemburg | 1 | 1 |
 
-182 predstojećih trka ima link za prijavu (stanje 17.10.2026) — dugme se ne prikazuje kad trka prođe.
+307 trka ima link za prijavu (stanje 26.10.2026) — dugme se ne prikazuje kad trka prođe.
 
 ### Odakle podaci
 

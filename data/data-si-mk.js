@@ -39,7 +39,7 @@ module.exports = [
   ["go4trail", "GO4trail", "Solkan", "SI", "trail", "2026-11-07", [[64,0],[28,0],[10,0]]],
   ["lahinja-trail", "Lahinja trail", "Dragatuš", "SI", "trail", "2026-11-07", [[30,546],[18,298],[10,152]]],
   ["celjski-mali-maraton", "Celjski mali maraton", "Celje", "SI", "city", "2026-11-08", [[21,0],[14,0],[11,0],[6.2,0]]],
-  ["novo-mesto-polmaraton", "Novo mesto 1/2 maraton", "Novo mesto", "SI", "city", "2026-11-15", [[21.097,0],[10,0],[5,0]]],
+  ["novo-mesto-polmaraton", "Novo mesto 1/2 maraton", "Novo mesto", "SI", "city", "2026-11-14", [[21.097,0],[10,0],[5,0]]],
   ["movember-tek", "Movember tek", "Ljubljana", "SI", "city", "2026-11-28", []],
   ["zimski-jamatlon", "Zimski jamatlon", "Hrastnik", "SI", "trail", "2026-11-28", []],
   ["miklavzev-tek", "Miklavžev tek", "Snovik", "SI", "trail", "2026-12-05", []],
@@ -68,4 +68,14 @@ module.exports = [
   ["vodno-10k-2026", "Vodno 10K", "Sredno Vodno, Skoplje", "MK", "city", "2026-03-29", [[10,0]]],
   ["krali-marko", "Krali Marko Trails", "Varoš, Prilep", "MK", "trail", "2026-03-08", [[40,2300],[23,1400],[13,730]]],
   ["chupino-vertical", "Chupino Winter Vertical", "Blatec", "MK", "trail", "2026-02-22", [[5,1000]]],
+  // --- Nedeljno ažuriranje 26.10.2026 ---
+  ["vinotek-2026", "VinoTek — prvi čezmejni vinski tek", "Svečina", "SI", "trail", "2026-10-31", [[22,750],[12,350]]],
+  ["martinov-tek-secovlje-2026", "Martinov tek Sečovlje", "Sečovlje", "SI", "city", "2026-11-14", [[12,0],[6,0]]],
+  ["mini-martinov-tek-2026", "Mini Martinov tek (dečja trka)", "Sečovlje", "SI", "city", "2026-11-14", [[1,0],[0.8,0],[0.6,0],[0.4,0],[0.2,0]]],
+  ["stafetni-tek-sv-barbare-2026", "Štafetni tek Sv. Barbare (štafeta 3×2,4 km)", "Velenje", "SI", "city", "2026-11-29", [[7.2,0]]],
+  ["velenje-trail-2026", "Velenje Trail", "Velenje", "SI", "trail", "2026-12-05", [[36,2200],[18,800],[10,300]]],
+  ["knap-trail-2027", "Knap Trail", "Trbovlje", "SI", "trail", "2027-01-09", [[51,2620],[30,1550],[16,990]]],
+  ["trail-po-kraskih-klancih-2027", "Trail po kraških klancih", "Križ, Sežana", "SI", "trail", "2027-03-07", [[19.5,390],[12.3,170]]],
+  ["kriska-gora-trail-2027", "Kriška gora Trail", "Križe", "SI", "trail", "2027-05-22", [[50,2951],[20,1855],[10,990]]],
+  ["k24-ultra-trail-2027", "K24 Ultra Trail", "Črna na Koroškem", "SI", "trail", "2027-08-06", [[100,0],[50,0],[24,0],[10,0]]],
 ];
