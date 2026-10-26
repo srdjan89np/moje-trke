@@ -78,4 +78,14 @@ module.exports = [
   ["trail-po-kraskih-klancih-2027", "Trail po kraških klancih", "Križ, Sežana", "SI", "trail", "2027-03-07", [[19.5,390],[12.3,170]]],
   ["kriska-gora-trail-2027", "Kriška gora Trail", "Križe", "SI", "trail", "2027-05-22", [[50,2951],[20,1855],[10,990]]],
   ["k24-ultra-trail-2027", "K24 Ultra Trail", "Črna na Koroškem", "SI", "trail", "2027-08-06", [[100,0],[50,0],[24,0],[10,0]]],
+  // Vraćeno iz izmena od 21.10.2026 (OCR, triatlon/duatlon, trke na vreme, ženske i dečje trke).
+  ["markoton-backyard-2027", "Markoton Backyard Ultra", "Bukovci", "SI", "city", "2027-03-19", [[6.7,0]]],
+  ["spartan-kope-2027", "Spartan Trifecta Kope (OCR)", "Kope, Pohorje", "SI", "trail", "2027-05-22", [[21,0],[10,0],[5,0]]],
+  ["sri-chinmoy-skopje-24h-2027", "Sri Chinmoy 24-12-6 Hour Race (6h / 12h / 24h)", "Skoplje", "MK", "city", "2027-05-29", []],
+  ["tek-obcine-menges-2026", "11. Tek Občine Mengeš", "Mengeš", "SI", "city", "2026-11-14", [[10,0],[5,0]]],
+  ["kros-duatlon-ljubljana-2026", "Kros duatlon Ljubljana (kros duatlon)", "Ljubljana", "SI", "trail", "2026-12-19", []],
+  ["parenzana-ultra-trail-2027", "5. Parenzana Ultra Trail", "Portorož", "SI", "trail", "2027-02-13", [[88,0],[50,0],[30,0]]],
+  ["7-ur-slivnice-2027", "7 ur Slivnice (trka na 7 sati)", "Cerknica", "SI", "trail", "2027-02-20", []],
+  ["mali-kraski-maraton-2027", "Mali kraški maraton", "Sežana", "SI", "city", "2027-03-21", [[21.097,0]]],
+  ["kras-trail-2027", "Kras Trail", "Senožeče", "SI", "trail", "2027-03-27", [[52,2000],[29,1100],[10,200]]],
 ];

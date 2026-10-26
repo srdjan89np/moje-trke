@@ -48,18 +48,27 @@ function loadRaces() {
 
 function writeSeed() {
   const { all, reg } = loadRaces();
-  const lines = all.map(([id, name, city, country, type, date, dists]) => {
-    const ds = dists.map(([km, gain]) => `{ km: ${km}, gain: ${gain} }`).join(", ");
-    const r = reg[id] ? `, reg: "${reg[id]}"` : "";
-    return `  { id: "${id}", name: "${name}", city: "${city}", country: "${country}", type: "${type}", date: "${date}", distances: [${ds}]${r} },`;
-  });
+  const races = all.map(([id, name, city, country, type, date, dists]) => ({
+    id, name, city, country, type, date,
+    distances: dists.map(([km, gain]) => ({ km, gain })),
+    ...(reg[id] ? { reg: reg[id] } : {}),
+  }));
+  const lines = races.map((r) => "  " + JSON.stringify(r) + ",");
+  // Oznaka verzije kalendara: aplikacija sa interneta uzima races.json samo ako je noviji.
+  const generated = new Date().toISOString().slice(0, 19) + "Z";
 
-  const src = fs.readFileSync(SRC, "utf8");
+  let src = fs.readFileSync(SRC, "utf8").replace(/\r\n/g, "\n");
   const start = src.indexOf("const SEED_RACES = [");
   const end = src.indexOf("\n];", start) + 3;
   if (start < 0 || end < 3) throw new Error("SEED_RACES blok nije pronađen u moje-trke.jsx");
+  src = src.slice(0, start) + "const SEED_RACES = [\n" + lines.join("\n") + "\n];" + src.slice(end);
+  src = src.replace(/const SEED_GENERATED = "[^"]*";/, `const SEED_GENERATED = "${generated}";`);
+  fs.writeFileSync(SRC, src.replace(/\n/g, "\r\n"));
 
-  fs.writeFileSync(SRC, src.slice(0, start) + "const SEED_RACES = [\n" + lines.join("\n") + "\n];" + src.slice(end));
+  // Javni kalendar koji aplikacija povlači sa GitHub-a (bez nove instalacije).
+  const body = races.map((r) => "  " + JSON.stringify(r)).join(",\n");
+  fs.writeFileSync(path.join(ROOT, "races.json"), `{"generated": "${generated}", "count": ${races.length}, "races": [\n${body}\n]}\n`);
+
   console.log(`seed: ${lines.length} trka, ${Object.keys(reg).length} sa linkom za prijavu`);
 }
 
@@ -158,7 +167,12 @@ function androidShell(shell) {
 })();
 </script>
 `;
-  return shell.slice(0, start) + scripts + shell.slice(end);
+  // Android (Capacitor 8, SystemBars "native"): bez viewport-fit=cover WebView ostaje
+  // ispod statusne i navigacione trake, pa sadržaj ne ulazi pod njih.
+  shell = shell.replace(", viewport-fit=cover", "");
+  const start2 = shell.indexOf('<script src="https://cdnjs.cloudflare.com/ajax/libs/react/');
+  const end2 = shell.indexOf("</head>");
+  return shell.slice(0, start2) + scripts + shell.slice(end2);
 }
 
 writeSeed();

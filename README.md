@@ -8,7 +8,7 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 
 ## Kalendar
 
-797 trka iz 40 zemalja: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. i 2027. (poslednje ažuriranje 26.10.2026; „Predstojećih” = od tog datuma)
+841 trka iz 40 zemalja: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. i 2027. (poslednje ažuriranje 26.10.2026; „Predstojećih” = od tog datuma)
 
 | Zemlja | Ukupno | Predstojećih |
 |---|---|---|
@@ -53,7 +53,7 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 | Lihtenštajn | 1 | 0 |
 | Luksemburg | 1 | 1 |
 
-307 trka ima link za prijavu (stanje 26.10.2026) — dugme se ne prikazuje kad trka prođe.
+350 trka ima link za prijavu (stanje 26.10.2026) — dugme se ne prikazuje kad trka prođe.
 
 ### Odakle podaci
 
@@ -124,6 +124,8 @@ Kalendar živi u `data/` kao obične JS liste, odvojeno od koda. `scripts/build.
 node scripts/build.js seed   # samo regeneriši kalendar
 node scripts/build.js        # kalendar + HTML (traži npx tsc)
 ```
+
+**Kalendar sa interneta.** `node scripts/build.js seed` pored `SEED_RACES` upisuje i `races.json` u koren repozitorijuma. Aplikacija (web i APK) pri pokretanju povlači `https://raw.githubusercontent.com/srdjan89np/moje-trke/main/races.json` i koristi ga ako je noviji od ugrađenog kalendara; poslednji preuzeti čuva za rad bez mreže. Zato nove trke stižu bez nove instalacije — dovoljno je poslati `data/` i `races.json` na GitHub. Datum kalendara piše na dnu aplikacije.
 
 Build puca na dupliranom ID-u, lošem datumu ili tipu, negativnoj dužini i linku koji pokazuje na trku koja ne postoji — bolje nego da greška tiho prođe u podatke.
 

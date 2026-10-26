@@ -4,13 +4,16 @@
   "webDir": "www",
   "backgroundColor": "#16202B",
   "android": {
-    "backgroundColor": "#16202B",
-    "adjustMarginsForEdgeToEdge": "force"
+    "backgroundColor": "#16202B"
   },
   "plugins": {
     "LocalNotifications": {
       "iconColor": "#E0A63C",
       "smallIcon": "ic_stat_trke"
+    },
+    "SystemBars": {
+      "insetsHandling": "native",
+      "style": "DARK"
     }
   }
 }

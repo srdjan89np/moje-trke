@@ -1,6 +1,6 @@
 {
   "name": "moje-trke",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "Kalendar trka za trkače — web i Android (Capacitor).",
   "scripts": {
@@ -13,17 +13,17 @@
     "capacitor:copy:after": "node scripts/admob-manifest.js"
   },
   "dependencies": {
-    "@capacitor-community/admob": "^7.0.0",
-    "@capacitor/android": "^7.0.0",
-    "@capacitor/app": "^7.0.0",
-    "@capacitor/core": "^7.0.0",
-    "@capacitor/local-notifications": "^7.0.0",
+    "@capacitor-community/admob": "^8.0.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/local-notifications": "^8.0.0",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },
   "devDependencies": {
     "@capacitor/assets": "^3.0.5",
-    "@capacitor/cli": "^7.0.0",
+    "@capacitor/cli": "^8.0.0",
     "typescript": "^5.4.0"
   }
 }

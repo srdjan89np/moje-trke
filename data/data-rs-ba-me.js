@@ -253,4 +253,17 @@ module.exports = [
   ["sanska-petica-decje-trke-2027", "Sanska petica – dečje trke (dečja trka)", "Sanski Most", "BA", "city", "2027-10-02", [[0.4,0],[0.2,0],[0.1,0],[0.05,0]]],
   ["petrovaradin-night-2027", "Serbia Epic Petrovaradin Night Trail", "Petrovaradinska tvrđava, Novi Sad", "RS", "trail", "2027-10-15", [[5,0]]],
   ["povlen-trail-2027", "Povlen Trail", "Povlen", "RS", "trail", "2027-10-17", [[27,1010],[18,0],[12,0]]],
+  // Vraćeno iz izmena od 21.10.2026 (OCR, triatlon/duatlon, trke na vreme, ženske i dečje trke).
+  ["dame-trce-to-sam-ja-2026", "11. Dame trče – To sam ja (ženska trka)", "Sombor", "RS", "city", "2026-10-24", [[5,0]]],
+  ["beogradski-kros-duatlon-2026", "Beogradski kros duatlon (kros duatlon 2/6/1)", "Beograd", "RS", "trail", "2026-10-03", [[9,0]]],
+  ["palic-lake-duathlon-2026", "Palić Lake Duathlon (duatlon sprint 5/20/2.5, supersprint 2.5/10/1)", "Palić", "RS", "city", "2026-10-11", [[27.5,0],[13.5,0]]],
+  ["ocean-lava-montenegro-2026", "Ocean Lava Montenegro (triatlon 1.9/90/21, 1.5/50/10)", "Kotor", "ME", "city", "2026-10-11", [[112.9,0],[61.5,0]]],
+  ["avantura-challenge-race-2026", "Avantura Challenge Race", "Zlatibor", "RS", "trail", "2026-11-07", [[10,0],[7,0]]],
+  ["karlovacki-smer-2026", "Karlovački smer", "Sremski Karlovci", "RS", "trail", "2026-11-21", [[11,400]]],
+  ["lovcen-skyrace-2026", "Lovćen Skyrace", "Kotor", "ME", "trail", "2026-11-28", [[30,2222]]],
+  ["adria-motion-2026", "Adria Motion", "Budva", "ME", "city", "2026-12-27", [[10,0],[5,0]]],
+  ["ktj-trail-stafeta-2027", "3. KTJ Trail štafeta (2 × 5 km)", "Fruška gora", "RS", "trail", "2027-02-07", [[5,0]]],
+  ["viking-challenge-decija-trka-2026", "Viking Challenge Trail – Dečja trka", "Stražilovo (Fruška gora)", "RS", "trail", "2026-10-24", [[1,0]]],
+  ["halloween-family-race-sarajevo-2026", "Halloween Family Race (dečja trka)", "Sarajevo", "BA", "city", "2026-10-31", [[1,0],[0.2,0]]],
+  ["bokeska-milja-2026", "Bokeška milja (dečja trka)", "Tivat", "ME", "city", "2026-12-12", [[1.6,0],[1.2,0],[0.8,0],[0.4,0]]],
 ];
