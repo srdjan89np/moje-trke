@@ -140,6 +140,16 @@ function androidShell(shell) {
   var AD = P.AdMob || (reg ? reg("AdMob") : null);
   var BANNER = ${JSON.stringify(process.env.ADMOB_BANNER_ID || "ca-app-pub-3940256099942544/6300978111")};
   var TESTING = ${JSON.stringify(!process.env.ADMOB_BANNER_ID)};
+  // Rezervna kopija: fajl se upiše u keš aplikacije i otvori se Android „Deli” (Drive, mejl, Viber…).
+  var FS = P.Filesystem || (reg ? reg("Filesystem") : null);
+  var SH = P.Share || (reg ? reg("Share") : null);
+  if (FS && SH) {
+    window.__nativeExport = function (name, text) {
+      return FS.writeFile({ path: name, data: text, directory: "CACHE", encoding: "utf8" }).then(function (r) {
+        return SH.share({ title: name, files: [r.uri], dialogTitle: name });
+      });
+    };
+  }
   var setH = function (h) { document.documentElement.style.setProperty("--ad-h", (h || 0) + "px"); };
   if (AD) {
     AD.addListener("bannerAdSizeChanged", function (s) { setH(s && s.height); });
@@ -147,9 +157,19 @@ function androidShell(shell) {
     AD.initialize({ initializeForTesting: TESTING })
       .then(function () { return AD.requestConsentInfo ? AD.requestConsentInfo().catch(function () { return null; }) : null; })
       .then(function (c) {
-        if (c && c.isConsentFormAvailable && c.status === "REQUIRED") return AD.showConsentForm().catch(function () {});
+        if (c && c.isConsentFormAvailable && c.status === "REQUIRED") {
+          return AD.showConsentForm().catch(function () {}).then(function () {
+            return AD.requestConsentInfo().catch(function () { return c; });
+          });
+        }
+        return c;
       })
-      .then(function () {
+      .then(function (c) {
+        // Korisnik iz EU mora moći da promeni saglasnost: dugme u podnožju aplikacije.
+        if (c && c.privacyOptionsRequirementStatus === "REQUIRED" && AD.showPrivacyOptionsForm) {
+          window.__adPrivacy = function () { return AD.showPrivacyOptionsForm().catch(function () {}); };
+          window.dispatchEvent(new Event("adprivacy"));
+        }
         return AD.showBanner({ adId: BANNER, adSize: "ADAPTIVE_BANNER", position: "BOTTOM_CENTER", margin: 0, isTesting: TESTING });
       })
       .catch(function () { setH(0); });

@@ -1,6 +1,6 @@
 {
   "name": "moje-trke",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "description": "Kalendar trka za trkače — web i Android (Capacitor).",
   "scripts": {
@@ -17,7 +17,9 @@
     "@capacitor/android": "^8.0.0",
     "@capacitor/app": "^8.0.0",
     "@capacitor/core": "^8.0.0",
+    "@capacitor/filesystem": "^8.0.0",
     "@capacitor/local-notifications": "^8.0.0",
+    "@capacitor/share": "^8.0.0",
     "react": "18.3.1",
     "react-dom": "18.3.1"
   },

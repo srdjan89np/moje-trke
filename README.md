@@ -114,6 +114,8 @@ Sve lokalno, u jednom ključu `trke-srb:v2`:
 
 Nema sinhronizacije između uređaja. Brisanje podataka pregledača briše i sezonu.
 
+**Rezervna kopija** — iznad dugmeta „Obriši moje podatke” su `Izvezi podatke` i `Uvezi podatke`. Izvoz pravi fajl `moje-trke-rezervna-kopija-GGGG-MM-DD.json` (`{ app: "moje-trke", version: 1, exported, data: { tracking, custom, edits, notified } }`); u pregledaču se preuzima, a na Androidu se otvara „Deli” (Drive, mejl, Viber…). Uvoz proverava fajl, pokaže koliko trka sadrži i nudi `Spoji` (podaci iz fajla se dodaju, isti ID pobeđuje fajl) ili `Zameni sve`. Pogrešan fajl se odbija porukom.
+
 ---
 
 ## Build
@@ -152,6 +154,8 @@ Capacitor omotač (`appId` `rs.mojetrke.app`). APK pravi GitHub Actions (`.githu
 - dugme Nazad zatvara otvoren prozor, pa vraća na vrh, pa izlazi;
 - Google AdMob baner na dnu ekrana (samo u APK-u, web verzija je bez oglasa). Bez tajnih podataka `ADMOB_APP_ID` i `ADMOB_BANNER_ID` u GitHub Secrets prikazuje se Google-ov probni baner „Test Ad”; kad ih upišeš, idu pravi oglasi. Ako je potrebno (EU), Google pre prvog oglasa pita za saglasnost;
 - linkovi za prijavu se otvaraju u pregledaču telefona;
+- izvoz rezervne kopije koristi `@capacitor/filesystem` (fajl u kešu aplikacije) i `@capacitor/share` (Android „Deli”); uvoz bira fajl preko sistemskog izbora fajlova;
+- korisnik iz EU u podnožju ima dugme „Podešavanja privatnosti za oglase” (AdMob UMP) da promeni saglasnost;
 - ikonica i splash se prave iz `assets/` (`icon-only.png`, `icon-foreground.png`, `icon-background.png`, `splash.png`), ikonica obaveštenja je `assets/android/ic_stat_trke.png`.
 
 Lokalno, sa Android Studiom (nije potrebno za Actions):

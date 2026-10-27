@@ -76,7 +76,7 @@ const countryOf = (race) => race.country || REGIONS[race.region]?.c || "RS";
 // ako je noviji od ugrađenog (SEED_GENERATED). Bez mreže ostaje poslednji sačuvani ili ugrađeni.
 const REMOTE_URL = "https://raw.githubusercontent.com/srdjan89np/moje-trke/main/races.json";
 const REMOTE_KEY = "trke-kalendar-v1";
-const SEED_GENERATED = "2026-10-26T21:04:32Z";
+const SEED_GENERATED = "2026-10-27T19:14:05Z";
 
 function cleanRemote(data) {
   if (!data || typeof data.generated !== "string" || !Array.isArray(data.races)) return null;
@@ -998,6 +998,7 @@ const STR = {
     bellDefault: "Podsetnik se vidi ovde svaki put kad otvoriš aplikaciju.",
     backToTop: "Nazad na vrh",
     calUpdated: "Kalendar trka ažuriran",
+    adPrivacy: "Podešavanja privatnosti za oglase",
     addTitle: "Dodaj trku", name: "Naziv", place: "Mesto", date: "Datum",
     regLink: "Link za prijavu", regHint: "Nije obavezno. Dugme „Prijava\" se prikazuje do dana trke.",
     errUrl: "Link mora da počinje sa http:// ili https://.",
@@ -1030,6 +1031,15 @@ const STR = {
     toastAdded: "Trka dodata u kalendar.", toastFixed: "Podaci ispravljeni.",
     toastRestored: "Vraćeni originalni podaci.", toastDeleted: "Trka obrisana.",
     toastCleared: "Uklonjeno iz tvoje sezone.", toastWiped: "Sve obrisano.",
+    backupTitle: "Rezervna kopija",
+    backupBody: "Sačuvaj oznake, vremena i trke koje si dodao u fajl, pa ih vrati na novom telefonu.",
+    exportBtn: "Izvezi podatke", importBtn: "Uvezi podatke",
+    importTitle: "Uvoz podataka",
+    importInfo: (n, c, d) => `Fajl sadrži oznake za ${n} ${srPl(n, "trku", "trke", "trka")} i ${c} ${srPl(c, "tvoju trku", "tvoje trke", "tvojih trka")}${d ? ` (sačuvano ${d})` : ""}.`,
+    importHow: "„Spoji” dodaje podatke iz fajla uz postojeće. „Zameni sve” briše sadašnje podatke i ostavlja samo one iz fajla.",
+    importMerge: "Spoji", importReplace: "Zameni sve",
+    toastExported: "Rezervna kopija je sačuvana.", toastImported: "Podaci su uvezeni.",
+    errImport: "Ovaj fajl nije rezervna kopija aplikacije Moje trke.", errExport: "Izvoz nije uspeo. Pokušaj ponovo.",
     nothingToWipe: "Nemaš ništa sačuvano — nema šta da se obriše.",
     wipeCount: (n) => `Brišeš oznake i vremena za ${n} ${n === 1 ? "trku" : "trka"}, zajedno sa trkama koje si sam dodao i ispravkama koje si uneo.`,
     giveUp: "Odustani",
@@ -1072,6 +1082,7 @@ const STR = {
     bellDefault: "Reminders show up here every time you open the app.",
     backToTop: "Back to top",
     calUpdated: "Race calendar updated",
+    adPrivacy: "Ad privacy settings",
     addTitle: "Add race", name: "Name", place: "Place", date: "Date",
     regLink: "Registration link", regHint: "Optional. The sign-up button shows until race day.",
     errUrl: "The link must start with http:// or https://.",
@@ -1104,6 +1115,15 @@ const STR = {
     toastAdded: "Race added to the calendar.", toastFixed: "Details updated.",
     toastRestored: "Original details restored.", toastDeleted: "Race deleted.",
     toastCleared: "Removed from your season.", toastWiped: "Everything erased.",
+    backupTitle: "Backup",
+    backupBody: "Save your marks, times and the races you added to a file, then restore them on a new phone.",
+    exportBtn: "Export data", importBtn: "Import data",
+    importTitle: "Import data",
+    importInfo: (n, c, d) => `The file has marks for ${n} ${n === 1 ? "race" : "races"} and ${c} ${c === 1 ? "race" : "races"} you added${d ? ` (saved ${d})` : ""}.`,
+    importHow: "“Merge” adds the file's data to what you have. “Replace all” erases your current data and keeps only the file's.",
+    importMerge: "Merge", importReplace: "Replace all",
+    toastExported: "Backup saved.", toastImported: "Data imported.",
+    errImport: "This file is not a Moje trke backup.", errExport: "Export failed. Please try again.",
     nothingToWipe: "Nothing saved yet — nothing to erase.",
     wipeCount: (n) => `This erases marks and times for ${n} ${n === 1 ? "race" : "races"}, along with races you added and corrections you made.`,
     giveUp: "Keep it",
@@ -1112,6 +1132,9 @@ const STR = {
     errStorageNA: "Storage is unavailable in this view.", errReadBack: "Saved data does not read back.",
   },
 };
+
+// Srpska množina: 1 trku, 2–4 trke, 5+ trka (11–14 uvek „trka”).
+const srPl = (n, one, few, many) => (n % 10 === 1 && n % 100 !== 11 ? one : n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 12 || n % 100 > 14) ? few : many);
 
 const LangCtx = React.createContext("sr");
 const useT = () => STR[useContext(LangCtx)];
@@ -1240,6 +1263,69 @@ async function loadState() {
   } catch {
     return EMPTY_STATE;
   }
+}
+
+/* --------------------- rezervna kopija (izvoz / uvoz) --------------------- */
+
+const BACKUP_APP = "moje-trke";
+
+function buildBackup(state) {
+  const { tracking, custom, edits, notified } = state;
+  return JSON.stringify({ app: BACKUP_APP, version: 1, exported: new Date().toISOString(), data: { tracking, custom, edits, notified } }, null, 2);
+}
+
+const isObj = (v) => !!v && typeof v === "object" && !Array.isArray(v);
+
+// Vraća očišćene podatke iz fajla ili null ako fajl nije rezervna kopija.
+function parseBackup(text) {
+  let raw;
+  try { raw = JSON.parse(text); } catch { return null; }
+  if (!isObj(raw)) return null;
+  const d = isObj(raw.data) ? raw.data : raw;
+  const known = raw.app === BACKUP_APP || "tracking" in d || "custom" in d;
+  if (!known) return null;
+  const tracking = {};
+  if (isObj(d.tracking)) for (const [k, v] of Object.entries(d.tracking)) if (isObj(v)) tracking[k] = v;
+  const custom = Array.isArray(d.custom)
+    ? d.custom
+        .filter((r) => isObj(r) && typeof r.id === "string" && typeof r.name === "string" && /^\d{4}-\d{2}-\d{2}$/.test(String(r.date)))
+        .map((r) => ({
+          ...r,
+          city: typeof r.city === "string" && r.city ? r.city : "—",
+          country: typeof r.country === "string" ? r.country : "RS",
+          type: r.type === "trail" ? "trail" : "city",
+          distances: Array.isArray(r.distances)
+            ? r.distances.filter((x) => isObj(x) && typeof x.km === "number" && x.km > 0)
+            : [],
+        }))
+    : [];
+  const edits = {};
+  if (isObj(d.edits)) for (const [k, v] of Object.entries(d.edits)) if (isObj(v)) edits[k] = v;
+  const notified = isObj(d.notified) ? d.notified : {};
+  return { data: { tracking, custom, edits, notified }, exported: typeof raw.exported === "string" ? raw.exported : "" };
+}
+
+function mergeStates(a, b) {
+  const ids = new Set(b.custom.map((r) => r.id));
+  return {
+    tracking: { ...a.tracking, ...b.tracking },
+    custom: [...a.custom.filter((r) => !ids.has(r.id)), ...b.custom],
+    edits: { ...a.edits, ...b.edits },
+    notified: { ...a.notified, ...b.notified },
+  };
+}
+
+// Android: window.__nativeExport (shell) upiše fajl i otvori „Deli”; u pregledaču se fajl preuzima.
+async function saveBackupFile(name, text) {
+  if (typeof window !== "undefined" && window.__nativeExport) return window.__nativeExport(name, text);
+  const url = URL.createObjectURL(new Blob([text], { type: "application/json" }));
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = name;
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 2000);
 }
 
 // A saved correction replaces the seeded guess and retires the "nepotvrđeno" flag.
@@ -1758,6 +1844,40 @@ function ConfirmWipe({ count, onConfirm, onClose }) {
   );
 }
 
+function ImportDialog({ info, onMerge, onReplace, onClose }) {
+  const t = useT();
+  const lang = useLang();
+  const first = useRef(null);
+
+  useEffect(() => {
+    first.current?.focus();
+    const esc = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", esc);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", esc);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+
+  const d = info.data;
+  return (
+    <div className="overlay" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="modal modal-sm" role="dialog" aria-modal="true" aria-labelledby="imp-h" data-testid="import-dialog">
+        <h2 id="imp-h" className="modal-h">{t.importTitle}</h2>
+        <p className="wipe-p">{t.importInfo(Object.keys(d.tracking).length, d.custom.length, info.exported ? fmtDay(info.exported, lang) : "")}</p>
+        <p className="wipe-p imp-how">{t.importHow}</p>
+        <div className="modal-actions">
+          <button ref={first} type="button" className="btn" onClick={onClose} data-testid="import-no">{t.giveUp}</button>
+          <button type="button" className="btn btn-danger" onClick={onReplace} data-testid="import-replace">{t.importReplace}</button>
+          <button type="button" className="btn btn-primary" onClick={onMerge} data-testid="import-merge">{t.importMerge}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function AddRace({ onAdd, onClose }) {
   const t = useT();
   const lang = useLang();
@@ -1923,6 +2043,8 @@ export default function App() {
   const [adding, setAdding] = useState(false);
   const [editing, setEditing] = useState(null);
   const [wiping, setWiping] = useState(false);
+  const [importing, setImporting] = useState(null);
+  const importRef = useRef(null);
   const [permission, setPermission] = useState(
     nativeLN() ? "default" : typeof Notification !== "undefined" ? Notification.permission : "unsupported"
   );
@@ -2001,6 +2123,13 @@ export default function App() {
   }, []);
 
   const [calendar, setCalendar] = useState({ generated: SEED_GENERATED, races: SEED_RACES });
+  // Android: AdMob (EU) traži dugme za promenu saglasnosti; shell postavlja window.__adPrivacy.
+  const [adPrivacy, setAdPrivacy] = useState(() => typeof window !== "undefined" && !!window.__adPrivacy);
+  useEffect(() => {
+    const on = () => setAdPrivacy(!!window.__adPrivacy);
+    window.addEventListener("adprivacy", on);
+    return () => window.removeEventListener("adprivacy", on);
+  }, []);
 
   useEffect(() => {
     let alive = true;
@@ -2107,6 +2236,40 @@ export default function App() {
     setWiping(false);
     setToast("toastWiped");
   }, []);
+
+  const exportData = useCallback(async () => {
+    const d = new Date();
+    const day = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    try {
+      await saveBackupFile(`moje-trke-rezervna-kopija-${day}.json`, buildBackup(state));
+      setToast("toastExported");
+    } catch (e) {
+      // Zatvoren prozor „Deli” nije greška.
+      if (!/cancel/i.test(String((e && e.message) || e))) setToast("errExport");
+    }
+  }, [state]);
+
+  const pickImport = useCallback((e) => {
+    const file = e.target.files && e.target.files[0];
+    e.target.value = "";
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = () => {
+      const info = parseBackup(String(reader.result || ""));
+      if (info) setImporting(info);
+      else setToast("errImport");
+    };
+    reader.onerror = () => setToast("errImport");
+    reader.readAsText(file);
+  }, []);
+
+  const applyImport = useCallback((mode) => {
+    if (!importing) return;
+    const incoming = importing.data;
+    setState((s) => (mode === "replace" ? incoming : mergeStates(s, incoming)));
+    setImporting(null);
+    setToast("toastImported");
+  }, [importing]);
 
   const stats = useMemo(() => {
     let km = 0, gain = 0, done = 0, reg = 0;
@@ -2441,6 +2604,22 @@ export default function App() {
         )}
       </main>
 
+      <div className="backup-zone" data-testid="backup-zone">
+        <div className="dz-text">
+          <h2 className="bz-h">{t.backupTitle}</h2>
+          <p className="dz-p">{t.backupBody}</p>
+        </div>
+        <div className="bz-actions">
+          <button type="button" className="btn" onClick={exportData} data-testid="export">
+            <span aria-hidden="true">⤓</span> {t.exportBtn}
+          </button>
+          <button type="button" className="btn" onClick={() => importRef.current && importRef.current.click()} data-testid="import">
+            <span aria-hidden="true">⤒</span> {t.importBtn}
+          </button>
+          <input ref={importRef} type="file" accept="application/json,.json,text/plain" hidden onChange={pickImport} data-testid="import-file" />
+        </div>
+      </div>
+
       <div className="danger-zone">
         <div className="dz-text">
           <h2 className="dz-h">{t.wipeMine}</h2>
@@ -2458,6 +2637,11 @@ export default function App() {
             <p className="cal-date" data-testid="cal-date">
               {t.calUpdated} {fmtDay(calendar.generated, lang)}
             </p>
+          )}
+          {adPrivacy && (
+            <button type="button" className="ad-privacy" onClick={() => window.__adPrivacy && window.__adPrivacy()} data-testid="ad-privacy">
+              {t.adPrivacy}
+            </button>
           )}
         </div>
       </footer>
@@ -2479,6 +2663,14 @@ export default function App() {
           onReset={resetEdit}
           onDelete={deleteRace}
           onClose={() => setEditing(null)}
+        />
+      )}
+      {importing && (
+        <ImportDialog
+          info={importing}
+          onMerge={() => applyImport("merge")}
+          onReplace={() => applyImport("replace")}
+          onClose={() => setImporting(null)}
         />
       )}
       {toast && (
@@ -2757,6 +2949,7 @@ input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .fld { display: grid; gap: 5px; }
 .fld-wide { grid-column: 1 / -1; }
 .cal-date { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+.ad-privacy { margin-top: 6px; padding: 0; border: 0; background: none; font: inherit; font-size: 12px; color: var(--muted); text-decoration: underline; cursor: pointer; }
 .hint { font-size: 12px; color: var(--muted); }
 .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
 
@@ -2781,6 +2974,14 @@ input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .to-top:active { transform: scale(.93); }
 .toast { position: fixed; left: 50%; bottom: 22px; max-width: calc(100vw - 100px); transform: translateX(-50%); background: var(--panel-2); border: 1px solid var(--contour); color: var(--snow); padding: 10px 16px; border-radius: 999px; font-size: 13.5px; z-index: 60; animation: rise .2s ease; box-shadow: 0 8px 30px rgba(0,0,0,.4); }
 
+.backup-zone {
+  max-width: 1080px; margin: 0 auto 12px; padding: 16px 18px;
+  display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  border: 1px solid var(--contour); border-radius: 12px; background: var(--panel);
+}
+.bz-h { font-family: var(--disp); font-size: 21px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--snow); }
+.bz-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.imp-how { color: var(--muted); font-size: 13px; }
 .danger-zone {
   max-width: 1080px; margin: 0 auto 4px; padding: 16px 18px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;
@@ -2797,7 +2998,7 @@ input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .credit { display: grid; gap: 4px; }
 
 @supports (padding: max(0px)) {
-  .hero-inner, .tb-inner, .main, .foot, .danger-zone {
+  .hero-inner, .tb-inner, .main, .foot, .danger-zone, .backup-zone {
     padding-left: max(18px, env(safe-area-inset-left));
     padding-right: max(18px, env(safe-area-inset-right));
   }
@@ -2809,7 +3010,8 @@ input[type="date"]::-webkit-date-and-time-value { text-align: left; }
   .hero-img, .hero-scrim { height: 116px; }
   .hero-inner { margin-top: -34px; padding-bottom: 11px; }
   .hero-lead .add { flex: 1 1 100%; }
-  .danger-zone { flex-direction: column; align-items: stretch; }
+  .danger-zone, .backup-zone { flex-direction: column; align-items: stretch; }
+  .bz-actions .btn { flex: 1 1 0; }
   .danger-zone .btn { width: 100%; }
 
           .stats { grid-template-columns: repeat(2, 1fr); }
