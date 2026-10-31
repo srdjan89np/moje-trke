@@ -369,4 +369,8 @@ module.exports = {
   "policnik-djecje-utrke-2026": "https://running.hr/raspis/29-atletska-utrka-policnik-2026",
   "gorica-advent-kids-teens-2026": "https://finisherka.ak-varazdin.hr/event/gorica-advent-run/",
   "osjecki-ferivi-ledo-djecje-2027": "https://prijave.run/e/2027ofpm/",
+  "novogodisnji-mrazaton-2026": "https://runtrace.net/?event=mrazaton2026",
+  "resolution-run-kalemegdan-2026": "https://runtrace.net/rrun2026/reg",
+  "zimski-nocni-polumaraton-2027": "https://runtrace.net/10znp/reg",
+  "love-run-beograd-2027": "https://runtrace.net/loverun2027/reg",
 };

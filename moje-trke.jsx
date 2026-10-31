@@ -76,7 +76,7 @@ const countryOf = (race) => race.country || REGIONS[race.region]?.c || "RS";
 // ako je noviji od ugrađenog (SEED_GENERATED). Bez mreže ostaje poslednji sačuvani ili ugrađeni.
 const REMOTE_URL = "https://raw.githubusercontent.com/srdjan89np/moje-trke/main/races.json";
 const REMOTE_KEY = "trke-kalendar-v1";
-const SEED_GENERATED = "2026-10-27T19:14:05Z";
+const SEED_GENERATED = "2026-10-31T14:33:25Z";
 
 function cleanRemote(data) {
   if (!data || typeof data.generated !== "string" || !Array.isArray(data.races)) return null;
@@ -613,10 +613,12 @@ const SEED_RACES = [
   {"id":"pisa-marathon-2026","name":"Maratona di Pisa","city":"Piza","country":"IT","type":"city","date":"2026-12-20","distances":[{"km":42.195,"gain":96},{"km":21.097,"gain":60}],"reg":"https://www.maratonadipisa.com"},
   {"id":"mdina-spinola-2026","name":"Mdina 2 Spinola Xmas Race","city":"Mdina — Spinola","country":"MT","type":"city","date":"2026-12-20","distances":[{"km":18.6,"gain":0}]},
   {"id":"sao-silvestre-porto-2026","name":"São Silvestre do Porto","city":"Porto","country":"PT","type":"city","date":"2026-12-20","distances":[{"km":10,"gain":0}],"reg":"https://www.rockthesport.com/pt/evento/sao-silvestre-do-porto-2026/"},
+  {"id":"resolution-run-kalemegdan-2026","name":"4. Resolution Run Kalemegdan","city":"Kalemegdan, Beograd","country":"RS","type":"city","date":"2026-12-26","distances":[{"km":11,"gain":0},{"km":5.5,"gain":0}],"reg":"https://runtrace.net/rrun2026/reg"},
   {"id":"novoletni-stari-trg","name":"Dobrodelni novoletni tek in hoja","city":"Stari trg pri Ložu","country":"SI","type":"city","date":"2026-12-26","distances":[]},
   {"id":"ho-ho-ho-run-umag-2026","name":"HO! HO! HO! Run Umag","city":"Umag","country":"HR","type":"city","date":"2026-12-26","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://protime.si/dogodek/ho-ho-ho-run-umag-2026/"},
   {"id":"sao-silvestre-lisboa-2026","name":"Lidl São Silvestre de Lisboa","city":"Lisabon","country":"PT","type":"city","date":"2026-12-26","distances":[{"km":10,"gain":0}],"reg":"https://www.saosilvestredelisboa.com/"},
   {"id":"nocni-trail-krsta-tibuzda-2026","name":"Noćni trail krsta Tibužda","city":"Tibužde, Vranje","country":"RS","type":"trail","date":"2026-12-26","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://trka.rs/events/953/"},
+  {"id":"novogodisnji-mrazaton-2026","name":"3. Novogodišnji Mrazaton","city":"Savsko šetalište, Beograd","country":"RS","type":"city","date":"2026-12-27","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://runtrace.net/?event=mrazaton2026"},
   {"id":"adria-motion-2026","name":"Adria Motion","city":"Budva","country":"ME","type":"city","date":"2026-12-27","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://www.avaibooksports.com/inscripcion/adria-motion-2026/"},
   {"id":"christmas-run-zapresic-2026","name":"Christmas Run AK Fit","city":"Zaprešić","country":"HR","type":"city","date":"2026-12-27","distances":[],"reg":"https://www.utrka.com/utrke/wgbozicna/2026/"},
   {"id":"corrida-houilles-2026","name":"Corrida de Houilles","city":"Uj","country":"FR","type":"city","date":"2026-12-27","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://www.corrida-de-houilles.fr"},
@@ -663,6 +665,7 @@ const SEED_RACES = [
   {"id":"izl-pula-2027","name":"Istarska zimska liga – 6. kolo Pula","city":"Pula","country":"HR","type":"trail","date":"2027-01-31","distances":[],"reg":"https://trickeri.org/"},
   {"id":"bad-fussing-marathon-2027","name":"Johannesbad Thermen-Marathon","city":"Bad Fising","country":"DE","type":"city","date":"2027-01-31","distances":[{"km":42.195,"gain":0}]},
   {"id":"zg-winter-classic-2027","name":"Zagreb Winter Classic","city":"Zagreb","country":"HR","type":"city","date":"2027-01-31","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://www.utrka.com/utrke/winterclasicc/2027/"},
+  {"id":"zimski-nocni-polumaraton-2027","name":"10. Zimski noćni polumaraton","city":"Beograd","country":"RS","type":"city","date":"2027-02-06","distances":[{"km":21.1,"gain":0},{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://runtrace.net/10znp/reg"},
   {"id":"northern-light-run-2027","name":"The Northern Light Run","city":"Rejkjavik","country":"IS","type":"city","date":"2027-02-06","distances":[{"km":5,"gain":0}]},
   {"id":"ktj-trail-stafeta-2027","name":"3. KTJ Trail štafeta (2 × 5 km)","city":"Fruška gora","country":"RS","type":"trail","date":"2027-02-07","distances":[{"km":5,"gain":0}],"reg":"https://www.serbiarun.rs/2027/3-ktj-trejl-stafeta/register"},
   {"id":"izl-tupljak-2027","name":"Istarska zimska liga – 7. kolo Tupljak","city":"Tupljak","country":"HR","type":"trail","date":"2027-02-07","distances":[],"reg":"https://trickeri.org/"},
@@ -682,6 +685,7 @@ const SEED_RACES = [
   {"id":"7-ur-slivnice-2027","name":"7 ur Slivnice (trka na 7 sati)","city":"Cerknica","country":"SI","type":"trail","date":"2027-02-20","distances":[],"reg":"https://prijavim.se/calendar/checkings/6639/7-ur-slivnice-2027"},
   {"id":"jablanicki-polumaraton-2027","name":"Jablanički polumaraton","city":"Jablanica","country":"BA","type":"city","date":"2027-02-20","distances":[{"km":21.097,"gain":0},{"km":5,"gain":0}],"reg":"https://gb3timing.com/dogadjaj/7-jablanicki-polumaraton-2027"},
   {"id":"trail-x-liga-6-kolo-2027","name":"Trail X liga — 6. kolo (trail + X duatlon)","city":"Zagreb","country":"HR","type":"trail","date":"2027-02-20","distances":[{"km":6.8,"gain":0},{"km":3.4,"gain":0}]},
+  {"id":"love-run-beograd-2027","name":"Love Run Beograd","city":"Beograd","country":"RS","type":"city","date":"2027-02-21","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://runtrace.net/loverun2027/reg"},
   {"id":"seville-marathon-2027","name":"Maratón de Sevilla","city":"Sevilja","country":"ES","type":"city","date":"2027-02-21","distances":[{"km":42.195,"gain":0}]},
   {"id":"terni-marathon-2027","name":"Maratona di San Valentino","city":"Terni","country":"IT","type":"city","date":"2027-02-21","distances":[{"km":42.195,"gain":0}]},
   {"id":"napoli-half-2027","name":"Napoli City Half Marathon","city":"Napulj","country":"IT","type":"city","date":"2027-02-21","distances":[{"km":21.097,"gain":0}]},
@@ -829,6 +833,7 @@ const SEED_RACES = [
   {"id":"three-hearts-marathon-2027","name":"Maraton treh src","city":"Radenci","country":"SI","type":"city","date":"2027-05-15","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0},{"km":10,"gain":0},{"km":5,"gain":0}]},
   {"id":"karlovy-vary-half-2027","name":"Mattoni Karlovy Vary Half Marathon","city":"Karlovi Vari","country":"CZ","type":"city","date":"2027-05-15","distances":[{"km":21.097,"gain":0}],"reg":"https://www.runczech.com"},
   {"id":"riga-marathon-2027","name":"Rimi Riga Marathon","city":"Riga","country":"LV","type":"city","date":"2027-05-15","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0},{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://rimirigamarathon.com/en/"},
+  {"id":"dragutin-tomasevic-2027","name":"Trka Dragutin Tomašević","city":"Petrovac na Mlavi","country":"RS","type":"city","date":"2027-05-15","distances":[{"km":10,"gain":19}]},
   {"id":"viski-polumaraton-2027","name":"Viški polumaraton","city":"Vis","country":"HR","type":"city","date":"2027-05-15","distances":[{"km":21.097,"gain":0},{"km":5,"gain":0}]},
   {"id":"challenge-cesenatico-2027","name":"Challenge Cesenatico (100 & Sprint)","city":"Čezenatiko","country":"IT","type":"city","date":"2027-05-16","distances":[{"km":100,"gain":0},{"km":25.75,"gain":0}],"reg":"https://challengefamily.com/races/"},
   {"id":"maraton-vitoria-2027","name":"EDP Maratón Vitoria-Gasteiz Martín Fiz","city":"Vitorija","country":"ES","type":"city","date":"2027-05-16","distances":[{"km":42.195,"gain":137},{"km":21.097,"gain":51},{"km":10,"gain":44}],"reg":"https://www.maratonmartinfiz.com"},
@@ -997,6 +1002,7 @@ const STR = {
     inAWeek: "za nedelju dana",
     bellDefault: "Podsetnik se vidi ovde svaki put kad otvoriš aplikaciju.",
     backToTop: "Nazad na vrh",
+    loadMore: "Učitaj još",
     calUpdated: "Kalendar trka ažuriran",
     adPrivacy: "Podešavanja privatnosti za oglase",
     addTitle: "Dodaj trku", name: "Naziv", place: "Mesto", date: "Datum",
@@ -1081,6 +1087,7 @@ const STR = {
     inAWeek: "in a week",
     bellDefault: "Reminders show up here every time you open the app.",
     backToTop: "Back to top",
+    loadMore: "Load more",
     calUpdated: "Race calendar updated",
     adPrivacy: "Ad privacy settings",
     addTitle: "Add race", name: "Name", place: "Place", date: "Date",
@@ -2438,16 +2445,24 @@ export default function App() {
     });
   }, [races, q, type, country, month, mine, interested, hidePast, state.tracking]);
 
+  // Prvo 50 trka, ostale tek na „Učitaj još” — lista se brže otvara na telefonu.
+  const PAGE = 100;
+  const [limit, setLimit] = useState(PAGE);
+  useEffect(() => { setLimit(PAGE); }, [q, type, country, month, mine, interested]);
+
   const grouped = useMemo(() => {
     const map = new Map();
-    for (const r of visible) {
+    visible.forEach((r, i) => {
       const d = parseDate(r.date);
       const key = `${d.getFullYear()}-${d.getMonth()}`;
-      if (!map.has(key)) map.set(key, { label: `${MONTHS[lang][d.getMonth()]} ${d.getFullYear()}`, items: [] });
-      map.get(key).items.push(r);
-    }
-    return [...map.values()];
-  }, [visible, lang]);
+      if (!map.has(key)) map.set(key, { label: `${MONTHS[lang][d.getMonth()]} ${d.getFullYear()}`, items: [], total: 0 });
+      const g = map.get(key);
+      g.total++;
+      if (i < limit) g.items.push(r);
+    });
+    return [...map.values()].filter((g) => g.items.length);
+  }, [visible, lang, limit]);
+  const hiddenCount = Math.max(0, visible.length - limit);
 
   return (
     <LangCtx.Provider value={lang}>
@@ -2584,7 +2599,7 @@ export default function App() {
             <section key={g.label} className="month">
               <h2 className="month-h">
                 <span>{g.label}</span>
-                <span className="month-n">{g.items.length}</span>
+                <span className="month-n">{g.total}</span>
               </h2>
               <div className="cards">
                 {g.items.map((r) => (
@@ -2601,6 +2616,13 @@ export default function App() {
               </div>
             </section>
           ))
+        )}
+        {!loading && hiddenCount > 0 && (
+          <div className="more" data-testid="more">
+            <button type="button" className="btn btn-primary more-btn" onClick={() => setLimit(Infinity)} data-testid="load-more">
+              {t.loadMore}
+            </button>
+          </div>
         )}
       </main>
 
@@ -2982,6 +3004,8 @@ input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 .bz-h { font-family: var(--disp); font-size: 21px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--snow); }
 .bz-actions { display: flex; gap: 8px; flex-wrap: wrap; }
 .imp-how { color: var(--muted); font-size: 13px; }
+.more { display: grid; justify-items: center; gap: 8px; padding: 8px 0 28px; }
+.more-btn { min-width: 220px; }
 .danger-zone {
   max-width: 1080px; margin: 0 auto 4px; padding: 16px 18px;
   display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap;

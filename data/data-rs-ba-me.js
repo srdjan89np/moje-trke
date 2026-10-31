@@ -266,4 +266,11 @@ module.exports = [
   ["viking-challenge-decija-trka-2026", "Viking Challenge Trail – Dečja trka", "Stražilovo (Fruška gora)", "RS", "trail", "2026-10-24", [[1,0]]],
   ["halloween-family-race-sarajevo-2026", "Halloween Family Race (dečja trka)", "Sarajevo", "BA", "city", "2026-10-31", [[1,0],[0.2,0]]],
   ["bokeska-milja-2026", "Bokeška milja (dečja trka)", "Tivat", "ME", "city", "2026-12-12", [[1.6,0],[1.2,0],[0.8,0],[0.4,0]]],
+  // Novogodišnje trke u Beogradu (31.10.2026): novogodisnjimrazaton.com, runtrace.net (rrun2026).
+  ["novogodisnji-mrazaton-2026", "3. Novogodišnji Mrazaton", "Savsko šetalište, Beograd", "RS", "city", "2026-12-27", [[10,0],[5,0]]],
+  ["resolution-run-kalemegdan-2026", "4. Resolution Run Kalemegdan", "Kalemegdan, Beograd", "RS", "city", "2026-12-26", [[11,0],[5.5,0]]],
+  // runtrace.net (31.10.2026): Resolution Run 2026 potvrđen 5,5 i 11 km; nove trke za 2027.
+  ["zimski-nocni-polumaraton-2027", "10. Zimski noćni polumaraton", "Beograd", "RS", "city", "2027-02-06", [[21.1,0],[10,0],[5,0]]],
+  ["love-run-beograd-2027", "Love Run Beograd", "Beograd", "RS", "city", "2027-02-21", [[10,0],[5,0]]],
+  ["dragutin-tomasevic-2027", "Trka Dragutin Tomašević", "Petrovac na Mlavi", "RS", "city", "2027-05-15", [[10,19]]],
 ];
