@@ -178,6 +178,8 @@ function androidShell(shell) {
     // Nazad zatvara otvoren prozor ili obaveštenja (kao Esc), pa vraća na vrh, pa izlazi.
     if (document.querySelector('[aria-modal="true"], [data-testid="bell-panel"]')) {
       window.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+    } else if (window.__tabBack && window.__tabBack()) {
+      // vraćeno na Početnu
     } else if (window.scrollY > 300) {
       window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
