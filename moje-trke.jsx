@@ -81,7 +81,7 @@ const countryOf = (race) => race.country || REGIONS[race.region]?.c || "RS";
 // ako je noviji od ugrađenog (SEED_GENERATED). Bez mreže ostaje poslednji sačuvani ili ugrađeni.
 const REMOTE_URL = "https://raw.githubusercontent.com/srdjan89np/moje-trke/main/races.json";
 const REMOTE_KEY = "trke-kalendar-v1";
-const SEED_GENERATED = "2026-11-04T04:01:59Z";
+const SEED_GENERATED = "2026-11-08T20:49:02Z";
 
 function cleanRemote(data) {
   if (!data || typeof data.generated !== "string" || !Array.isArray(data.races)) return null;
@@ -1025,6 +1025,24 @@ const STR = {
     newH: "Šta je novo", newSub: "Uputstvo i nove funkcionalnosti", newBadge: "Novo",
     newGuideH: "Uputstvo", newGuideP: "Kratak uvod kroz aplikaciju: kako da pronađeš trku, označiš je i upišeš rezultat.", newGuideBtn: "Otvori uputstvo",
     newStatsH: "Statistika", newStatsP: "Novi tab sa kilometrima po mesecima, usponom, vremenom na stazi i ličnim rekordima po dužini.", newStatsBtn: "Otvori statistiku",
+    share: "Podeli", shareStats: "Podeli statistiku", shareH: "Podeli na mrežama", shareRaceBtn: "Podeli trku",
+    shareHint: "Slika se deli preko Instagrama, Facebooka, WhatsAppa ili bilo koje aplikacije.",
+    shareSeason: (y) => `Moja sezona ${y}`, shareAll: "Moja trkačka statistika", shareNext: "Moja sledeća trka",
+    shareRace: "Trka", shareResult: "Moj rezultat", shareRaces: "trka", shareGain: "uspon", shareCourse: "na stazi",
+    shareDays: (n) => `${srPl(n, "dan", "dana", "dana")} do starta`, shareToday: "Danas je trka!",
+    shareFoot: "Moje trke · kalendar trka za trkače", shareGet: "Besplatno na Google Play",
+    shareTextStats: (lbl, km, n) => `${lbl}: ${km} km, ${n} ${srPl(n, "trka", "trke", "trka")} 🏃 #MojeTrke`,
+    shareTextNext: (name, d) => `${name} — ${d} 🏃 #MojeTrke`,
+    shareTextRes: (name, time) => `${name}: ${time} 🏅 #MojeTrke`,
+    errShare: "Deljenje nije uspelo. Pokušaj ponovo.", shareMaking: "Pravim sliku…",
+    fbRow: "Pošalji utisak", fbRowSub: "Predlog, greška ili trka koja fali",
+    fbH: "Tvoj utisak", fbIntro: "Pomozi da Moje trke budu bolje. Poruka se šalje iz tvoje aplikacije za email.",
+    fbRate: "Kako ti se sviđa aplikacija?", fbRateAria: (n) => `Ocena ${n} od 5`,
+    fbType: "O čemu se radi?", fbTypes: { idea: "Predlog", bug: "Greška", race: "Trka koja fali", other: "Drugo" },
+    fbText: "Poruka", fbTextPh: "Primer: Fali Zlatarski trail 12. juna, Nova Varoš, 21 km.",
+    fbSend: "Pošalji", errFb: "Napiši poruku.", fbNote: "Otvara se email sa popunjenom porukom — samo pritisni „Pošalji”.",
+    fbSubject: "Moje trke – utisak", fbCardP: "Napiši šta ti se dopada, šta fali ili koju trku da dodamo.", fbCardBtn: "Pošalji utisak",
+    toastFb: "Otvoren email sa porukom.",
     onbSkip: "Preskoči", onbNext: "Dalje", onbStart: "Počni", onbAgain: "Prikaži uvod ponovo",
     onb1H: "Dobro došao u Moje trke",
     onb1P: () => `Kalendar trčanja: 800+ trka iz više od 40 zemalja — asfalt, trail, ultra, OCR trke sa preprekama, triatlon i dečje trke. Kalendar se sam osvežava svake nedelje.`,
@@ -1159,6 +1177,24 @@ const STR = {
     newH: "What's new", newSub: "Guide and new features", newBadge: "New",
     newGuideH: "Guide", newGuideP: "A short tour of the app: how to find a race, mark it and log your result.", newGuideBtn: "Open the guide",
     newStatsH: "Stats", newStatsP: "A new tab with kilometres by month, climbing, time on course and personal bests by distance.", newStatsBtn: "Open stats",
+    share: "Share", shareStats: "Share stats", shareH: "Share", shareRaceBtn: "Share race",
+    shareHint: "Share the picture to Instagram, Facebook, WhatsApp or any other app.",
+    shareSeason: (y) => `My ${y} season`, shareAll: "My running stats", shareNext: "My next race",
+    shareRace: "Race", shareResult: "My result", shareRaces: "races", shareGain: "climbed", shareCourse: "on course",
+    shareDays: (n) => `${n === 1 ? "day" : "days"} to go`, shareToday: "Race day!",
+    shareFoot: "Moje trke · the race calendar for runners", shareGet: "Free on Google Play",
+    shareTextStats: (lbl, km, n) => `${lbl}: ${km} km, ${n} ${n === 1 ? "race" : "races"} 🏃 #MojeTrke`,
+    shareTextNext: (name, d) => `${name} — ${d} 🏃 #MojeTrke`,
+    shareTextRes: (name, time) => `${name}: ${time} 🏅 #MojeTrke`,
+    errShare: "Sharing failed. Please try again.", shareMaking: "Making the picture…",
+    fbRow: "Send feedback", fbRowSub: "An idea, a bug or a missing race",
+    fbH: "Your feedback", fbIntro: "Help make Moje trke better. The message is sent from your email app.",
+    fbRate: "How do you like the app?", fbRateAria: (n) => `Rating ${n} of 5`,
+    fbType: "What is it about?", fbTypes: { idea: "Idea", bug: "Bug", race: "Missing race", other: "Other" },
+    fbText: "Message", fbTextPh: "Example: Zlatar Trail on 12 June is missing, Nova Varoš, 21 km.",
+    fbSend: "Send", errFb: "Write a message.", fbNote: "An email opens with your message filled in — just tap Send.",
+    fbSubject: "Moje trke – feedback", fbCardP: "Tell us what you like, what's missing or which race to add.", fbCardBtn: "Send feedback",
+    toastFb: "Email with your message opened.",
     onbSkip: "Skip", onbNext: "Next", onbStart: "Get started", onbAgain: "Show the intro again",
     onb1H: "Welcome to Moje trke",
     onb1P: () => `A running calendar: 800+ races from over 40 countries — road, trail, ultra, OCR obstacle races, triathlon and kids' races. It updates itself every week.`,
@@ -1797,7 +1833,7 @@ function RaceCard({ race, entry, onOpen }) {
 }
 
 // Detalji trke: preko celog ekrana; ovde su sve akcije.
-function RaceDetail({ race, entry, tracking, onSet, onClear, onEdit, onLog, onClose }) {
+function RaceDetail({ race, entry, tracking, onSet, onClear, onEdit, onLog, onClose, onShare }) {
   const t = useT();
   const lang = useLang();
   const ref = useRef(null);
@@ -1926,6 +1962,9 @@ function RaceDetail({ race, entry, tracking, onSet, onClear, onEdit, onLog, onCl
                 {t.signUp}
               </a>
             )}
+            <button type="button" className="btn btn-outline det-wide" onClick={() => onShare(raceShareCard(race, entry, t, lang))} data-testid={`share-race-${race.id}`}>
+              <ShareIco /> {t.shareRaceBtn}
+            </button>
             <a className="btn btn-outline det-wide" href={mapUrl} target="_blank" rel="noopener noreferrer">{t.onMap}</a>
             <button type="button" className="btn btn-outline det-wide" onClick={() => onEdit(race)} data-testid={`edit-${race.id}`}>
               {t.fix}
@@ -2484,7 +2523,7 @@ function SecHead({ children, link, onLink, testid }) {
   );
 }
 
-function HomeTab({ races, tracking, stats, homeCC, setHomeCC, countryChips, onOpen, onFind, onAdd, onStats, countryCount, onNew, newSeen }) {
+function HomeTab({ races, tracking, stats, homeCC, setHomeCC, countryChips, onOpen, onFind, onAdd, onStats, countryCount, onNew, newSeen, onFeedback, onShare }) {
   const t = useT();
   const lang = useLang();
   const next = stats.upcoming;
@@ -2528,6 +2567,9 @@ function HomeTab({ races, tracking, stats, homeCC, setHomeCC, countryChips, onOp
           <div className="hc-btns">
             <button type="button" className="btn btn-outline" onClick={() => onOpen(next.id)}>{t.details}</button>
             {next.reg && <a className="btn btn-primary reg-link" href={next.reg} target="_blank" rel="noopener noreferrer">{t.signUp}</a>}
+            <button type="button" className="btn btn-outline share-icon-btn" onClick={() => onShare(raceShareCard(next, tracking[next.id], t, lang))} aria-label={t.share} title={t.share} data-testid="share-next">
+              <ShareIco />
+            </button>
           </div>
         </section>
       ) : (
@@ -2603,7 +2645,7 @@ function HomeTab({ races, tracking, stats, homeCC, setHomeCC, countryChips, onOp
   );
 }
 
-function StatsTab({ races, tracking, onOpen, onFind, children }) {
+function StatsTab({ races, tracking, onOpen, onFind, onShare, children }) {
   const t = useT();
   const lang = useLang();
   const byId = useMemo(() => new Map(races.map((r) => [r.id, r])), [races]);
@@ -2662,7 +2704,13 @@ function StatsTab({ races, tracking, onOpen, onFind, children }) {
             ))}
           </div>
           <section>
-            <SecHead>{period === "all" ? t.total : t.season(period)}</SecHead>
+            <SecHead link={<><ShareIco /> {t.share}</>} testid="share-stats" onLink={() => onShare({
+              kind: "stats", file: "moje-trke-statistika.png",
+              title: period === "all" ? t.shareAll : t.shareSeason(period),
+              km: Math.round(km), races: list.length, gain, hrs, prsTitle: t.prsH,
+              prs: prs.slice().sort((a, b) => b.res.km - a.res.km).slice(0, 3).map((x) => ({ time: fmtSecs(x.res.secs), km: `${Number(x.res.km.toFixed(1)).toLocaleString(lang === "sr" ? "sr-Latn-RS" : "en-GB")} km`, pace: pace(x.res.secs, x.res.km) })),
+              text: t.shareTextStats(period === "all" ? t.shareAll : t.shareSeason(period), Math.round(km), list.length),
+            })}>{period === "all" ? t.total : t.season(period)}</SecHead>
             <div className="stats" data-testid="season-stats">
               <Stat label={t.statKm} value={Math.round(km)} unit="km" sub={t.statRaces(list.length)} />
               <Stat label={t.statGain} value={gain} unit="m" />
@@ -2734,7 +2782,7 @@ function TabBar({ tab, setTab }) {
 
 const NEW_KEY = "trke-novo-1";
 
-function WhatsNew({ onGuide, onStats, onClose }) {
+function WhatsNew({ onGuide, onStats, onFeedback, onClose }) {
   const t = useT();
   const ref = useRef(null);
   useEffect(() => {
@@ -2755,6 +2803,8 @@ function WhatsNew({ onGuide, onStats, onClose }) {
       ico: <path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v15H6.5A2.5 2.5 0 0 0 4 20.5zM4 20.5A2.5 2.5 0 0 0 6.5 23H20v-5M8 7.5h8M8 11h6" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" /> },
     { h: t.newStatsH, p: t.newStatsP, btn: t.newStatsBtn, go: onStats, id: "new-stats",
       ico: <path d="M5 20V11M12 20V5M19 20v-7" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" /> },
+    { h: t.fbH, p: t.fbCardP, btn: t.fbCardBtn, go: onFeedback, id: "new-feedback",
+      ico: <path d="M4 5h16v11H9l-5 4zM8 9h8M8 12.5h5" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" /> },
   ];
 
   return (
@@ -2780,6 +2830,309 @@ function WhatsNew({ onGuide, onStats, onClose }) {
         </div>
       </div>
     </div>
+  );
+}
+
+/* --------------------------- deljenje (slika) --------------------------- */
+
+const PLAY_URL = "https://play.google.com/store/apps/details?id=rs.mojetrke.app";
+
+const loadImg = (src) => new Promise((ok, no) => { const i = new Image(); i.onload = () => ok(i); i.onerror = no; i.src = src; });
+
+// Slika za deljenje 1080×1350 (Instagram/Facebook/WhatsApp), u bojama aplikacije.
+async function makeShareImage(card, t) {
+  const W = 1080, H = 1350;
+  const c = document.createElement("canvas");
+  c.width = W; c.height = H;
+  const g = c.getContext("2d");
+  const app = document.querySelector(".app") || document.documentElement;
+  const cs = getComputedStyle(app);
+  const v = (n, d) => (cs.getPropertyValue(n) || "").trim() || d;
+  const C = { slate: v("--slate", "#16202B"), panel: v("--panel", "#1E2B38"), contour: v("--contour", "#31465A"), snow: v("--snow", "#E9F0F5"), ochre: v("--ochre", "#E0A63C"), teal: v("--teal", "#46B6A6"), grey: "#B7C9D6" };
+  try { await document.fonts.ready; } catch {}
+  const DISP = "'Barlow Condensed', 'Arial Narrow', sans-serif", BODY = "Karla, Inter, system-ui, sans-serif", MONO = "'JetBrains Mono', ui-monospace, monospace";
+  const font = (w, px, f) => { g.font = `${w} ${px}px ${f}`; };
+  const fit = (txt, w, px, f, max) => { let s = px; font(w, s, f); while (g.measureText(txt).width > max && s > 20) { s -= 2; font(w, s, f); } return s; };
+  const wrap = (txt, max, lines) => {
+    const words = String(txt).split(/\s+/); const out = []; let cur = "";
+    for (const wd of words) { const tr = cur ? cur + " " + wd : wd; if (g.measureText(tr).width > max && cur) { out.push(cur); cur = wd; } else cur = tr; }
+    if (cur) out.push(cur);
+    if (out.length > lines) { out.length = lines; out[lines - 1] = out[lines - 1].replace(/\s*\S*$/, "") + "…"; }
+    return out;
+  };
+  const rrect = (x, y, w, h, r) => { g.beginPath(); g.moveTo(x + r, y); g.arcTo(x + w, y, x + w, y + h, r); g.arcTo(x + w, y + h, x, y + h, r); g.arcTo(x, y + h, x, y, r); g.arcTo(x, y, x + w, y, r); g.closePath(); };
+
+  // pozadina + linije staze
+  g.fillStyle = C.slate; g.fillRect(0, 0, W, H);
+  g.save(); g.translate(W / 2, H / 2); g.rotate(-0.42); g.globalAlpha = 0.16; g.lineWidth = 5;
+  [[-500, C.ochre], [-160, C.teal], [180, C.ochre], [520, C.teal]].forEach(([y, col]) => { g.strokeStyle = col; g.beginPath(); g.moveTo(-1200, y); g.lineTo(1200, y); g.stroke(); });
+  g.restore();
+  // zaglavlje: slika sa logom
+  try {
+    const img = await loadImg(BANNER);
+    const hh = 270, sc = Math.max(W / img.width, hh / img.height);
+    g.drawImage(img, 0, 0, img.width, img.height, 0, 0, img.width * sc, img.height * sc);
+    const gr = g.createLinearGradient(0, 120, 0, hh); gr.addColorStop(0, "rgba(0,0,0,0)"); gr.addColorStop(1, C.slate);
+    g.fillStyle = gr; g.fillRect(0, 0, W, hh + 2);
+  } catch {}
+
+  const X = 80, MW = W - 160;
+  let y = 335;
+  const label = (txt, col) => { font(700, 34, MONO); g.fillStyle = col || C.ochre; g.letterSpacing = "4px"; g.fillText(txt.toUpperCase(), X, y); g.letterSpacing = "0px"; };
+
+  if (card.kind === "stats") {
+    label(card.title); y += 40;
+    // velika brojka km
+    font(800, 250, DISP); g.fillStyle = C.ochre; const km = String(card.km);
+    g.fillText(km, X - 8, y + 205); const kw = g.measureText(km).width;
+    font(600, 80, DISP); g.fillStyle = C.snow; g.fillText("km", X + kw + 14, y + 205);
+    y += 240;
+    const boxes = [[card.races, t.shareRaces], [`${card.gain} m`, t.shareGain], [`${card.hrs} h`, t.shareCourse]];
+    const bw = (MW - 40) / 3;
+    boxes.forEach(([val, lab], i) => {
+      const bx = X + i * (bw + 20);
+      rrect(bx, y, bw, 150, 22); g.fillStyle = C.panel; g.fill(); g.strokeStyle = C.contour; g.lineWidth = 3; g.stroke();
+      const fs = fit(String(val), 700, 72, DISP, bw - 40); g.fillStyle = C.snow; g.fillText(String(val), bx + 24, y + 24 + fs * 0.85);
+      font(600, 26, MONO); g.fillStyle = C.grey; g.fillText(lab.toUpperCase(), bx + 24, y + 128);
+    });
+    y += 205;
+    if (card.prs.length) {
+      label(card.prsTitle, C.grey); y += 30;
+      card.prs.slice(0, 3).forEach((pr) => {
+        rrect(X, y, MW, 84, 18); g.fillStyle = C.panel; g.fill();
+        font(700, 52, DISP); g.fillStyle = C.teal; g.fillText(pr.time, X + 28, y + 61);
+        const tw = g.measureText(pr.time).width;
+        font(500, 32, BODY); g.fillStyle = C.snow; g.fillText(pr.km, X + 60 + tw, y + 54);
+        font(500, 30, MONO); g.fillStyle = C.grey; const pw = g.measureText(pr.pace).width; g.fillText(pr.pace, X + MW - 28 - pw, y + 54);
+        y += 96;
+      });
+    }
+  } else {
+    label(card.title); y += 20;
+    let ns = 104, lines;
+    for (;;) { font(800, ns, DISP); lines = wrap(card.name, MW, 9); if (lines.length <= 2 || ns <= 60) break; ns -= 4; }
+    if (lines.length > 2) lines = wrap(card.name, MW, 2);
+    y += 14;
+    g.fillStyle = C.snow;
+    lines.forEach((ln) => { y += ns * 1.0; g.fillText(ln, X, y); });
+    y += 62;
+    font(500, 38, BODY); g.fillStyle = C.grey;
+    g.fillText(card.when, X, y); y += 52;
+    g.fillText(card.where, X, y); y += 44;
+    // velika brojka: dani ili vreme
+    const BH = 250;
+    rrect(X, y, MW, BH, 28); g.fillStyle = C.panel; g.fill(); g.strokeStyle = card.big.accent || C.ochre; g.lineWidth = 4; g.stroke();
+    // profil staze u kartici
+    if (card.ridge) {
+      g.save(); rrect(X, y, MW, BH, 28); g.clip();
+      g.translate(X, y + BH - 70); g.scale(MW / 220, 70 / 46);
+      const path = new Path2D(card.ridge.area); g.globalAlpha = 0.18; g.fillStyle = card.big.accent || C.ochre; g.fill(path);
+      g.globalAlpha = 0.7; g.lineWidth = 1.2; g.strokeStyle = card.big.accent || C.ochre; g.stroke(new Path2D(card.ridge.line));
+      g.restore();
+    }
+    const bigSize = fit(String(card.big.value), 800, card.big.size || 180, DISP, MW * 0.6);
+    font(800, bigSize, DISP); g.fillStyle = card.big.accent || C.ochre;
+    const bv = String(card.big.value); g.fillText(bv, X + 40, y + 60 + bigSize * 0.72);
+    const bvw = g.measureText(bv).width;
+    if (card.big.unit) { font(600, 48, BODY); g.fillStyle = C.snow; const lines2 = wrap(card.big.unit, MW - bvw - 100, 2); lines2.forEach((ln, i) => g.fillText(ln, X + 70 + bvw, y + 112 + i * 56)); }
+    y += BH + 34;
+    // oznake
+    let cx = X;
+    card.chips.forEach((ch) => {
+      font(700, 38, BODY); const w = g.measureText(ch.text).width + 56;
+      rrect(cx, y, w, 72, 36); g.fillStyle = ch.fill ? (ch.color || C.ochre) : "rgba(255,255,255,0.04)"; g.fill();
+      if (!ch.fill) { g.strokeStyle = C.contour; g.lineWidth = 3; g.stroke(); }
+      g.fillStyle = ch.fill ? C.slate : C.snow; g.fillText(ch.text, cx + 28, y + 49);
+      cx += w + 16;
+    });
+  }
+  // podnožje
+  g.fillStyle = C.contour; g.fillRect(X, H - 170, MW, 2);
+  font(700, 44, DISP); g.fillStyle = C.snow; g.letterSpacing = "3px"; g.fillText("MOJE TRKE", X, H - 100); g.letterSpacing = "0px";
+  font(500, 30, BODY); g.fillStyle = C.grey; g.fillText(t.shareFoot.replace(/^Moje trke · /, ""), X, H - 56);
+  const get = t.shareGet; font(700, 32, BODY); const gw = g.measureText(get).width + 56;
+  rrect(W - X - gw, H - 135, gw, 76, 38); g.fillStyle = C.ochre; g.fill();
+  g.fillStyle = C.slate; g.fillText(get, W - X - gw + 28, H - 85);
+  return c.toDataURL("image/png");
+}
+
+async function shareImage(dataUrl, name, text) {
+  const b64 = dataUrl.split(",")[1];
+  if (typeof window !== "undefined" && window.__nativeShareImage) return window.__nativeShareImage(name, b64, text);
+  const blob = await (await fetch(dataUrl)).blob();
+  const file = typeof File !== "undefined" ? new File([blob], name, { type: "image/png" }) : null;
+  if (file && navigator.canShare && navigator.canShare({ files: [file] })) return navigator.share({ files: [file], text });
+  const a = document.createElement("a");
+  a.href = dataUrl; a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  return "downloaded";
+}
+
+function ShareSheet({ card, onClose, onError }) {
+  const t = useT();
+  const [url, setUrl] = useState("");
+  const ref = useRef(null);
+  useEffect(() => {
+    let alive = true;
+    makeShareImage(card, t).then((u) => alive && setUrl(u)).catch(() => alive && onError());
+    return () => { alive = false; };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  useEffect(() => {
+    ref.current?.focus();
+    const esc = (e) => {
+      if (e.key !== "Escape") return;
+      const all = document.querySelectorAll('[aria-modal="true"]');
+      if (all[all.length - 1] === ref.current) onClose();
+    };
+    window.addEventListener("keydown", esc);
+    return () => window.removeEventListener("keydown", esc);
+  }, [onClose]);
+  const go = async () => {
+    try { await shareImage(url, card.file, `${card.text}\n${PLAY_URL}`); onClose(); }
+    catch (e) { if (!/cancel|abort/i.test(String((e && e.message) || e))) onError(); }
+  };
+  return (
+    <div className="overlay overlay-sheet" onMouseDown={(e) => e.target === e.currentTarget && onClose()}>
+      <div className="modal modal-sheet share-sheet" role="dialog" aria-modal="true" aria-labelledby="sh-h" tabIndex={-1} ref={ref} data-testid="share-sheet">
+        <header className="mf-head">
+          <h2 id="sh-h" className="modal-h">{t.shareH}</h2>
+          <button type="button" className="icon-btn" onClick={onClose} aria-label={t.close} data-testid="share-close">
+            <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" /></svg>
+          </button>
+        </header>
+        <div className="mf-body share-body">
+          {url ? <img className="share-img" src={url} alt={card.text} data-testid="share-img" /> : <div className="share-wait">{t.shareMaking}</div>}
+          <p className="hint">{t.shareHint}</p>
+        </div>
+        <footer className="mf-foot">
+          <button type="button" className="btn btn-outline" onClick={onClose}>{t.cancel}</button>
+          <button type="button" className="btn btn-primary" onClick={go} disabled={!url} data-testid="share-go">
+            <ShareIco /> {t.share}
+          </button>
+        </footer>
+      </div>
+    </div>
+  );
+}
+
+const ShareIco = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+    <circle cx="18" cy="5" r="2.6" fill="none" stroke="currentColor" strokeWidth="2" /><circle cx="6" cy="12" r="2.6" fill="none" stroke="currentColor" strokeWidth="2" /><circle cx="18" cy="19" r="2.6" fill="none" stroke="currentColor" strokeWidth="2" />
+    <path d="M8.3 10.8l7.4-4.2M8.3 13.2l7.4 4.2" stroke="currentColor" strokeWidth="2" />
+  </svg>
+);
+
+// Kartica za trku (sledeća trka / detalji / rezultat).
+function raceShareCard(race, entry, t, lang) {
+  const away = daysUntil(race.date);
+  const cc = countryOf(race);
+  let when = "";
+  try { when = parseDate(race.date).toLocaleDateString(lang === "sr" ? "sr-Latn-RS" : "en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }); } catch { when = race.date; }
+  when = when.charAt(0).toUpperCase() + when.slice(1);
+  const status = entry?.status;
+  const res = entry?.result;
+  const maxKm = race.distances.length ? Math.max(...race.distances.map((x) => x.km)) : 0;
+  const fmtKm = (k) => Number(Number(k).toFixed(1)).toLocaleString(lang === "sr" ? "sr-Latn-RS" : "en-GB");
+  const { steepness } = raceLook(race);
+  const chips = [{ text: race.type === "trail" ? t.tagTrail : t.tagCity }];
+  let title, big, text;
+  if (res) {
+    title = t.shareResult;
+    big = { value: fmtSecs(res.secs), unit: `${fmtKm(res.km)} km · ${pace(res.secs, res.km)}`, size: 170, accent: "var" };
+    if (res.place) chips.push({ text: t.placeShort(res.place) });
+    text = t.shareTextRes(race.name, fmtSecs(res.secs));
+  } else {
+    title = status === "registered" ? t.shareNext : t.shareRace;
+    big = away > 0 ? { value: away, unit: t.shareDays(away) } : { value: "0", unit: t.shareToday };
+    if (maxKm) chips.push({ text: `${fmtKm(maxKm)} km` });
+    if (status) chips.push({ text: `✓ ${t[STATUS_KEY[status]]}`, fill: true });
+    text = t.shareTextNext(race.name, away > 0 ? `${t.inDays(away)}` : t.shareToday);
+  }
+  if (big.accent === "var") big.accent = null;
+  return {
+    kind: "race", file: "moje-trke-trka.png", title, name: race.name, when,
+    where: `${flagOf(cc)} ${race.city === "—" ? "" : race.city + ", "}${countryName(cc, lang)}`,
+    big: res ? { ...big, accent: getComputedStyle(document.querySelector(".app") || document.documentElement).getPropertyValue("--teal").trim() || "#46B6A6" } : big,
+    chips, text, ridge: ridgeline(race.id, steepness),
+  };
+}
+
+/* --------------------------- utisak (feedback) --------------------------- */
+
+const FEEDBACK_TO = "srdjanstojnic@gmail.com";
+
+function Feedback({ onSent, onClose }) {
+  const t = useT();
+  const lang = useLang();
+  const [rate, setRate] = useState(0);
+  const [kind, setKind] = useState("");
+  const [text, setText] = useState("");
+  const [err, setErr] = useState("");
+
+  useEffect(() => {
+    const esc = (e) => {
+      if (e.key !== "Escape") return;
+      const all = document.querySelectorAll('[aria-modal="true"]');
+      const me = all[all.length - 1];
+      if (me && me.getAttribute("data-testid") === "feedback") onClose();
+    };
+    window.addEventListener("keydown", esc);
+    return () => window.removeEventListener("keydown", esc);
+  }, [onClose]);
+
+  const submit = () => {
+    if (!text.trim()) return setErr(t.errFb);
+    const lines = [
+      text.trim(),
+      "",
+      "—",
+      rate ? `${t.fbRate} ${"★".repeat(rate)}${"☆".repeat(5 - rate)} (${rate}/5)` : "",
+      kind ? `${t.fbType} ${t.fbTypes[kind]}` : "",
+      `Jezik: ${lang} · ${new Date().toISOString().slice(0, 10)}`,
+    ].filter((x, i) => x !== "" || i === 1);
+    const subj = `${t.fbSubject}${kind ? ` (${t.fbTypes[kind]})` : ""}`;
+    const url = `mailto:${FEEDBACK_TO}?subject=${encodeURIComponent(subj)}&body=${encodeURIComponent(lines.join("\n"))}`;
+    try { window.location.href = url; } catch {}
+    onSent();
+  };
+
+  const footer = (
+    <>
+      <button type="button" className="btn btn-outline" onClick={onClose}>{t.cancel}</button>
+      <button type="button" className="btn btn-primary" onClick={submit} data-testid="fb-send">{t.fbSend}</button>
+    </>
+  );
+
+  return (
+    <FormSheet titleId="fb-h" title={t.fbH} onClose={onClose} onSubmit={submit} footer={footer} testid="feedback">
+      <p className="req-note">{t.fbIntro}</p>
+      <div className="fld">
+        <span className="lab">{t.fbRate}</span>
+        <div className="stars" role="radiogroup" aria-label={t.fbRate}>
+          {[1, 2, 3, 4, 5].map((n) => (
+            <button key={n} type="button" role="radio" aria-checked={rate === n} aria-label={t.fbRateAria(n)}
+              className={`star${n <= rate ? " star-on" : ""}`} onClick={() => setRate(rate === n ? 0 : n)} data-testid={`fb-star-${n}`}>
+              <svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="M12 3.2l2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.8 6.6 19.7l1.2-6-4.5-4.2 6.1-.7z" fill="currentColor" /></svg>
+            </button>
+          ))}
+        </div>
+      </div>
+      <div className="fld fb-kind">
+        <span className="lab">{t.fbType}</span>
+        <div className="fb-chips">
+          {Object.entries(t.fbTypes).map(([k, label]) => (
+            <button key={k} type="button" className="fb-chip" aria-pressed={kind === k} onClick={() => setKind(kind === k ? "" : k)} data-testid={`fb-kind-${k}`}>{label}</button>
+          ))}
+        </div>
+      </div>
+      <div className="fld">
+        <label className="lab" htmlFor="fb-text">{t.fbText} <Req /></label>
+        <textarea id="fb-text" className={`input r-note${err ? " input-bad" : ""}`} rows={5} maxLength={2000} value={text}
+          onChange={(e) => { setText(e.target.value); if (err) setErr(""); }} placeholder={t.fbTextPh} data-testid="fb-text" />
+        {err && <p className="err" role="alert" data-testid="fb-err">{err}</p>}
+        <span className="hint">{t.fbNote}</span>
+      </div>
+    </FormSheet>
   );
 }
 
@@ -3025,6 +3378,8 @@ export default function App() {
   const [tab, setTab] = useState("home");
   const [onb, setOnb] = useState(false);
   const [showNew, setShowNew] = useState(false);
+  const [showFb, setShowFb] = useState(false);
+  const [shareCard, setShareCard] = useState(null);
   const [newSeen, setNewSeen] = useState(true);
   const [homeCC, setHomeCC] = useState("RS");
   const [wiping, setWiping] = useState(false);
@@ -3244,6 +3599,8 @@ export default function App() {
     try { window.storage.set(NEW_KEY, "1").catch(() => {}); } catch {}
   }, []);
   const closeNew = useCallback(() => setShowNew(false), []);
+  const closeFb = useCallback(() => setShowFb(false), []);
+  const closeShare = useCallback(() => setShareCard(null), []);
   const finishOnb = useCallback(() => {
     setOnb(false);
     try { window.storage.set(ONB_KEY, "1").catch(() => {}); } catch {}
@@ -3570,6 +3927,8 @@ export default function App() {
             onStats={() => goTab("stats")}
             onNew={openNew}
             newSeen={newSeen}
+            onFeedback={() => setShowFb(true)}
+            onShare={setShareCard}
           />
         </main>
       )}
@@ -3653,10 +4012,7 @@ export default function App() {
 
       {tab === "stats" && (
         <main className="main main-tab">
-          <StatsTab races={races} tracking={state.tracking} onOpen={setDetailId} onFind={findRaces}>
-            <button type="button" className="btn btn-outline det-wide onb-again" onClick={() => setOnb(true)} data-testid="onb-again">
-              {t.onbAgain}
-            </button>
+          <StatsTab races={races} tracking={state.tracking} onOpen={setDetailId} onFind={findRaces} onShare={setShareCard}>
             <div className="backup-zone" data-testid="backup-zone">
               <div className="dz-text">
                 <h2 className="bz-h">{t.backupTitle}</h2>
@@ -3702,9 +4058,11 @@ export default function App() {
         <WhatsNew
           onGuide={() => { setShowNew(false); setOnb(true); }}
           onStats={() => { setShowNew(false); goTab("stats"); }}
+          onFeedback={() => { setShowNew(false); setShowFb(true); }}
           onClose={closeNew}
         />
       )}
+      {showFb && <Feedback onSent={() => { setShowFb(false); setToast("toastFb"); }} onClose={closeFb} />}
       {onb && <Onboarding raceCount={races.length} countryCount={countryChips.length} onDone={finishOnb} onLang={switchLang} />}
 
       {wiping && (
@@ -3726,6 +4084,7 @@ export default function App() {
           onEdit={setEditing}
           onLog={setLogId}
           onClose={closeDetail}
+          onShare={setShareCard}
         />
       )}
       {logId && races.find((r) => r.id === logId) && (
@@ -3764,6 +4123,7 @@ export default function App() {
           onClose={() => setImporting(null)}
         />
       )}
+      {shareCard && <ShareSheet card={shareCard} onClose={closeShare} onError={() => { setShareCard(null); setToast("errShare"); }} />}
       {toast && (
         <div className="toast" role="status" data-testid="toast">
           {Array.isArray(toast) ? t[toast[0]](toast[1]) : t[toast] || toast}
@@ -4502,4 +4862,29 @@ select.input option { font-style: normal; color: initial; }
 .new-ico { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--ochre); background: rgba(224,166,60,.12); border: 1.5px solid rgba(224,166,60,.4); }
 .app .new-h { font-family: var(--disp); font-size: 26px; font-weight: 600; line-height: 1.1; }
 .app .new-p { font-size: 15px; line-height: 1.5; color: #C5D5E1; margin-bottom: 4px; }
+
+/* uvod ne ide ispod AdMob banera */
+.onb { bottom: var(--ad-h, 0px); }
+
+/* utisak */
+.fb-row { border-color: var(--contour); background: var(--panel); }
+.fb-row .new-row-ico { color: var(--ochre); background: rgba(224,166,60,.12); }
+.app .tab-pane > .fb-row { margin-top: -16px; }
+.stars { display: flex; gap: 6px; }
+.star { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; border: 0; background: none; color: #3E546A; cursor: pointer; border-radius: 10px; -webkit-appearance: none; appearance: none; }
+.star-on { color: var(--ochre); }
+.fb-kind { margin-top: 18px; }
+.fb-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.fb-chip { min-height: 40px; padding: 6px 14px; border-radius: 999px; border: 1.5px solid #4A6680; background: transparent; color: var(--snow); font-family: var(--body); font-size: 14.5px; cursor: pointer; -webkit-appearance: none; appearance: none; }
+.fb-chip[aria-pressed="true"] { background: var(--ochre); border-color: var(--ochre); color: #1B1405; font-weight: 700; }
+#fb-text { margin-top: 0; }
+.mf-body > .fld + .fld { margin-top: 18px; }
+
+/* deljenje */
+.share-icon-btn { flex: 0 0 var(--tap) !important; width: var(--tap); padding: 0; }
+.sec-link { display: inline-flex; align-items: center; gap: 6px; }
+.share-body { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+.share-img { width: 100%; max-width: 360px; max-height: 52dvh; object-fit: contain; border-radius: 14px; border: 1px solid var(--contour); box-shadow: 0 14px 40px rgba(0,0,0,.45); }
+.share-wait { width: 100%; max-width: 360px; aspect-ratio: 4 / 5; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #B7C9D6; background: linear-gradient(90deg, var(--panel), var(--panel-2), var(--panel)); background-size: 200% 100%; animation: sweep 1.3s linear infinite; }
+.share-sheet .hint { text-align: center; }
 `;

@@ -149,6 +149,12 @@ function androidShell(shell) {
         return SH.share({ title: name, files: [r.uri], dialogTitle: name });
       });
     };
+    // Slika za društvene mreže: base64 PNG → keš → sistemski „Deli”.
+    window.__nativeShareImage = function (name, b64, text) {
+      return FS.writeFile({ path: name, data: b64, directory: "CACHE" }).then(function (r) {
+        return SH.share({ title: "Moje trke", text: text, files: [r.uri], dialogTitle: "Moje trke" });
+      });
+    };
   }
   var setH = function (h) { document.documentElement.style.setProperty("--ad-h", (h || 0) + "px"); };
   if (AD) {
