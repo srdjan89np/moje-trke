@@ -315,8 +315,7 @@ html[lang=sr] [data-l=en], html[lang=en] [data-l=sr]{display:none!important}
     var q=new URLSearchParams(location.search).get('lang');
     if(q==='sr'||q==='en') return q;
     try{var s=localStorage.getItem('mt-lang'); if(s) return s;}catch(e){}
-    var l=(navigator.languages&&navigator.languages[0])||navigator.language||'sr';
-    return SR.test(l)?'sr':'en';
+    return 'sr';
   }
   var cap={
     sr:['Tvoja sledeća trka na prvom ekranu','900+ trka iz više od 40 zemalja','Trail ili asfalt — filtriraj za sekund','Označi trku — stiže podsetnik','Tvoja statistika i lični rekordi','Upiši vreme, obori lični rekord','Podeli sezonu sa prijateljima','Dodaj svoju trku za par sekundi'],
