@@ -59,8 +59,8 @@ h1 em{font-style:normal;color:var(--ochre)}
 .lead{color:var(--muted);font-size:1.15rem;max-width:34em;margin:0 0 26px}
 .cta{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
 .small{color:var(--muted);font-size:.88rem;margin-top:14px}
-.phone{justify-self:center;width:min(330px,80vw);transform:rotate(2deg)}
-.phone img{width:100%;aspect-ratio:9/16;border-radius:26px;border:1px solid var(--contour);box-shadow:0 30px 80px rgba(0,0,0,.55)}
+.phone{justify-self:center;width:min(280px,70vw);transform:rotate(2deg)}
+.phone img{width:100%;height:auto;aspect-ratio:9/16;border-radius:26px;border:1px solid var(--contour);box-shadow:0 30px 80px rgba(0,0,0,.55)}
 
 .stats{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:44px}
 .stat{background:var(--panel);border:1px solid var(--contour);border-radius:var(--r);padding:18px 18px 16px}
@@ -83,7 +83,7 @@ h2{font-size:clamp(1.6rem,3.2vw,2.3rem);margin:0 0 10px;letter-spacing:-.01em}
 
 .shots-sec{background:var(--slate);border-block:1px solid var(--contour)}
 .shots{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 20px 18px;margin:0 -20px;scrollbar-width:thin;scrollbar-color:var(--contour) transparent}
-.shots img{flex:none;width:230px;aspect-ratio:9/16;border-radius:20px;scroll-snap-align:start;border:1px solid var(--contour);background:var(--panel)}
+.shots img{flex:none;width:180px;height:auto;aspect-ratio:9/16;object-fit:cover;border-radius:20px;scroll-snap-align:start;border:1px solid var(--contour);background:var(--panel)}
 .arrows{display:flex;gap:8px;margin-left:auto}
 .arrows button{width:42px;height:42px;border-radius:12px;border:1px solid var(--contour);background:var(--panel);color:var(--snow);cursor:pointer;font-size:1.2rem}
 .arrows button:hover{border-color:var(--ochre)}
@@ -116,7 +116,7 @@ html[lang=sr] [data-l=en], html[lang=en] [data-l=sr]{display:none!important}
 
 @media (max-width:900px){
   .hero .grid{grid-template-columns:1fr}
-  .phone{width:min(260px,70vw);transform:none}
+  .phone{width:min(220px,60vw);transform:none}
   .features,.steps{grid-template-columns:1fr 1fr}
   .stats{grid-template-columns:1fr 1fr}
   .nav nav a.hide-m{display:none}
@@ -127,7 +127,7 @@ html[lang=sr] [data-l=en], html[lang=en] [data-l=sr]{display:none!important}
   .hero{padding:36px 0 24px}
   .features,.steps{grid-template-columns:1fr}
   section{padding:52px 0}
-  .shots img{width:190px}
+  .shots img{width:150px}
   .arrows{display:none}
   .btn{width:100%;justify-content:center}
 }
