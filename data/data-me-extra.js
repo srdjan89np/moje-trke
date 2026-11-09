@@ -8,4 +8,6 @@ module.exports = [
   ["bokeski-maraton", "Bokeški maraton", "Tivat, Boka Kotorska", "ME", "city", "2026-12-13", [[42.195,0],[21.097,0]]],
   // --- Nedeljno ažuriranje 26.10.2026 ---
   ["ostroski-polumaraton-2027", "Ostroški polumaraton", "Nikšić", "ME", "city", "2027-04-11", [[21.097,0],[9,0]]],
+  // --- Nedeljno ažuriranje 9.11.2026 ---
+  ["durmitor-trail-run-2027", "Durmitor Trail Run", "Žabljak", "ME", "trail", "2027-07-03", [[100,4642],[50,2720]]],
 ];

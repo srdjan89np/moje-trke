@@ -88,4 +88,8 @@ module.exports = [
   ["7-ur-slivnice-2027", "7 ur Slivnice (trka na 7 sati)", "Cerknica", "SI", "trail", "2027-02-20", []],
   ["mali-kraski-maraton-2027", "Mali kraški maraton", "Sežana", "SI", "city", "2027-03-21", [[21.097,0]]],
   ["kras-trail-2027", "Kras Trail", "Senožeče", "SI", "trail", "2027-03-27", [[52,2000],[29,1100],[10,200]]],
+  // --- Nedeljno ažuriranje 9.11.2026 ---
+  ["caven-vertikal-trail-2026", "Čaven Vertikal & Trail", "Lokavec", "SI", "trail", "2026-11-21", [[4.3,0],[17,0],[24,0]]],
+  ["svinjskih-e7-trail-2027", "Svinjskih E7 – Trail", "Podčetrtek", "SI", "trail", "2027-09-04", [[3,400]]],
+  ["ljubljanski-maraton-2027", "NLB Ljubljanski maraton", "Ljubljana", "SI", "city", "2027-10-17", [[42.195,0],[21.097,0],[10,0]]],
 ];
