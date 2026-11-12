@@ -4708,7 +4708,7 @@ select.input option { font-style: normal; color: initial; }
   /* forma preko celog ekrana, visina prati tastaturu */
   .overlay-form { padding: 0; align-items: flex-start; }
   .modal-form { max-width: none; width: 100%; border-radius: 0; border: 0;
-    height: var(--form-h, 100dvh); max-height: none; margin-top: var(--form-top, 0px); animation: fade .18s ease; }
+    height: var(--form-h, calc(100dvh - var(--ad-h, 0px))); max-height: none; margin-top: var(--form-top, 0px); animation: fade .18s ease; }
   .mf-body { padding: 16px 16px 28px; }
   .mf-head { padding: 12px 8px 12px 16px; }
   .mf-foot { padding: 10px 16px; padding-bottom: max(10px, env(safe-area-inset-bottom)); }
@@ -4779,7 +4779,7 @@ select.input option { font-style: normal; color: initial; }
 .r-note { min-height: 88px; resize: vertical; line-height: 1.45; font-family: var(--body); }
 .pace-out { font-size: 18px; }
 @media (min-width: 621px) {
-  .modal-detail { max-width: 560px; height: min(90vh, 900px); }
+  .modal-detail { max-width: 560px; height: min(90vh, 900px); max-height: calc(100dvh - var(--ad-h, 0px) - 32px); }
 }
 @media (max-width: 620px) {
   .overlay-detail { background: var(--slate); }
