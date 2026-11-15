@@ -334,7 +334,6 @@ module.exports = {
   "karlovacki-smer-2026": "https://docs.google.com/forms/d/e/1FAIpQLSfbIYOK5dhkQo4KweIqHxKNnHC-O5bBpD7gYPr2rjoTKoHOaw/viewform",
   "lovcen-skyrace-2026": "https://trci.rs/kalendar-trka/lovcen-skyrace/2026/",
   "adria-motion-2026": "https://www.avaibooksports.com/inscripcion/adria-motion-2026/",
-  "ktj-trail-stafeta-2027": "https://www.serbiarun.rs/2027/3-ktj-trejl-stafeta/register",
   "viking-challenge-decija-trka-2026": "https://trka.rs/events/827-viking-challenge-trail-2026/",
   "halloween-family-race-sarajevo-2026": "https://ontime-timing.com/?p=2890",
   "bokeska-milja-2026": "https://bokamarathon.com/en/trka/bokeska-milja/",

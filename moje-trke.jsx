@@ -81,7 +81,7 @@ const countryOf = (race) => race.country || REGIONS[race.region]?.c || "RS";
 // ako je noviji od ugrađenog (SEED_GENERATED). Bez mreže ostaje poslednji sačuvani ili ugrađeni.
 const REMOTE_URL = "https://raw.githubusercontent.com/srdjan89np/moje-trke/main/races.json";
 const REMOTE_KEY = "trke-kalendar-v1";
-const SEED_GENERATED = "2026-11-15T10:00:05Z";
+const SEED_GENERATED = "2026-11-15T10:03:52Z";
 
 function cleanRemote(data) {
   if (!data || typeof data.generated !== "string" || !Array.isArray(data.races)) return null;
@@ -692,7 +692,6 @@ const SEED_RACES = [
   {"id":"zg-winter-classic-2027","name":"Zagreb Winter Classic","city":"Zagreb","country":"HR","type":"city","date":"2027-01-31","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://www.utrka.com/utrke/winterclasicc/2027/"},
   {"id":"zimski-nocni-polumaraton-2027","name":"10. Zimski noćni polumaraton","city":"Beograd","country":"RS","type":"city","date":"2027-02-06","distances":[{"km":21.1,"gain":0},{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://runtrace.net/10znp/reg"},
   {"id":"northern-light-run-2027","name":"The Northern Light Run","city":"Rejkjavik","country":"IS","type":"city","date":"2027-02-06","distances":[{"km":5,"gain":0}]},
-  {"id":"ktj-trail-stafeta-2027","name":"3. KTJ Trail štafeta (2 × 5 km)","city":"Fruška gora","country":"RS","type":"trail","date":"2027-02-07","distances":[{"km":5,"gain":0}],"reg":"https://www.serbiarun.rs/2027/3-ktj-trejl-stafeta/register"},
   {"id":"izl-tupljak-2027","name":"Istarska zimska liga – 7. kolo Tupljak","city":"Tupljak","country":"HR","type":"trail","date":"2027-02-07","distances":[],"reg":"https://trickeri.org/"},
   {"id":"ktj-stafeta-2027","name":"KTJ trejl štafeta","city":"Fruška gora, Planinarski dom Jedinstvo","country":"RS","type":"trail","date":"2027-02-07","distances":[{"km":5,"gain":0}],"reg":"https://www.serbiarun.rs/2027/3-ktj-trejl-stafeta/register"},
   {"id":"maga-circe-2027","name":"Maratona Maga Circe","city":"Sabaudia","country":"IT","type":"city","date":"2027-02-07","distances":[{"km":42.195,"gain":0},{"km":10.6,"gain":0}],"reg":"https://worldsmarathons.com/it/marathon/maga-circe-marathon"},

@@ -262,7 +262,6 @@ module.exports = [
   ["karlovacki-smer-2026", "Karlovački smer", "Sremski Karlovci", "RS", "trail", "2026-11-21", [[11,400]]],
   ["lovcen-skyrace-2026", "Lovćen Skyrace", "Kotor", "ME", "trail", "2026-11-28", [[30,2222]]],
   ["adria-motion-2026", "Adria Motion", "Budva", "ME", "city", "2026-12-27", [[10,0],[5,0]]],
-  ["ktj-trail-stafeta-2027", "3. KTJ Trail štafeta (2 × 5 km)", "Fruška gora", "RS", "trail", "2027-02-07", [[5,0]]],
   ["viking-challenge-decija-trka-2026", "Viking Challenge Trail – Dečja trka", "Stražilovo (Fruška gora)", "RS", "trail", "2026-10-24", [[1,0]]],
   ["halloween-family-race-sarajevo-2026", "Halloween Family Race (dečja trka)", "Sarajevo", "BA", "city", "2026-10-31", [[1,0],[0.2,0]]],
   ["bokeska-milja-2026", "Bokeška milja (dečja trka)", "Tivat", "ME", "city", "2026-12-12", [[1.6,0],[1.2,0],[0.8,0],[0.4,0]]],
