@@ -1196,7 +1196,7 @@ const STR = {
     importInfo: (n, c, d) => `Fajl sadrži oznake za ${n} ${srPl(n, "trku", "trke", "trka")} i ${c} ${srPl(c, "tvoju trku", "tvoje trke", "tvojih trka")}${d ? ` (sačuvano ${d})` : ""}.`,
     importHow: "„Spoji” dodaje podatke iz fajla uz postojeće. „Zameni sve” briše sadašnje podatke i ostavlja samo one iz fajla.",
     importMerge: "Spoji", importReplace: "Zameni sve",
-    toastExported: "Rezervna kopija je sačuvana.", toastImported: "Podaci su uvezeni.",
+    toastExported: "Rezervna kopija je sačuvana.", toastExportedDocs: "Rezervna kopija je sačuvana u telefonu: Dokumenti › Moje trke.", toastImported: "Podaci su uvezeni.",
     errImport: "Ovaj fajl nije rezervna kopija aplikacije Moje trke.", errExport: "Izvoz nije uspeo. Pokušaj ponovo.",
     nothingToWipe: "Nemaš ništa sačuvano — nema šta da se obriše.",
     wipeCount: (n) => `Brišeš oznake i vremena za ${n} ${n === 1 ? "trku" : "trka"}, zajedno sa trkama koje si sam dodao i ispravkama koje si uneo.`,
@@ -1348,7 +1348,7 @@ const STR = {
     importInfo: (n, c, d) => `The file has marks for ${n} ${n === 1 ? "race" : "races"} and ${c} ${c === 1 ? "race" : "races"} you added${d ? ` (saved ${d})` : ""}.`,
     importHow: "“Merge” adds the file's data to what you have. “Replace all” erases your current data and keeps only the file's.",
     importMerge: "Merge", importReplace: "Replace all",
-    toastExported: "Backup saved.", toastImported: "Data imported.",
+    toastExported: "Backup saved.", toastExportedDocs: "Backup saved on your phone: Documents › Moje trke.", toastImported: "Data imported.",
     errImport: "This file is not a Moje trke backup.", errExport: "Export failed. Please try again.",
     nothingToWipe: "Nothing saved yet — nothing to erase.",
     wipeCount: (n) => `This erases marks and times for ${n} ${n === 1 ? "race" : "races"}, along with races you added and corrections you made.`,
@@ -1548,9 +1548,22 @@ function mergeStates(a, b) {
   };
 }
 
-// Android: window.__nativeExport (shell) upiše fajl i otvori „Deli”; u pregledaču se fajl preuzima.
+// Android: window.__nativeSaveFile (shell) upiše fajl u Dokumenti › Moje trke na telefonu;
+// ako to ne uspe, window.__nativeExport otvori „Deli”. U pregledaču se fajl preuzima.
+// Vraća "saved" (fajl je na uređaju) ili "shared".
 async function saveBackupFile(name, text) {
-  if (typeof window !== "undefined" && window.__nativeExport) return window.__nativeExport(name, text);
+  if (typeof window !== "undefined" && window.__nativeSaveFile) {
+    try {
+      await window.__nativeSaveFile(name, text);
+      return "saved";
+    } catch (e) {
+      if (!window.__nativeExport) throw e;
+    }
+  }
+  if (typeof window !== "undefined" && window.__nativeExport) {
+    await window.__nativeExport(name, text);
+    return "shared";
+  }
   const url = URL.createObjectURL(new Blob([text], { type: "application/json" }));
   const a = document.createElement("a");
   a.href = url;
@@ -1559,6 +1572,7 @@ async function saveBackupFile(name, text) {
   a.click();
   a.remove();
   setTimeout(() => URL.revokeObjectURL(url), 2000);
+  return "saved";
 }
 
 // A saved correction replaces the seeded guess and retires the "nepotvrđeno" flag.
@@ -3726,8 +3740,8 @@ export default function App() {
     const d = new Date();
     const day = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
     try {
-      await saveBackupFile(`moje-trke-rezervna-kopija-${day}.json`, buildBackup(state));
-      setToast("toastExported");
+      const how = await saveBackupFile(`moje-trke-rezervna-kopija-${day}.json`, buildBackup(state));
+      setToast(how === "saved" && typeof window !== "undefined" && window.__nativeSaveFile ? "toastExportedDocs" : "toastExported");
     } catch (e) {
       // Zatvoren prozor „Deli” nije greška.
       if (!/cancel/i.test(String((e && e.message) || e))) setToast("errExport");
