@@ -81,7 +81,7 @@ const countryOf = (race) => race.country || REGIONS[race.region]?.c || "RS";
 // ako je noviji od ugrađenog (SEED_GENERATED). Bez mreže ostaje poslednji sačuvani ili ugrađeni.
 const REMOTE_URL = "https://raw.githubusercontent.com/srdjan89np/moje-trke/main/races.json";
 const REMOTE_KEY = "trke-kalendar-v1";
-const SEED_GENERATED = "2026-11-09T11:20:41Z";
+const SEED_GENERATED = "2026-11-15T10:00:05Z";
 
 function cleanRemote(data) {
   if (!data || typeof data.generated !== "string" || !Array.isArray(data.races)) return null;
@@ -573,6 +573,7 @@ const SEED_RACES = [
   {"id":"olympia-marathon-2026","name":"Olympia Marathon","city":"Olimpija","country":"GR","type":"city","date":"2026-11-29","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0},{"km":10,"gain":0}]},
   {"id":"orange-day-family-run-2026","name":"Orange Day Family Run","city":"Banja Luka","country":"BA","type":"city","date":"2026-11-29","distances":[{"km":5,"gain":0}],"reg":"https://forms.gle/eh3nNu8E7qe1x5A17"},
   {"id":"stafetni-tek-sv-barbare-2026","name":"Štafetni tek Sv. Barbare (štafeta 3×2,4 km)","city":"Velenje","country":"SI","type":"city","date":"2026-11-29","distances":[{"km":7.2,"gain":0}],"reg":"https://protime.si/dogodek/20-stafetni-tek-sv-barbare/"},
+  {"id":"timok-run-za-lazu-2026","name":"Timok Run za Lazu","city":"Knjaževac","country":"RS","type":"city","date":"2026-11-29","distances":[{"km":5,"gain":0}],"reg":"https://trka.rs/events/994-timok-run-za-lazu/"},
   {"id":"zapad-fg","name":"Zapad Fruške gore","city":"Grgurevci","country":"RS","type":"trail","date":"2026-11-29","distances":[]},
   {"id":"memorijalno-trcanje-12-za-11-2026","name":"Memorijalno trčanje 12 za 11","city":"Velika","country":"HR","type":"trail","date":"2026-12-02","distances":[{"km":20,"gain":0},{"km":11,"gain":0}]},
   {"id":"policnik-djecje-utrke-2026","name":"29. Atletska utrka Poličnik – Dječje utrke","city":"Poličnik","country":"HR","type":"city","date":"2026-12-05","distances":[{"km":0.5,"gain":0},{"km":0.4,"gain":0},{"km":0.3,"gain":0},{"km":0.2,"gain":0},{"km":0.1,"gain":0}],"reg":"https://running.hr/raspis/29-atletska-utrka-policnik-2026"},
@@ -765,6 +766,7 @@ const SEED_RACES = [
   {"id":"stramilano-2027","name":"Stramilano","city":"Milano","country":"IT","type":"city","date":"2027-03-21","distances":[{"km":21.097,"gain":0},{"km":10,"gain":0},{"km":5,"gain":0}]},
   {"id":"swansea-half-2027","name":"Swansea Half Marathon","city":"Svonsi, Vels","country":"GB","type":"city","date":"2027-03-21","distances":[{"km":21.097,"gain":0}]},
   {"id":"zagreb21-2027","name":"ZAGREB21 — proljetni polumaraton","city":"Zagreb","country":"HR","type":"city","date":"2027-03-21","distances":[{"km":21.097,"gain":0}],"reg":"https://www.utrka.com/utrke/zg21/2027/"},
+  {"id":"becejska-desetka-2027","name":"10. Bečejska desetka","city":"Bečej","country":"RS","type":"city","date":"2027-03-27","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://trka.rs/events/986-10-becejska-desetka/"},
   {"id":"kras-trail-2027","name":"Kras Trail","city":"Senožeče","country":"SI","type":"trail","date":"2027-03-27","distances":[{"km":52,"gain":2000},{"km":29,"gain":1100},{"km":10,"gain":200}],"reg":"https://krastrail.si/en/"},
   {"id":"istria-100-utmb-2027","name":"Istria 100 by UTMB","city":"Istra","country":"HR","type":"trail","date":"2027-04-01","distances":[],"reg":"https://istria.utmb.world/"},
   {"id":"runtalya-2027","name":"Runtalya Marathon","city":"Antalija","country":"TR","type":"city","date":"2027-04-02","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0}]},
@@ -858,6 +860,7 @@ const SEED_RACES = [
   {"id":"transvulcania-2027","name":"Transvulcania","city":"La Palma","country":"ES","type":"trail","date":"2027-05-06","distances":[{"km":73,"gain":0}],"reg":"https://transvulcania.com"},
   {"id":"helsinki-city-running-2027","name":"Helsinki City Running","city":"Helsinki","country":"FI","type":"city","date":"2027-05-07","distances":[{"km":63.3,"gain":0},{"km":42.195,"gain":0},{"km":21.097,"gain":0},{"km":5,"gain":0}]},
   {"id":"trail-haute-provence-2027","name":"Trail de Haute Provence","city":"Forkalkje","country":"FR","type":"trail","date":"2027-05-07","distances":[{"km":160,"gain":7000},{"km":120,"gain":5500},{"km":80,"gain":3400},{"km":50,"gain":1700},{"km":20,"gain":800}],"reg":"https://mythp.fr/thp-summer/"},
+  {"id":"iron-ultra-trail-2027","name":"3. Iron Ultra Trail","city":"Medvednik, Valjevo","country":"RS","type":"trail","date":"2027-05-08","distances":[],"reg":"https://trka.rs/events/984-3-iron-ultra-trail/"},
   {"id":"corfu-mountain-trail-2027","name":"Corfu Mountain Trail","city":"Krf","country":"GR","type":"trail","date":"2027-05-08","distances":[{"km":103,"gain":4200},{"km":44,"gain":2200},{"km":24,"gain":1200},{"km":12,"gain":300}]},
   {"id":"ing-night-marathon-2027","name":"ING Night Marathon Luxembourg","city":"Luksemburg","country":"LU","type":"city","date":"2027-05-08","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0},{"km":5,"gain":0},{"km":4.2,"gain":0}],"reg":"https://www.ing-night-marathon.lu/"},
   {"id":"ironman-703-alcudia-2027","name":"IRONMAN 70.3 Alcúdia-Mallorca","city":"Alkudija, Majorka","country":"ES","type":"city","date":"2027-05-08","distances":[{"km":113,"gain":0}]},
@@ -909,6 +912,7 @@ const SEED_RACES = [
   {"id":"dva-slapa-2027","name":"Polumaraton Dva slapa","city":"Ljubuški","country":"BA","type":"city","date":"2027-05-29","distances":[{"km":21.1,"gain":0},{"km":10.4,"gain":0}],"reg":"https://gb3timing.com/dogadjaj/ljubuski-outdoor-festival-2027"},
   {"id":"sri-chinmoy-skopje-24h-2027","name":"Sri Chinmoy 24-12-6 Hour Race (6h / 12h / 24h)","city":"Skoplje","country":"MK","type":"city","date":"2027-05-29","distances":[],"reg":"https://mk.srichinmoyraces.org/24-12-6-Skopje"},
   {"id":"stockholm-marathon-2027","name":"Stockholm Marathon","city":"Stokholm","country":"SE","type":"city","date":"2027-05-29","distances":[{"km":42.195,"gain":0}],"reg":"https://www.stockholmmarathon.se/"},
+  {"id":"sencanski-polumaraton-2027","name":"2. Senćanski polumaraton","city":"Senta","country":"RS","type":"city","date":"2027-05-30","distances":[{"km":21.097,"gain":0},{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://trka.rs/events/983-2-sencanski-polumaraton/"},
   {"id":"edinburgh-marathon-2027","name":"Edinburgh Marathon","city":"Edinburg","country":"GB","type":"city","date":"2027-05-30","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0}],"reg":"https://www.edinburghmarathon.com/"},
   {"id":"jajce-triathlon-challenge-2027","name":"Jajce Triathlon Challenge – triatlon (half 1.9/90/21.1, olimpijski 1.5/45/10)","city":"Jajce, Plivsko jezero","country":"BA","type":"city","date":"2027-05-30","distances":[{"km":113,"gain":0},{"km":56.5,"gain":0}],"reg":"https://ontime-timing.com/registracija?form_id=117"},
   {"id":"odense-city-half-2027","name":"Odense City Half","city":"Odense","country":"DK","type":"city","date":"2027-05-30","distances":[{"km":21.097,"gain":0},{"km":10,"gain":0},{"km":5,"gain":0}]},
@@ -967,6 +971,7 @@ const SEED_RACES = [
   {"id":"stockholm-half-2027","name":"adidas Stockholm Half Marathon","city":"Stokholm","country":"SE","type":"city","date":"2027-08-21","distances":[{"km":21.097,"gain":0}]},
   {"id":"visegrad-5k-2027","name":"Višegrad 5K","city":"Višegrad","country":"BA","type":"city","date":"2027-08-21","distances":[{"km":5,"gain":0}],"reg":"https://ontime-timing.com/?p=2753"},
   {"id":"helsinki-marathon-2027","name":"Björn Borg Helsinki Marathon","city":"Helsinki","country":"FI","type":"city","date":"2027-08-28","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0},{"km":10,"gain":0}]},
+  {"id":"gradac-night-trail-2027","name":"Gradac Night Trail","city":"Valjevo","country":"RS","type":"trail","date":"2027-08-28","distances":[],"reg":"https://trka.rs/events/963-gradac-night-trail/"},
   {"id":"ironman-703-duisburg-2027","name":"IRONMAN 70.3 Duisburg (triatlon 70.3)","city":"Duisburg","country":"DE","type":"city","date":"2027-08-29","distances":[{"km":113,"gain":0}]},
   {"id":"ironman-703-zell-am-see-2027","name":"IRONMAN 70.3 Zell am See-Kaprun (triatlon 70.3)","city":"Zell am See","country":"AT","type":"city","date":"2027-08-29","distances":[{"km":113,"gain":0}]},
   {"id":"ramski-polumaraton-2027","name":"Ramski polumaraton","city":"Rama","country":"BA","type":"city","date":"2027-08-29","distances":[{"km":21.097,"gain":0},{"km":5,"gain":0}],"reg":"https://gb3timing.com/dogadjaj/10-ramski-polumaraton-2027"},

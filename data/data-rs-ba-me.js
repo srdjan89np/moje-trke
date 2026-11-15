@@ -288,4 +288,10 @@ module.exports = [
   ["nocni-maraton-novi-sad-2027", "Noćni maraton Novi Sad", "Novi Sad", "RS", "city", "2027-06-26", [[42.195,0],[21.097,0],[6,0]]],
   ["jadovnicki-ultramaraton-2027", "Jadovnički ultramaraton", "Prijepolje", "RS", "trail", "2027-07-10", [[60.9,2477]]],
   ["olovo-5k-2027", "Olovo 5k", "Olovo", "BA", "city", "2027-08-07", [[5,0]]],
+  // --- Ažuriranje 15.11.2026 (trka.rs) ---
+  ["timok-run-za-lazu-2026", "Timok Run za Lazu", "Knjaževac", "RS", "city", "2026-11-29", [[5,0]]],
+  ["becejska-desetka-2027", "10. Bečejska desetka", "Bečej", "RS", "city", "2027-03-27", [[10,0],[5,0]]],
+  ["iron-ultra-trail-2027", "3. Iron Ultra Trail", "Medvednik, Valjevo", "RS", "trail", "2027-05-08", []],
+  ["sencanski-polumaraton-2027", "2. Senćanski polumaraton", "Senta", "RS", "city", "2027-05-30", [[21.097,0],[10,0],[5,0]]],
+  ["gradac-night-trail-2027", "Gradac Night Trail", "Valjevo", "RS", "trail", "2027-08-28", []],
 ];

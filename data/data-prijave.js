@@ -389,4 +389,10 @@ module.exports = {
   "pula-marathon-djecje-2027": "https://www.utrka.com/utrke/xica/2027/",
   "caven-vertikal-trail-2026": "https://my.raceresult.com/396110/registration",
   "svinjskih-e7-trail-2027": "https://protime.si/hr/dogodek/svinjskih-e7-trail-2027/",
+  // --- Ažuriranje 15.11.2026 (trka.rs) ---
+  "timok-run-za-lazu-2026": "https://trka.rs/events/994-timok-run-za-lazu/",
+  "becejska-desetka-2027": "https://trka.rs/events/986-10-becejska-desetka/",
+  "iron-ultra-trail-2027": "https://trka.rs/events/984-3-iron-ultra-trail/",
+  "sencanski-polumaraton-2027": "https://trka.rs/events/983-2-sencanski-polumaraton/",
+  "gradac-night-trail-2027": "https://trka.rs/events/963-gradac-night-trail/",
 };
