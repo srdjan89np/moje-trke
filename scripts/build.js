@@ -143,6 +143,15 @@ function androidShell(shell) {
   // Rezervna kopija: fajl se upiše u keš aplikacije i otvori se Android „Deli” (Drive, mejl, Viber…).
   var FS = P.Filesystem || (reg ? reg("Filesystem") : null);
   var SH = P.Share || (reg ? reg("Share") : null);
+  if (FS) {
+    // Rezervna kopija direktno na telefon: Dokumenti › Moje trke (Android ≤ 10 traži dozvolu za memoriju).
+    window.__nativeSaveFile = function (name, text) {
+      var perm = FS.requestPermissions ? FS.requestPermissions().catch(function () { return null; }) : Promise.resolve(null);
+      return perm.then(function () {
+        return FS.writeFile({ path: "Moje trke/" + name, data: text, directory: "DOCUMENTS", encoding: "utf8", recursive: true });
+      });
+    };
+  }
   if (FS && SH) {
     window.__nativeExport = function (name, text) {
       return FS.writeFile({ path: name, data: text, directory: "CACHE", encoding: "utf8" }).then(function (r) {
