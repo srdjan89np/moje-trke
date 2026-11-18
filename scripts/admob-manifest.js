@@ -17,8 +17,11 @@ if (re.test(xml)) xml = xml.replace(re, tag);
 else xml = xml.replace("</application>", `    ${tag}\n    </application>`);
 // Rezervna kopija u Dokumenti › Moje trke: na Androidu 9 i starijem treba dozvola za memoriju,
 // a na Androidu 10 „legacy” pristup. Od Androida 11 dozvola nije potrebna.
-const perm = '<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="29" />';
-if (!xml.includes("android.permission.WRITE_EXTERNAL_STORAGE")) xml = xml.replace("</manifest>", `    ${perm}\n</manifest>`);
+// Capacitor Filesystem traži obe dozvole (čitanje i pisanje) — bez obe Android 10 i stariji odbijaju zahtev.
+for (const p of ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]) {
+  const perm = `<uses-permission android:name="android.permission.${p}" android:maxSdkVersion="29" />`;
+  if (!xml.includes(`android.permission.${p}"`)) xml = xml.replace("</manifest>", `    ${perm}\n</manifest>`);
+}
 if (!xml.includes("requestLegacyExternalStorage")) xml = xml.replace("<application", '<application android:requestLegacyExternalStorage="true"');
 fs.writeFileSync(file, xml);
 console.log("AdMob APPLICATION_ID:", id.startsWith("ca-app-pub-3940256099942544") ? "probni (Google test)" : "pravi");

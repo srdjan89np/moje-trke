@@ -147,8 +147,13 @@ function androidShell(shell) {
     // Rezervna kopija direktno na telefon: Dokumenti › Moje trke (Android ≤ 10 traži dozvolu za memoriju).
     window.__nativeSaveFile = function (name, text) {
       var perm = FS.requestPermissions ? FS.requestPermissions().catch(function () { return null; }) : Promise.resolve(null);
-      return perm.then(function () {
-        return FS.writeFile({ path: "Moje trke/" + name, data: text, directory: "DOCUMENTS", encoding: "utf8", recursive: true });
+      var write = function (n) {
+        return FS.writeFile({ path: "Moje trke/" + n, data: text, directory: "DOCUMENTS", encoding: "utf8", recursive: true });
+      };
+      // Ako fajl sa tim imenom već postoji (npr. od ranije instalacije), probaj ime sa satom.
+      return perm.then(function () { return write(name); }).catch(function () {
+        var d = new Date(), p2 = function (x) { return String(x).padStart(2, "0"); };
+        return write(name.replace(/\.json$/, "-" + p2(d.getHours()) + p2(d.getMinutes()) + p2(d.getSeconds()) + ".json"));
       });
     };
   }
