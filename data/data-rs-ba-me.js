@@ -293,4 +293,8 @@ module.exports = [
   ["iron-ultra-trail-2027", "3. Iron Ultra Trail", "Medvednik, Valjevo", "RS", "trail", "2027-05-08", []],
   ["sencanski-polumaraton-2027", "2. Senćanski polumaraton", "Senta", "RS", "city", "2027-05-30", [[21.097,0],[10,0],[5,0]]],
   ["gradac-night-trail-2027", "Gradac Night Trail", "Valjevo", "RS", "trail", "2027-08-28", []],
+  // --- Zrenjanin (19.11.2026) ---
+  ["zrenjaninski-maraton-2026", "6. Zrenjaninski maraton", "Zrenjanin", "RS", "city", "2026-05-31", [[42.195,132],[21.097,0],[7,0]]],
+  ["zrenjaninski-polumaraton-2026", "10. Zrenjaninski polumaraton", "Zrenjanin", "RS", "city", "2026-09-20", [[21.097,0],[14,0],[7,0]]],
+  ["zrenjaninski-polumaraton-2027", "11. Zrenjaninski polumaraton", "Zrenjanin", "RS", "city", "2027-09-19", [[21.097,0],[14,0],[7,0]]],
 ];
