@@ -1080,7 +1080,7 @@ const STR = {
     pickLeg: "Odaberi deonicu", errLeg: "Odaberi deonicu.",
     monthN: (n) => `${n} ${srPl(n, "trka", "trke", "trka")}`,
     back: "Nazad", openDetails: (n) => `Otvori detalje: ${n}`,
-    yourStatus: "Tvoj status", statusHint: "„Zanima me\" i „Prijavljen\" donose podsetnik nedelju dana i dan pre trke.",
+    legPickH: "Tvoja deonica", legPickHint: "Izaberi dužinu koju trčiš — vidi se na početnoj, u podsetniku i pri upisu rezultata.", legPickAria: "Izaberi deonicu", yourStatus: "Tvoj status", statusHint: "„Zanima me\" i „Prijavljen\" donose podsetnik nedelju dana i dan pre trke.",
     resultH: "Tvoj rezultat", logResult: "Upiši rezultat", editResult: "Izmeni rezultat",
     resultEmpty: "Označio si trku kao istrčanu. Upiši vreme da se računa u tvoju statistiku.",
     placing: "Plasman", placingPh: "Primer: 57", note: "Beleška", notePh: "Primer: vrućina, dobar tempo do 30. km",
@@ -1232,7 +1232,7 @@ const STR = {
     pickLeg: "Choose a distance", errLeg: "Choose a distance.",
     monthN: (n) => `${n} ${n === 1 ? "race" : "races"}`,
     back: "Back", openDetails: (n) => `Open details: ${n}`,
-    yourStatus: "Your status", statusHint: "Interested and Entered bring a reminder a week and a day before the race.",
+    legPickH: "Your distance", legPickHint: "Pick the distance you're running — it shows on Home, in reminders and when you log your result.", legPickAria: "Pick your distance", yourStatus: "Your status", statusHint: "Interested and Entered bring a reminder a week and a day before the race.",
     resultH: "Your result", logResult: "Log result", editResult: "Edit result",
     resultEmpty: "You marked this race as finished. Log your time so it counts in your stats.",
     placing: "Place", placingPh: "Example: 57", note: "Note", notePh: "Example: hot day, good pace until km 30",
@@ -1910,7 +1910,7 @@ function RaceCard({ race, entry, onOpen }) {
 
         {(status || entry?.result) && (
           <div className="card-foot">
-            {status && <span className={`pill pill-${status}`} data-testid={`pill-${race.id}`}>✓ {t[STATUS_KEY[status]]}</span>}
+            {status && <span className={`pill pill-${status}`} data-testid={`pill-${race.id}`}>✓ {t[STATUS_KEY[status]]}{status !== "done" && chosenKm(race, entry) ? ` · ${fmtKmL(chosenKm(race, entry), lang)} km` : ""}</span>}
             {done && entry?.result && (
               <span className="pill-res" data-testid={`result-${race.id}`}>
                 <b>{fmtSecs(entry.result.secs)}</b> · {entry.result.km} km
@@ -1927,7 +1927,7 @@ function RaceCard({ race, entry, onOpen }) {
 }
 
 // Detalji trke: preko celog ekrana; ovde su sve akcije.
-function RaceDetail({ race, entry, tracking, onSet, onClear, onEdit, onLog, onClose, onShare }) {
+function RaceDetail({ race, entry, tracking, onSet, onLeg, onClear, onEdit, onLog, onClose, onShare }) {
   const t = useT();
   const lang = useLang();
   const ref = useRef(null);
@@ -2021,6 +2021,23 @@ function RaceDetail({ race, entry, tracking, onSet, onClear, onEdit, onLog, onCl
               ))}
             </div>
             <p className="hint det-hint">{t.statusHint}</p>
+            {(status === "interested" || status === "registered") && race.distances.length > 1 && (
+              <div className="leg-pick-wrap">
+                <h4 className="det-h leg-pick-h">{t.legPickH}</h4>
+                <div className="leg-pick" role="group" aria-label={t.legPickAria}>
+                  {race.distances.map((x, i) => {
+                    const on = chosenKm(race, entry) !== null && Math.abs(chosenKm(race, entry) - x.km) < 0.01;
+                    return (
+                      <button key={i} type="button" className="leg-chip" aria-pressed={on}
+                        onClick={() => onLeg(race.id, on ? null : x.km)} data-testid={`leg-${race.id}-${i}`}>
+                        {fmtKmL(x.km, lang)} km
+                      </button>
+                    );
+                  })}
+                </div>
+                <p className="hint det-hint">{t.legPickHint}</p>
+              </div>
+            )}
           </section>
 
           {(done || res) && (
@@ -2080,7 +2097,8 @@ function ResultForm({ race, entry, onSave, onClose }) {
   const t = useT();
   const saved = entry?.result;
   const multi = race.distances.length > 1;
-  const savedIdx = saved ? race.distances.findIndex((d) => Math.abs(d.km - saved.km) < 0.01) : -1;
+  const pickKm = saved ? saved.km : chosenKm(race, entry);
+  const savedIdx = pickKm ? race.distances.findIndex((d) => Math.abs(d.km - pickKm) < 0.01) : -1;
   const [distIdx, setDistIdx] = useState(savedIdx >= 0 ? String(savedIdx) : multi ? "" : "0");
   const [dur, setDur] = useState(saved ? secsToDigits(saved.secs) : "");
   const [place, setPlace] = useState(saved?.place ? String(saved.place) : "");
@@ -2572,6 +2590,14 @@ function AddRace({ onAdd, onClose }) {
 const HOME_CC_KEY = "trke-home-cc";
 const kmKey = (km) => String(Math.round(km * 10) / 10);
 
+// Izabrana deonica za „Zanima me”/„Prijavljen”: samo ako trka i dalje ima tu dužinu.
+function chosenKm(race, entry) {
+  const km = entry && entry.km;
+  if (!(km > 0) || !race.distances.length) return null;
+  return race.distances.some((d) => Math.abs(d.km - km) < 0.01) ? km : null;
+}
+const fmtKmL = (k, lang) => Number(Number(k).toFixed(1)).toLocaleString(lang === "sr" ? "sr-Latn-RS" : "en-GB");
+
 // Kratak red trke (početna, statistika): dodir otvara detalje.
 function RaceRow({ race, entry, onOpen, sub }) {
   const t = useT();
@@ -2639,10 +2665,11 @@ function HomeTab({ races, tracking, stats, homeCC, setHomeCC, countryChips, onOp
     () => races.filter((r) => ["interested", "registered"].includes(tracking[r.id]?.status) && daysUntil(r.date) >= 0 && r.id !== next?.id),
     [races, tracking, next]
   );
-  // Rekord na najdužoj deonici sledeće trke, ako postoji.
+  // Rekord na izabranoj (ili najdužoj) deonici sledeće trke, ako postoji.
   let pb = null;
-  if (next && next.distances.length) {
-    const km = kmKey(Math.max(...next.distances.map((x) => x.km)));
+  const nextKm = next && next.distances.length ? (chosenKm(next, tracking[next.id]) || Math.max(...next.distances.map((x) => x.km))) : 0;
+  if (nextKm) {
+    const km = kmKey(nextKm);
     for (const e of Object.values(tracking)) if (e.result && kmKey(e.result.km) === km && (!pb || e.result.secs < pb)) pb = e.result.secs;
   }
 
@@ -2655,7 +2682,7 @@ function HomeTab({ races, tracking, stats, homeCC, setHomeCC, countryChips, onOp
           <RaceMeta race={next} />
           <div className="hc-count">
             <div><b>{daysUntil(next.date)}</b><span>{t.daysToStart(daysUntil(next.date))}</span></div>
-            {next.distances.length > 0 && <div><b>{Number(Math.max(...next.distances.map((x) => x.km)).toFixed(1)).toLocaleString(lang === "sr" ? "sr-Latn-RS" : "en-GB")}</b><span>km</span></div>}
+            {nextKm > 0 && <div><b>{fmtKmL(nextKm, lang)}</b><span>km</span></div>}
             {pb && <div><b>{fmtSecs(pb)}</b><span>{t.yourPb}</span></div>}
           </div>
           <div className="hc-btns">
@@ -2722,7 +2749,7 @@ function HomeTab({ races, tracking, stats, homeCC, setHomeCC, countryChips, onOp
           <div className="rows-list">
             {mine.slice(0, 8).map((r) => (
               <RaceRow key={r.id} race={r} entry={tracking[r.id]} onOpen={onOpen}
-                sub={<>{flagOf(countryOf(r))} {r.city} · {t.inDays(daysUntil(r.date))}</>} />
+                sub={<>{flagOf(countryOf(r))} {r.city} · {t.inDays(daysUntil(r.date))}{chosenKm(r, tracking[r.id]) ? ` · ${fmtKmL(chosenKm(r, tracking[r.id]), lang)} km` : ""}</>} />
             ))}
           </div>
         </section>
@@ -3125,7 +3152,7 @@ function raceShareCard(race, entry, t, lang) {
   when = when.charAt(0).toUpperCase() + when.slice(1);
   const status = entry?.status;
   const res = entry?.result;
-  const maxKm = race.distances.length ? Math.max(...race.distances.map((x) => x.km)) : 0;
+  const maxKm = race.distances.length ? (chosenKm(race, entry) || Math.max(...race.distances.map((x) => x.km))) : 0;
   const fmtKm = (k) => Number(Number(k).toFixed(1)).toLocaleString(lang === "sr" ? "sr-Latn-RS" : "en-GB");
   const { steepness } = raceLook(race);
   const chips = [{ text: race.type === "trail" ? t.tagTrail : t.tagCity }];
@@ -3617,6 +3644,16 @@ export default function App() {
     });
   }, []);
 
+  const setLeg = useCallback((id, km) => {
+    setState((s) => {
+      const cur = s.tracking[id];
+      if (!cur) return s;
+      const e = { ...cur };
+      if (km > 0) e.km = km; else delete e.km;
+      return { ...s, tracking: { ...s.tracking, [id]: e } };
+    });
+  }, []);
+
   const clearRace = useCallback((id) => {
     setState((s) => {
       const next = { ...s.tracking };
@@ -3856,7 +3893,7 @@ export default function App() {
         out.push({
           id: hash(`${race.id}|${before}`) % 2147483647,
           title: t.appTitle,
-          body: `${race.name} — ${before === 1 ? t.tomorrow : t.inAWeek}, ${race.city}`,
+          body: `${race.name} — ${before === 1 ? t.tomorrow : t.inAWeek}, ${race.city}${chosenKm(race, state.tracking[race.id]) ? ` · ${fmtKmL(chosenKm(race, state.tracking[race.id]), lang)} km` : ""}`,
           schedule: { at, allowWhileIdle: true },
         });
       }
@@ -4174,6 +4211,7 @@ export default function App() {
           entry={state.tracking[detailId]}
           tracking={state.tracking}
           onSet={setStatus}
+          onLeg={setLeg}
           onClear={clearRace}
           onEdit={setEditing}
           onLog={setLogId}
@@ -4780,6 +4818,11 @@ select.input option { font-style: normal; color: initial; }
 .app .det-note { margin-top: 10px; color: #FFB3C0; }
 .app .det-h { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #B7C9D6; margin-bottom: 10px; font-weight: 600; }
 .det-legs { display: grid; gap: 8px; }
+.app .leg-pick-wrap { margin-top: 18px; }
+.app .leg-pick-h { margin: 0 0 8px; }
+.leg-pick { display: flex; flex-wrap: wrap; gap: 8px; }
+.leg-chip { min-height: 44px; min-width: 72px; padding: 8px 14px; border: 1px solid #4A6680; border-radius: 999px; background: transparent; color: #C5D5E1; font-family: var(--mono); font-size: 15px; cursor: pointer; -webkit-appearance: none; appearance: none; touch-action: manipulation; }
+.leg-chip[aria-pressed="true"] { background: var(--ochre); border-color: var(--ochre); color: #16202B; font-weight: 700; }
 .det-legs li { display: flex; justify-content: space-between; align-items: center; min-height: 48px; padding: 10px 14px; border: 1px solid var(--contour); border-radius: 10px; background: rgba(255,255,255,.03); font-family: var(--mono); font-size: 14px; color: #C5D5E1; }
 .det-legs b { font-family: var(--disp); font-size: 22px; color: var(--snow); font-weight: 600; }
 .app .det-sec .seg { margin-top: 0; }
