@@ -81,7 +81,7 @@ const countryOf = (race) => race.country || REGIONS[race.region]?.c || "RS";
 // ako je noviji od ugrađenog (SEED_GENERATED). Bez mreže ostaje poslednji sačuvani ili ugrađeni.
 const REMOTE_URL = "https://raw.githubusercontent.com/srdjan89np/moje-trke/main/races.json";
 const REMOTE_KEY = "trke-kalendar-v1";
-const SEED_GENERATED = "2026-11-15T10:03:52Z";
+const SEED_GENERATED = "2026-11-19T08:45:48Z";
 
 function cleanRemote(data) {
   if (!data || typeof data.generated !== "string" || !Array.isArray(data.races)) return null;
@@ -168,6 +168,7 @@ const SEED_RACES = [
   {"id":"mokra-gora","name":"Mokra Gora Trail","city":"Mokra Gora","country":"RS","type":"trail","date":"2026-05-30","distances":[{"km":12,"gain":670},{"km":6,"gain":470}]},
   {"id":"ozren-devica","name":"Ozren i Devica","city":"Sokobanja","country":"RS","type":"trail","date":"2026-05-30","distances":[{"km":36,"gain":1835},{"km":27,"gain":1239},{"km":14.6,"gain":869},{"km":7.5,"gain":0}]},
   {"id":"tour-de-fruska","name":"Tour de Fruška","city":"Vrdnik, Fruška gora","country":"RS","type":"trail","date":"2026-05-30","distances":[{"km":22,"gain":800},{"km":15,"gain":550},{"km":7,"gain":0}]},
+  {"id":"zrenjaninski-maraton-2026","name":"6. Zrenjaninski maraton","city":"Zrenjanin","country":"RS","type":"city","date":"2026-05-31","distances":[{"km":42.195,"gain":132},{"km":21.097,"gain":0},{"km":7,"gain":0}]},
   {"id":"oplenac-open","name":"Oplenac Open Trail Race","city":"Oplenac","country":"RS","type":"trail","date":"2026-05-31","distances":[{"km":21,"gain":500},{"km":7.5,"gain":120}]},
   {"id":"pyramid-trail-2026","name":"Pyramid Trail","city":"Visoko","country":"BA","type":"trail","date":"2026-05-31","distances":[{"km":20,"gain":950},{"km":10,"gain":450}]},
   {"id":"epic-mionica-3","name":"Serbia Epic Mionica 3","city":"Mionica","country":"RS","type":"trail","date":"2026-05-31","distances":[{"km":17.4,"gain":650},{"km":6,"gain":300}]},
@@ -273,6 +274,7 @@ const SEED_RACES = [
   {"id":"soko-covka","name":"Soko Čovka Trail No2","city":"Županjac, Lazarevac","country":"RS","type":"trail","date":"2026-09-19","distances":[{"km":28,"gain":0},{"km":20,"gain":0},{"km":12,"gain":0},{"km":7,"gain":0}]},
   {"id":"sos-humanitarna-2026","name":"SOS humanitarna trka","city":"Gradski park, Skoplje","country":"MK","type":"city","date":"2026-09-19","distances":[{"km":4,"gain":0}]},
   {"id":"volvo-run-vogosca-2026","name":"Volvo Run Vogošća 5K","city":"Vogošća","country":"BA","type":"city","date":"2026-09-19","distances":[{"km":5,"gain":0}]},
+  {"id":"zrenjaninski-polumaraton-2026","name":"10. Zrenjaninski polumaraton","city":"Zrenjanin","country":"RS","type":"city","date":"2026-09-20","distances":[{"km":21.097,"gain":0},{"km":14,"gain":0},{"km":7,"gain":0}]},
   {"id":"brocanska-desetka-2026","name":"Broćanska desetka","city":"Međugorje — Čitluk","country":"BA","type":"city","date":"2026-09-20","distances":[{"km":10,"gain":0}]},
   {"id":"copenhagen-half-2026","name":"Copenhagen Half Marathon","city":"Kopenhagen","country":"DK","type":"city","date":"2026-09-20","distances":[{"km":21.097,"gain":0}]},
   {"id":"croatie-montenegro","name":"Croatie Montenegro Trail Challenge","city":"Dubrovnik — Herceg Novi","country":"HR","type":"trail","date":"2026-09-20","distances":[{"km":96,"gain":3500}]},
@@ -991,6 +993,7 @@ const SEED_RACES = [
   {"id":"skyline-scotland-2027","name":"Skyline Scotland by UTMB","city":"Kinlochleven","country":"GB","type":"trail","date":"2027-09-17","distances":[{"km":52,"gain":0},{"km":29,"gain":0},{"km":20,"gain":0}]},
   {"id":"usti-half-2027","name":"Mattoni Ústí nad Labem Half Marathon","city":"Usti na Labi","country":"CZ","type":"city","date":"2027-09-18","distances":[{"km":21.097,"gain":0}],"reg":"https://www.runczech.com"},
   {"id":"pula-marathon-2027","name":"Pula Marathon (polumaraton, Pulska Xica)","city":"Pula","country":"HR","type":"city","date":"2027-09-18","distances":[{"km":21.097,"gain":0},{"km":10,"gain":0},{"km":5.99,"gain":0}],"reg":"https://www.utrka.com/utrke/xica/2027/"},
+  {"id":"zrenjaninski-polumaraton-2027","name":"11. Zrenjaninski polumaraton","city":"Zrenjanin","country":"RS","type":"city","date":"2027-09-19","distances":[{"km":21.097,"gain":0},{"km":14,"gain":0},{"km":7,"gain":0}]},
   {"id":"baden-marathon-2027","name":"Baden-Marathon Karlsruhe","city":"Karlsrue","country":"DE","type":"city","date":"2027-09-19","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0}]},
   {"id":"copenhagen-half-2027","name":"Copenhagen Half Marathon (WRRC)","city":"Kopenhagen","country":"DK","type":"city","date":"2027-09-19","distances":[{"km":21.097,"gain":0}]},
   {"id":"varazdinski-djecje-2027","name":"Varaždinski polumaraton – Dječje utrke (dečja trka)","city":"Varaždin","country":"HR","type":"city","date":"2027-09-19","distances":[{"km":0.2,"gain":0},{"km":1,"gain":0}]},
@@ -1080,7 +1083,7 @@ const STR = {
     pickLeg: "Odaberi deonicu", errLeg: "Odaberi deonicu.",
     monthN: (n) => `${n} ${srPl(n, "trka", "trke", "trka")}`,
     back: "Nazad", openDetails: (n) => `Otvori detalje: ${n}`,
-    legPickH: "Tvoja deonica", legPickHint: "Izaberi dužinu koju trčiš — vidi se na početnoj, u podsetniku i pri upisu rezultata.", legPickAria: "Izaberi deonicu", yourStatus: "Tvoj status", statusHint: "„Zanima me\" i „Prijavljen\" donose podsetnik nedelju dana i dan pre trke.",
+    legPickHint: "Dodirni deonicu koju trčiš — vidi se na početnoj, u podsetniku i pri upisu rezultata.", legYours: "Tvoja", yourStatus: "Tvoj status", statusHint: "„Zanima me\" i „Prijavljen\" donose podsetnik nedelju dana i dan pre trke.",
     resultH: "Tvoj rezultat", logResult: "Upiši rezultat", editResult: "Izmeni rezultat",
     resultEmpty: "Označio si trku kao istrčanu. Upiši vreme da se računa u tvoju statistiku.",
     placing: "Plasman", placingPh: "Primer: 57", note: "Beleška", notePh: "Primer: vrućina, dobar tempo do 30. km",
@@ -1232,7 +1235,7 @@ const STR = {
     pickLeg: "Choose a distance", errLeg: "Choose a distance.",
     monthN: (n) => `${n} ${n === 1 ? "race" : "races"}`,
     back: "Back", openDetails: (n) => `Open details: ${n}`,
-    legPickH: "Your distance", legPickHint: "Pick the distance you're running — it shows on Home, in reminders and when you log your result.", legPickAria: "Pick your distance", yourStatus: "Your status", statusHint: "Interested and Entered bring a reminder a week and a day before the race.",
+    legPickHint: "Tap the distance you're running — it shows on Home, in reminders and when you log your result.", legYours: "Yours", yourStatus: "Your status", statusHint: "Interested and Entered bring a reminder a week and a day before the race.",
     resultH: "Your result", logResult: "Log result", editResult: "Edit result",
     resultEmpty: "You marked this race as finished. Log your time so it counts in your stats.",
     placing: "Place", placingPh: "Example: 57", note: "Note", notePh: "Example: hot day, good pace until km 30",
@@ -1937,6 +1940,8 @@ function RaceDetail({ race, entry, tracking, onSet, onLeg, onClear, onEdit, onLo
   const res = entry?.result;
   const away = daysUntil(race.date);
   const cc = countryOf(race);
+  const canPick = (status === "interested" || status === "registered") && race.distances.length > 1;
+  const picked = chosenKm(race, entry);
 
   useEffect(() => {
     ref.current?.focus();
@@ -1996,14 +2001,28 @@ function RaceDetail({ race, entry, tracking, onSet, onLeg, onClear, onEdit, onLo
           <section className="det-sec">
             <h3 className="det-h">{t.legsH}</h3>
             {hasDist ? (
-              <ul className="det-legs">
-                {race.distances.map((x, i) => (
-                  <li key={i}>
-                    <b>{x.km} km</b>
-                    <span>{x.gain > 0 ? `↑ ${x.gain} m` : "—"}</span>
-                  </li>
-                ))}
-              </ul>
+              <>
+                <ul className={`det-legs${canPick ? " det-legs-pick" : ""}`}>
+                  {race.distances.map((x, i) => {
+                    const on = picked !== null && Math.abs(picked - x.km) < 0.01;
+                    const inner = (
+                      <>
+                        <b>{x.km} km</b>
+                        <span>{on ? `✓ ${t.legYours}` : x.gain > 0 ? `↑ ${x.gain} m` : "—"}</span>
+                      </>
+                    );
+                    return (
+                      <li key={i}>
+                        {canPick ? (
+                          <button type="button" className="leg-btn" aria-pressed={on}
+                            onClick={() => onLeg(race.id, on ? null : x.km)} data-testid={`leg-${race.id}-${i}`}>{inner}</button>
+                        ) : inner}
+                      </li>
+                    );
+                  })}
+                </ul>
+                {canPick && <p className="hint det-hint">{t.legPickHint}</p>}
+              </>
             ) : (
               <p className="hint">{t.distTbd}</p>
             )}
@@ -2021,23 +2040,6 @@ function RaceDetail({ race, entry, tracking, onSet, onLeg, onClear, onEdit, onLo
               ))}
             </div>
             <p className="hint det-hint">{t.statusHint}</p>
-            {(status === "interested" || status === "registered") && race.distances.length > 1 && (
-              <div className="leg-pick-wrap">
-                <h4 className="det-h leg-pick-h">{t.legPickH}</h4>
-                <div className="leg-pick" role="group" aria-label={t.legPickAria}>
-                  {race.distances.map((x, i) => {
-                    const on = chosenKm(race, entry) !== null && Math.abs(chosenKm(race, entry) - x.km) < 0.01;
-                    return (
-                      <button key={i} type="button" className="leg-chip" aria-pressed={on}
-                        onClick={() => onLeg(race.id, on ? null : x.km)} data-testid={`leg-${race.id}-${i}`}>
-                        {fmtKmL(x.km, lang)} km
-                      </button>
-                    );
-                  })}
-                </div>
-                <p className="hint det-hint">{t.legPickHint}</p>
-              </div>
-            )}
           </section>
 
           {(done || res) && (
@@ -4818,11 +4820,10 @@ select.input option { font-style: normal; color: initial; }
 .app .det-note { margin-top: 10px; color: #FFB3C0; }
 .app .det-h { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: #B7C9D6; margin-bottom: 10px; font-weight: 600; }
 .det-legs { display: grid; gap: 8px; }
-.app .leg-pick-wrap { margin-top: 18px; }
-.app .leg-pick-h { margin: 0 0 8px; }
-.leg-pick { display: flex; flex-wrap: wrap; gap: 8px; }
-.leg-chip { min-height: 44px; min-width: 72px; padding: 8px 14px; border: 1px solid #4A6680; border-radius: 999px; background: transparent; color: #C5D5E1; font-family: var(--mono); font-size: 15px; cursor: pointer; -webkit-appearance: none; appearance: none; touch-action: manipulation; }
-.leg-chip[aria-pressed="true"] { background: var(--ochre); border-color: var(--ochre); color: #16202B; font-weight: 700; }
+.det-legs.det-legs-pick li { padding: 0; }
+.leg-btn { display: flex; width: 100%; justify-content: space-between; align-items: center; min-height: 48px; padding: 10px 14px; border: 0; border-radius: 10px; background: transparent; color: inherit; font: inherit; text-align: left; cursor: pointer; -webkit-appearance: none; appearance: none; touch-action: manipulation; }
+.leg-btn[aria-pressed="true"] { background: rgba(224,166,60,.14); box-shadow: inset 0 0 0 2px var(--ochre); }
+.leg-btn[aria-pressed="true"] span { color: var(--ochre); font-weight: 700; }
 .det-legs li { display: flex; justify-content: space-between; align-items: center; min-height: 48px; padding: 10px 14px; border: 1px solid var(--contour); border-radius: 10px; background: rgba(255,255,255,.03); font-family: var(--mono); font-size: 14px; color: #C5D5E1; }
 .det-legs b { font-family: var(--disp); font-size: 22px; color: var(--snow); font-weight: 600; }
 .app .det-sec .seg { margin-top: 0; }

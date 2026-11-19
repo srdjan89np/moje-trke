@@ -1,4 +1,4 @@
-{"generated": "2026-11-15T10:03:52Z", "count": 926, "races": [
+{"generated": "2026-11-19T08:45:48Z", "count": 929, "races": [
   {"id":"bbkt","name":"BBKT","city":"Smederevska Palanka","country":"RS","type":"trail","date":"2026-01-11","distances":[{"km":12,"gain":320},{"km":6,"gain":165},{"km":3,"gain":84}]},
   {"id":"unusual-marathon-2026","name":"Unusual Marathon","city":"Vilsonovo šetalište, Sarajevo","country":"BA","type":"city","date":"2026-01-11","distances":[{"km":30,"gain":0},{"km":15,"gain":0},{"km":5,"gain":0}]},
   {"id":"sidski-maraton","name":"Šidski novogodišnji maraton","city":"Šid","country":"RS","type":"city","date":"2026-01-14","distances":[{"km":42,"gain":0},{"km":32,"gain":0},{"km":16,"gain":0},{"km":12,"gain":0}]},
@@ -71,6 +71,7 @@
   {"id":"mokra-gora","name":"Mokra Gora Trail","city":"Mokra Gora","country":"RS","type":"trail","date":"2026-05-30","distances":[{"km":12,"gain":670},{"km":6,"gain":470}]},
   {"id":"ozren-devica","name":"Ozren i Devica","city":"Sokobanja","country":"RS","type":"trail","date":"2026-05-30","distances":[{"km":36,"gain":1835},{"km":27,"gain":1239},{"km":14.6,"gain":869},{"km":7.5,"gain":0}]},
   {"id":"tour-de-fruska","name":"Tour de Fruška","city":"Vrdnik, Fruška gora","country":"RS","type":"trail","date":"2026-05-30","distances":[{"km":22,"gain":800},{"km":15,"gain":550},{"km":7,"gain":0}]},
+  {"id":"zrenjaninski-maraton-2026","name":"6. Zrenjaninski maraton","city":"Zrenjanin","country":"RS","type":"city","date":"2026-05-31","distances":[{"km":42.195,"gain":132},{"km":21.097,"gain":0},{"km":7,"gain":0}]},
   {"id":"oplenac-open","name":"Oplenac Open Trail Race","city":"Oplenac","country":"RS","type":"trail","date":"2026-05-31","distances":[{"km":21,"gain":500},{"km":7.5,"gain":120}]},
   {"id":"pyramid-trail-2026","name":"Pyramid Trail","city":"Visoko","country":"BA","type":"trail","date":"2026-05-31","distances":[{"km":20,"gain":950},{"km":10,"gain":450}]},
   {"id":"epic-mionica-3","name":"Serbia Epic Mionica 3","city":"Mionica","country":"RS","type":"trail","date":"2026-05-31","distances":[{"km":17.4,"gain":650},{"km":6,"gain":300}]},
@@ -176,6 +177,7 @@
   {"id":"soko-covka","name":"Soko Čovka Trail No2","city":"Županjac, Lazarevac","country":"RS","type":"trail","date":"2026-09-19","distances":[{"km":28,"gain":0},{"km":20,"gain":0},{"km":12,"gain":0},{"km":7,"gain":0}]},
   {"id":"sos-humanitarna-2026","name":"SOS humanitarna trka","city":"Gradski park, Skoplje","country":"MK","type":"city","date":"2026-09-19","distances":[{"km":4,"gain":0}]},
   {"id":"volvo-run-vogosca-2026","name":"Volvo Run Vogošća 5K","city":"Vogošća","country":"BA","type":"city","date":"2026-09-19","distances":[{"km":5,"gain":0}]},
+  {"id":"zrenjaninski-polumaraton-2026","name":"10. Zrenjaninski polumaraton","city":"Zrenjanin","country":"RS","type":"city","date":"2026-09-20","distances":[{"km":21.097,"gain":0},{"km":14,"gain":0},{"km":7,"gain":0}]},
   {"id":"brocanska-desetka-2026","name":"Broćanska desetka","city":"Međugorje — Čitluk","country":"BA","type":"city","date":"2026-09-20","distances":[{"km":10,"gain":0}]},
   {"id":"copenhagen-half-2026","name":"Copenhagen Half Marathon","city":"Kopenhagen","country":"DK","type":"city","date":"2026-09-20","distances":[{"km":21.097,"gain":0}]},
   {"id":"croatie-montenegro","name":"Croatie Montenegro Trail Challenge","city":"Dubrovnik — Herceg Novi","country":"HR","type":"trail","date":"2026-09-20","distances":[{"km":96,"gain":3500}]},
@@ -894,6 +896,7 @@
   {"id":"skyline-scotland-2027","name":"Skyline Scotland by UTMB","city":"Kinlochleven","country":"GB","type":"trail","date":"2027-09-17","distances":[{"km":52,"gain":0},{"km":29,"gain":0},{"km":20,"gain":0}]},
   {"id":"usti-half-2027","name":"Mattoni Ústí nad Labem Half Marathon","city":"Usti na Labi","country":"CZ","type":"city","date":"2027-09-18","distances":[{"km":21.097,"gain":0}],"reg":"https://www.runczech.com"},
   {"id":"pula-marathon-2027","name":"Pula Marathon (polumaraton, Pulska Xica)","city":"Pula","country":"HR","type":"city","date":"2027-09-18","distances":[{"km":21.097,"gain":0},{"km":10,"gain":0},{"km":5.99,"gain":0}],"reg":"https://www.utrka.com/utrke/xica/2027/"},
+  {"id":"zrenjaninski-polumaraton-2027","name":"11. Zrenjaninski polumaraton","city":"Zrenjanin","country":"RS","type":"city","date":"2027-09-19","distances":[{"km":21.097,"gain":0},{"km":14,"gain":0},{"km":7,"gain":0}]},
   {"id":"baden-marathon-2027","name":"Baden-Marathon Karlsruhe","city":"Karlsrue","country":"DE","type":"city","date":"2027-09-19","distances":[{"km":42.195,"gain":0},{"km":21.097,"gain":0}]},
   {"id":"copenhagen-half-2027","name":"Copenhagen Half Marathon (WRRC)","city":"Kopenhagen","country":"DK","type":"city","date":"2027-09-19","distances":[{"km":21.097,"gain":0}]},
   {"id":"varazdinski-djecje-2027","name":"Varaždinski polumaraton – Dječje utrke (dečja trka)","city":"Varaždin","country":"HR","type":"city","date":"2027-09-19","distances":[{"km":0.2,"gain":0},{"km":1,"gain":0}]},
