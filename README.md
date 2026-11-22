@@ -8,7 +8,7 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 
 ## Kalendar
 
-929 trka iz 42 zemalja: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. i 2027. (poslednje ažuriranje 19.11.2026; „Predstojećih” = od tog datuma)
+932 trke iz 42 zemlje: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. i 2027. (poslednje ažuriranje 22.11.2026; „Predstojećih” = od 19.11.2026)
 
 | Zemlja | Ukupno | Predstojećih |
 |---|---|---|
@@ -16,16 +16,16 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 | Srbija | 161 | 52 |
 | Bosna i Hercegovina | 94 | 25 |
 | Slovenija | 63 | 25 |
-| Italija | 43 | 31 |
+| Italija | 44 | 32 |
 | Nemačka | 43 | 32 |
-| Španija | 42 | 33 |
+| Španija | 43 | 34 |
 | Francuska | 30 | 20 |
 | Velika Britanija | 27 | 21 |
 | Austrija | 26 | 21 |
 | Crna Gora | 24 | 7 |
 | Češka | 19 | 11 |
 | Severna Makedonija | 19 | 5 |
-| Portugal | 18 | 10 |
+| Portugal | 19 | 11 |
 | Poljska | 15 | 6 |
 | Grčka | 13 | 8 |
 | Holandija | 12 | 9 |
