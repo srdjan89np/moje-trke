@@ -31,6 +31,9 @@ ${MARK}
 -keep class com.capacitorjs.plugins.** { *; }
 -keep class com.getcapacitor.community.admob.** { *; }
 -keep class io.capawesome.capacitorjs.plugins.firebase.** { *; }
+# Firebase prijava: koristimo samo Google; SDK-ovi ostalih provajdera (Facebook…) nisu uključeni
+-dontwarn com.facebook.**
+-dontwarn com.google.android.gms.games.**
 # Čitljivi izveštaji o rušenju (brojevi linija)
 -keepattributes SourceFile,LineNumberTable,*Annotation*,Signature,InnerClasses,EnclosingMethod
 -renamesourcefileattribute SourceFile
