@@ -140,6 +140,8 @@ function androidShell(shell) {
   var AD = P.AdMob || (reg ? reg("AdMob") : null);
   var BANNER = ${JSON.stringify(process.env.ADMOB_BANNER_ID || "ca-app-pub-3940256099942544/6300978111")};
   var TESTING = ${JSON.stringify(!process.env.ADMOB_BANNER_ID)};
+  // „Podrži autora”: reklama za nagrađivanje (korisnik je sam pokreće). Uz probni baner ide i probna reklama.
+  var REWARD = TESTING ? "ca-app-pub-3940256099942544/5224354917" : "ca-app-pub-6000407187020240/8493612733";
   // Rezervna kopija: fajl se upiše u keš aplikacije i otvori se Android „Deli” (Drive, mejl, Viber…).
   var FS = P.Filesystem || (reg ? reg("Filesystem") : null);
   var SH = P.Share || (reg ? reg("Share") : null);
@@ -192,7 +194,29 @@ function androidShell(shell) {
   if (AD) {
     AD.addListener("bannerAdSizeChanged", function (s) { setH(s && s.height); });
     AD.addListener("bannerAdFailedToLoad", function () { setH(0); });
-    AD.initialize({ initializeForTesting: TESTING })
+    var adReady = AD.initialize({ initializeForTesting: TESTING });
+    // Vraća Promise<boolean>: true ako je reklama odgledana do nagrade.
+    window.__rewardAd = function () {
+      var subs = [];
+      var on = function (ev, fn) { var h = AD.addListener(ev, fn); subs.push(h); };
+      var cleanup = function () {
+        subs.forEach(function (h) { Promise.resolve(h).then(function (x) { if (x && x.remove) x.remove(); }).catch(function () {}); });
+      };
+      return new Promise(function (resolve, reject) {
+        var rewarded = false, done = false;
+        var finish = function (ok, err) { if (done) return; done = true; cleanup(); if (err && !rewarded) reject(err); else resolve(ok || rewarded); };
+        on("onRewardedVideoAdReward", function () { rewarded = true; });
+        on("onRewardedVideoAdDismissed", function () { setTimeout(function () { finish(rewarded); }, 300); });
+        on("onRewardedVideoAdFailedToShow", function () { finish(false, new Error("show")); });
+        adReady.catch(function () {})
+          .then(function () { return AD.prepareRewardVideoAd({ adId: REWARD, isTesting: TESTING }); })
+          .then(function () { return AD.showRewardVideoAd(); })
+          .then(function (item) { if (item && (item.amount || item.type)) rewarded = true; })
+          .catch(function (e) { finish(false, e || new Error("load")); });
+        setTimeout(function () { finish(rewarded, rewarded ? null : new Error("timeout")); }, 180000);
+      });
+    };
+    adReady
       .then(function () { return AD.requestConsentInfo ? AD.requestConsentInfo().catch(function () { return null; }) : null; })
       .then(function (c) {
         if (c && c.isConsentFormAvailable && c.status === "REQUIRED") {
