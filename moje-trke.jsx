@@ -1195,6 +1195,18 @@ const STR = {
     toastAdded: "Trka dodata u kalendar.", toastFixed: "Podaci ispravljeni.",
     toastRestored: "Vraćeni originalni podaci.", toastDeleted: "Trka obrisana.",
     toastCleared: "Uklonjeno iz tvoje sezone.", toastWiped: "Sve obrisano.",
+    acctTitle: "Nalog i sinhronizacija",
+    acctBody: "Prijavi se Google nalogom i tvoje oznake, vremena i dodate trke čuvaće se i na nalogu — ne gube se kad promeniš telefon, a vide se na svakom uređaju gde se prijaviš.",
+    acctSignIn: "Prijavi se preko Google-a",
+    acctAs: (e) => `Nalog: ${e}`,
+    acctSynced: (d) => `Sinhronizovano u ${d}`, acctSyncing: "Sinhronizujem…",
+    acctSyncErr: "Sinhronizacija nije uspela — proveri internet.",
+    acctSyncNow: "Sinhronizuj sada", acctSignOut: "Odjavi se", acctDelete: "Obriši nalog",
+    acctDelTitle: "Brisanje naloga",
+    acctDelBody: "Brišemo tvoj nalog i sve podatke sačuvane na njemu. Podaci na ovom telefonu ostaju. Ovo ne može da se poništi.",
+    toastSignedIn: "Prijavljen si — podaci se sinhronizuju.", toastSignedOut: "Odjavljen si. Podaci ostaju na telefonu.",
+    toastAcctDeleted: "Nalog i podaci na njemu su obrisani.",
+    errSignIn: "Prijava nije uspela. Pokušaj ponovo.", errAcctDelete: "Brisanje naloga nije uspelo. Pokušaj ponovo.",
     backupTitle: "Rezervna kopija",
     backupBody: "Sačuvaj oznake, vremena i trke koje si dodao u fajl, pa ih vrati na novom telefonu.",
     exportBtn: "Izvezi podatke", importBtn: "Uvezi podatke",
@@ -1347,6 +1359,18 @@ const STR = {
     toastAdded: "Race added to the calendar.", toastFixed: "Details updated.",
     toastRestored: "Original details restored.", toastDeleted: "Race deleted.",
     toastCleared: "Removed from your season.", toastWiped: "Everything erased.",
+    acctTitle: "Account & sync",
+    acctBody: "Sign in with Google and your marks, times and added races are also saved to your account — nothing is lost when you change phones, and they show up on every device you sign in on.",
+    acctSignIn: "Sign in with Google",
+    acctAs: (e) => `Account: ${e}`,
+    acctSynced: (d) => `Synced at ${d}`, acctSyncing: "Syncing…",
+    acctSyncErr: "Sync failed — check your connection.",
+    acctSyncNow: "Sync now", acctSignOut: "Sign out", acctDelete: "Delete account",
+    acctDelTitle: "Delete account",
+    acctDelBody: "This deletes your account and all data stored in it. Data on this phone stays. This can't be undone.",
+    toastSignedIn: "Signed in — your data is syncing.", toastSignedOut: "Signed out. Your data stays on this phone.",
+    toastAcctDeleted: "Your account and its data were deleted.",
+    errSignIn: "Sign-in failed. Please try again.", errAcctDelete: "Couldn't delete the account. Please try again.",
     backupTitle: "Backup",
     backupBody: "Save your marks, times and the races you added to a file, then restore them on a new phone.",
     exportBtn: "Export data", importBtn: "Import data",
@@ -1553,6 +1577,27 @@ function mergeStates(a, b) {
     notified: { ...a.notified, ...b.notified },
   };
 }
+
+/* ------------------ nalog i sinhronizacija (Firebase) ------------------ */
+// Android shell postavlja window.__auth (Google prijava) i window.__cloud (Firestore),
+// samo kad je aplikacija napravljena sa google-services.json. Bez njih se odeljak ne prikazuje.
+const SYNC_KEY = "trke-sync";
+const cloudAvailable = () => typeof window !== "undefined" && !!window.__auth && !!window.__cloud;
+// „notified” (već poslata obaveštenja) važi samo za ovaj telefon i ne ide na nalog.
+const syncJson = (s) => JSON.stringify({ tracking: s.tracking, custom: s.custom, edits: s.edits });
+function hashStr(str) {
+  let h = 5381;
+  for (let i = 0; i < str.length; i++) h = ((h << 5) + h + str.charCodeAt(i)) | 0;
+  return String(h >>> 0) + ":" + str.length;
+}
+function parseCloud(doc) {
+  if (!doc || typeof doc.data !== "string") return null;
+  const info = parseBackup(doc.data);
+  if (!info) return null;
+  const { tracking, custom, edits } = info.data;
+  return { data: { tracking, custom, edits }, updated: typeof doc.updated === "string" ? doc.updated : "" };
+}
+const isCancel = (e) => /cancel|canceled|cancelled|12501|16:/i.test(String((e && (e.code || e.message)) || e));
 
 // Android: window.__nativeSaveFile (shell) upiše fajl u Dokumenti › Moje trke na telefonu;
 // ako to ne uspe, window.__nativeExport otvori „Deli”. U pregledaču se fajl preuzima.
@@ -2408,6 +2453,73 @@ function ConfirmWipe({ count, onConfirm, onClose }) {
         <div className="modal-actions">
           <button ref={first} type="button" className="btn" onClick={onClose} data-testid="wipe-no">{t.giveUp}</button>
           <button type="button" className="btn btn-danger" onClick={onConfirm} data-testid="wipe-yes">{t.wipeAll}</button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function AccountZone({ acct, sync, onSignIn, onSync, onSignOut, onDelete }) {
+  const t = useT();
+  const lang = useLang();
+  const time = (iso) => new Date(iso).toLocaleTimeString(lang === "sr" ? "sr-Latn-RS" : "en-GB", { hour: "2-digit", minute: "2-digit" });
+  const status = !acct ? "" : sync.s === "busy" ? t.acctSyncing : sync.s === "err" ? t.acctSyncErr : sync.at ? t.acctSynced(time(sync.at)) : "";
+  return (
+    <div className="backup-zone acct-zone" data-testid="acct-zone">
+      <div className="dz-text">
+        <h2 className="bz-h">{t.acctTitle}</h2>
+        {acct ? (
+          <>
+            <p className="acct-who" data-testid="acct-who">{t.acctAs(acct.email || acct.name || "Google")}</p>
+            {status && <p className={`dz-p${sync.s === "err" ? " acct-err" : ""}`} data-testid="acct-sync">{status}</p>}
+          </>
+        ) : (
+          <p className="dz-p">{t.acctBody}</p>
+        )}
+      </div>
+      <div className="bz-actions">
+        {acct ? (
+          <>
+            <button type="button" className="btn btn-outline" onClick={onSync} disabled={sync.s === "busy"} data-testid="acct-sync-now">
+              <span aria-hidden="true">⟳</span> {t.acctSyncNow}
+            </button>
+            <button type="button" className="btn btn-outline" onClick={onSignOut} data-testid="acct-signout">{t.acctSignOut}</button>
+            <button type="button" className="btn btn-outline acct-del" onClick={onDelete} data-testid="acct-delete">{t.acctDelete}</button>
+          </>
+        ) : (
+          <button type="button" className="btn btn-primary acct-google" onClick={onSignIn} data-testid="acct-signin">
+            <span className="g-mark" aria-hidden="true">G</span> {t.acctSignIn}
+          </button>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function ConfirmDeleteAccount({ email, onConfirm, onClose }) {
+  const t = useT();
+  const first = useRef(null);
+  const [busy, setBusy] = useState(false);
+  useEffect(() => { first.current?.focus(); }, []);
+  useEffect(() => {
+    const esc = (e) => e.key === "Escape" && onClose();
+    window.addEventListener("keydown", esc);
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      window.removeEventListener("keydown", esc);
+      document.body.style.overflow = prev;
+    };
+  }, [onClose]);
+  return (
+    <div className="overlay" onMouseDown={(e) => e.target === e.currentTarget && !busy && onClose()}>
+      <div className="modal modal-sm" role="alertdialog" aria-modal="true" aria-labelledby="del-h" data-testid="acct-del-dialog">
+        <h2 id="del-h" className="modal-h">{t.acctDelTitle}</h2>
+        {email && <p className="wipe-p acct-who">{email}</p>}
+        <p className="wipe-p wipe-warn">{t.acctDelBody}</p>
+        <div className="modal-actions">
+          <button ref={first} type="button" className="btn" onClick={onClose} disabled={busy} data-testid="acct-del-no">{t.giveUp}</button>
+          <button type="button" className="btn btn-danger" disabled={busy} onClick={async () => { setBusy(true); await onConfirm(); }} data-testid="acct-del-yes">{t.acctDelete}</button>
         </div>
       </div>
     </div>
@@ -3488,6 +3600,13 @@ export default function App() {
   const [loading, setLoading] = useState(true);
   const [saveErr, setSaveErr] = useState("");
   const [storageOff, setStorageOff] = useState(false);
+  const [acct, setAcct] = useState(null);
+  const [syncSt, setSyncSt] = useState({ s: "idle", at: "" });
+  const [delAcct, setDelAcct] = useState(false);
+  const stateRef = useRef(state);
+  stateRef.current = state;
+  const syncMeta = useRef(null);
+  const syncBusy = useRef(false);
   const [q, setQ] = useState("");
   const [type, setType] = useState("all");
   const [country, setCountry] = useState("all");
@@ -3777,6 +3896,123 @@ export default function App() {
     setWiping(false);
     setToast("toastWiped");
   }, []);
+
+  // ---- Sinhronizacija sa nalogom ----
+  // Pravilo: ako je na nalogu nešto novo sa drugog uređaja, a ovde nije bilo izmena od
+  // poslednje sinhronizacije — uzima se stanje sa naloga (tako rade i brisanja).
+  // Ako su menjana oba, spajaju se (kod istih trka pobeđuje nalog). Zatim se šalje rezultat.
+  const loadMeta = useCallback(async () => {
+    if (syncMeta.current) return syncMeta.current;
+    let m = { uid: "", last: "", hash: "" };
+    try {
+      const r = await window.storage.get(SYNC_KEY);
+      const v = r && r.value ? JSON.parse(r.value) : null;
+      if (v && typeof v.uid === "string") m = { uid: v.uid, last: String(v.last || ""), hash: String(v.hash || "") };
+    } catch {}
+    syncMeta.current = m;
+    return m;
+  }, []);
+  const saveMeta = useCallback((m) => {
+    syncMeta.current = m;
+    try { window.storage.set(SYNC_KEY, JSON.stringify(m)).catch(() => {}); } catch {}
+  }, []);
+
+  const syncNow = useCallback(async (user) => {
+    if (!cloudAvailable() || !user || !user.uid || syncBusy.current) return;
+    syncBusy.current = true;
+    setSyncSt((x) => ({ s: "busy", at: x.at }));
+    try {
+      const ref = `users/${user.uid}`;
+      const saved = await loadMeta();
+      const m = saved.uid === user.uid ? saved : { uid: user.uid, last: "", hash: "" };
+      const cloud = parseCloud(await window.__cloud.get(ref));
+      const cur = stateRef.current;
+      const localDirty = hashStr(syncJson(cur)) !== m.hash;
+      let next = cur;
+      if (cloud && (cloud.updated !== m.last || !m.last)) {
+        const merged = localDirty || !m.last ? mergeStates({ ...cur }, { ...cloud.data, notified: {} }) : { ...cloud.data };
+        next = { tracking: merged.tracking, custom: merged.custom, edits: merged.edits, notified: cur.notified };
+      }
+      const json = syncJson(next);
+      let last = cloud ? cloud.updated : "";
+      if (!cloud || json !== syncJson(cloud.data)) {
+        last = new Date().toISOString();
+        await window.__cloud.set(ref, { data: json, updated: last, v: 1 });
+      }
+      if (next !== cur && json !== syncJson(cur)) setState(next);
+      saveMeta({ uid: user.uid, last, hash: hashStr(json) });
+      setSyncSt({ s: "ok", at: new Date().toISOString() });
+    } catch {
+      setSyncSt((x) => ({ s: "err", at: x.at }));
+    } finally {
+      syncBusy.current = false;
+    }
+  }, [loadMeta, saveMeta]);
+
+  // Ko je prijavljen (pri pokretanju i kad se promeni).
+  useEffect(() => {
+    if (!cloudAvailable()) return;
+    let alive = true;
+    window.__auth.current().then((u) => { if (alive) setAcct(u && u.uid ? u : null); }).catch(() => {});
+    return () => { alive = false; };
+  }, []);
+
+  // Posle svake izmene (i pri pokretanju) pošalji na nalog, sa malim zakašnjenjem.
+  useEffect(() => {
+    if (!acct || loading) return;
+    const timer = setTimeout(() => syncNow(acct), 2500);
+    return () => clearTimeout(timer);
+  }, [acct, loading, state, syncNow]);
+
+  // Povratak u aplikaciju: povuci izmene sa drugih uređaja.
+  useEffect(() => {
+    if (!acct) return;
+    const onVis = () => { if (document.visibilityState === "visible") syncNow(acct); };
+    document.addEventListener("visibilitychange", onVis);
+    return () => document.removeEventListener("visibilitychange", onVis);
+  }, [acct, syncNow]);
+
+  const signIn = useCallback(async () => {
+    try {
+      const u = await window.__auth.signIn();
+      if (!u || !u.uid) return;
+      setAcct(u);
+      setToast("toastSignedIn");
+    } catch (e) {
+      if (!isCancel(e)) setToast("errSignIn");
+    }
+  }, []);
+
+  const signOut = useCallback(async () => {
+    try { await window.__auth.signOut(); } catch {}
+    setAcct(null);
+    setSyncSt({ s: "idle", at: "" });
+    saveMeta({ uid: "", last: "", hash: "" });
+    setToast("toastSignedOut");
+  }, [saveMeta]);
+
+  const deleteAccount = useCallback(async () => {
+    if (!acct) return;
+    try {
+      await window.__cloud.del(`users/${acct.uid}`);
+      try {
+        await window.__auth.remove();
+      } catch (e) {
+        // Google traži skorašnju prijavu za brisanje — prijavi ponovo pa obriši.
+        if (isCancel(e)) throw e;
+        await window.__auth.signIn();
+        await window.__auth.remove();
+      }
+      setAcct(null);
+      setDelAcct(false);
+      setSyncSt({ s: "idle", at: "" });
+      saveMeta({ uid: "", last: "", hash: "" });
+      setToast("toastAcctDeleted");
+    } catch {
+      setDelAcct(false);
+      setToast("errAcctDelete");
+    }
+  }, [acct, saveMeta]);
 
   const exportData = useCallback(async () => {
     const d = new Date();
@@ -4149,6 +4385,16 @@ export default function App() {
       {tab === "stats" && (
         <main className="main main-tab">
           <StatsTab races={races} tracking={state.tracking} onOpen={setDetailId} onFind={findRaces} onShare={setShareCard}>
+            {cloudAvailable() && (
+              <AccountZone
+                acct={acct}
+                sync={syncSt}
+                onSignIn={signIn}
+                onSync={() => syncNow(acct)}
+                onSignOut={signOut}
+                onDelete={() => setDelAcct(true)}
+              />
+            )}
             <div className="backup-zone" data-testid="backup-zone">
               <div className="dz-text">
                 <h2 className="bz-h">{t.backupTitle}</h2>
@@ -4201,6 +4447,7 @@ export default function App() {
       {showFb && <Feedback onSent={() => { setShowFb(false); setToast("toastFb"); }} onClose={closeFb} />}
       {onb && <Onboarding raceCount={races.length} countryCount={countryChips.length} onDone={finishOnb} onLang={switchLang} />}
 
+      {delAcct && acct && <ConfirmDeleteAccount email={acct.email} onConfirm={deleteAccount} onClose={() => setDelAcct(false)} />}
       {wiping && (
         <ConfirmWipe
           count={Object.keys(state.tracking).length + state.custom.length}
@@ -4569,6 +4816,10 @@ input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 }
 .bz-h { font-family: var(--disp); font-size: 21px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--snow); }
 .bz-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.acct-who { font-size: 14px; color: var(--snow); margin-top: 4px; overflow-wrap: anywhere; }
+.acct-err { color: #FFB3C0; }
+.btn.acct-del { color: #FFB3C0; border-color: rgba(214,70,95,.5); }
+.g-mark { display: inline-grid; place-items: center; width: 20px; height: 20px; border-radius: 50%; background: #fff; color: #4285F4; font-weight: 800; font-size: 13px; font-family: Arial, sans-serif; }
 .imp-how { color: var(--muted); font-size: 13px; }
 .more { display: grid; justify-items: center; gap: 8px; padding: 8px 0 28px; }
 .more-btn { min-width: 220px; }
