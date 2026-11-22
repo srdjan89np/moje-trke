@@ -8,54 +8,54 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 
 ## Kalendar
 
-932 trke iz 42 zemlje: region, susedne zemlje i veliki evropski maratoni i polumaratoni, sezona 2026. i 2027. (poslednje ažuriranje 22.11.2026; „Predstojećih” = od 19.11.2026)
+1105 trka iz 42 zemlje: region, susedne zemlje i veliki evropski maratoni, polumaratoni i trail trke, sezona 2026. i 2027. (poslednje ažuriranje 22.11.2026; „Predstojećih” = od tog datuma)
 
 | Zemlja | Ukupno | Predstojećih |
 |---|---|---|
-| Hrvatska | 162 | 96 |
-| Srbija | 161 | 52 |
+| Hrvatska | 163 | 97 |
+| Srbija | 161 | 51 |
 | Bosna i Hercegovina | 94 | 25 |
-| Slovenija | 63 | 25 |
-| Italija | 44 | 32 |
-| Nemačka | 43 | 32 |
-| Španija | 43 | 34 |
-| Francuska | 30 | 20 |
-| Velika Britanija | 27 | 21 |
-| Austrija | 26 | 21 |
+| Slovenija | 64 | 25 |
+| Nemačka | 62 | 51 |
+| Velika Britanija | 61 | 55 |
+| Španija | 60 | 51 |
+| Italija | 56 | 44 |
+| Francuska | 44 | 33 |
+| Austrija | 31 | 26 |
+| Portugal | 25 | 17 |
 | Crna Gora | 24 | 7 |
-| Češka | 19 | 11 |
-| Severna Makedonija | 19 | 5 |
-| Portugal | 19 | 11 |
-| Poljska | 15 | 6 |
-| Grčka | 13 | 8 |
-| Holandija | 12 | 9 |
+| Poljska | 22 | 13 |
+| Češka | 21 | 13 |
+| Severna Makedonija | 20 | 6 |
+| Švajcarska | 20 | 20 |
+| Danska | 15 | 11 |
+| Holandija | 15 | 12 |
+| Grčka | 14 | 9 |
+| Norveška | 13 | 9 |
+| Belgija | 12 | 9 |
 | Turska | 12 | 4 |
-| Danska | 10 | 6 |
-| Finska | 8 | 6 |
+| Švedska | 11 | 8 |
+| Finska | 10 | 8 |
+| Irska | 10 | 8 |
 | Malta | 8 | 6 |
-| Norveška | 8 | 4 |
-| Belgija | 7 | 4 |
-| Slovačka | 7 | 4 |
-| Švedska | 7 | 4 |
-| Mađarska | 6 | 4 |
-| Bugarska | 5 | 2 |
-| Irska | 5 | 3 |
-| Rumunija | 5 | 3 |
-| Švajcarska | 5 | 5 |
+| Slovačka | 8 | 5 |
+| Mađarska | 7 | 5 |
+| Rumunija | 7 | 5 |
+| Bugarska | 6 | 3 |
+| Island | 6 | 5 |
 | Andora | 4 | 1 |
-| Island | 4 | 3 |
 | Kipar | 4 | 3 |
-| Estonija | 2 | 0 |
+| Estonija | 3 | 1 |
+| Moldavija | 3 | 2 |
 | Letonija | 2 | 2 |
 | Litvanija | 2 | 1 |
-| Moldavija | 2 | 1 |
 | Albanija | 1 | 0 |
 | Gruzija | 1 | 0 |
 | Lihtenštajn | 1 | 0 |
 | Luksemburg | 1 | 1 |
 | Ukrajina | 1 | 1 |
 
-373 trka ima link za prijavu (stanje 19.11.2026) — dugme se ne prikazuje kad trka prođe.
+376 trka ima link za prijavu (stanje 22.11.2026) — dugme se ne prikazuje kad trka prođe.
 
 ### Odakle podaci
 
