@@ -181,4 +181,9 @@ module.exports = [
   ["pula-marathon-djecje-2027", "Pula Marathon – Dječje utrke (dečja trka)", "Pula", "HR", "city", "2027-09-17", []],
   ["varazdinski-djecje-2027", "Varaždinski polumaraton – Dječje utrke (dečja trka)", "Varaždin", "HR", "city", "2027-09-19", [[0.2,0],[1,0]]],
   ["sibenskih-deset-djecje-2027", "Šibenskih deset – Dječje utrke (dečja trka)", "Šibenik", "HR", "city", "2027-10-23", []],
+  // --- OCR trke 2026 (ocrbalkan.com/kalendar) ---
+  ["spartan-croatia-2026", "Spartan Race Croatia (OCR)", "Sveta Nedelja", "HR", "trail", "2026-03-28", [[21,0],[10,0],[5,0]]],
+  ["hog-race-2026", "Hog Race (OCR)", "Mali Mihaljevac", "HR", "trail", "2026-05-23", [[8,0],[4,0],[2,0],[0.3,0]]],
+  ["valens-victorious-2026", "Valens Victorious (OCR)", "Vinkovci", "HR", "trail", "2026-06-14", [[5.5,0]]],
+  ["spartan-hvar-2026", "Spartan Race World Championship (OCR)", "Hvar", "HR", "trail", "2026-10-09", [[21,0],[10,0],[5,0],[0.1,0]]],
 ];
