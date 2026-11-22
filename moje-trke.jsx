@@ -1195,6 +1195,13 @@ const STR = {
     toastAdded: "Trka dodata u kalendar.", toastFixed: "Podaci ispravljeni.",
     toastRestored: "Vraćeni originalni podaci.", toastDeleted: "Trka obrisana.",
     toastCleared: "Uklonjeno iz tvoje sezone.", toastWiped: "Sve obrisano.",
+    supTitle: "Podrži autora",
+    supBody: "Moje trke su besplatne i bez pretplate. Ako ti aplikacija pomaže, pogledaj jednu kratku reklamu — prihod od nje ide na održavanje i nove trke.",
+    supBtn: "Pogledaj reklamu",
+    supLoading: "Učitavam reklamu…",
+    supCount: (n) => `Pogledao/la si ${n} ${srPl(n, "reklamu", "reklame", "reklama")} za podršku. Hvala!`,
+    toastThanks: "Hvala na podršci!",
+    errRewardAd: "Reklama trenutno nije dostupna. Pokušaj malo kasnije.",
     acctTitle: "Nalog i sinhronizacija",
     acctBody: "Prijavi se Google nalogom i tvoje oznake, vremena i dodate trke čuvaće se i na nalogu — ne gube se kad promeniš telefon, a vide se na svakom uređaju gde se prijaviš.",
     acctSignIn: "Prijavi se preko Google-a",
@@ -1359,6 +1366,13 @@ const STR = {
     toastAdded: "Race added to the calendar.", toastFixed: "Details updated.",
     toastRestored: "Original details restored.", toastDeleted: "Race deleted.",
     toastCleared: "Removed from your season.", toastWiped: "Everything erased.",
+    supTitle: "Support the author",
+    supBody: "Moje trke is free with no subscription. If the app helps you, watch one short ad — the revenue goes to upkeep and new races.",
+    supBtn: "Watch an ad",
+    supLoading: "Loading ad…",
+    supCount: (n) => `You've watched ${n} ${n === 1 ? "ad" : "ads"} to support the app. Thank you!`,
+    toastThanks: "Thanks for your support!",
+    errRewardAd: "No ad available right now. Please try again later.",
     acctTitle: "Account & sync",
     acctBody: "Sign in with Google and your marks, times and added races are also saved to your account — nothing is lost when you change phones, and they show up on every device you sign in on.",
     acctSignIn: "Sign in with Google",
@@ -2454,6 +2468,58 @@ function ConfirmWipe({ count, onConfirm, onClose }) {
           <button ref={first} type="button" className="btn" onClick={onClose} data-testid="wipe-no">{t.giveUp}</button>
           <button type="button" className="btn btn-danger" onClick={onConfirm} data-testid="wipe-yes">{t.wipeAll}</button>
         </div>
+      </div>
+    </div>
+  );
+}
+
+const SUPPORT_KEY = "trke-podrska";
+
+function SupportZone({ onToast }) {
+  const t = useT();
+  const [busy, setBusy] = useState(false);
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let alive = true;
+    (async () => {
+      try {
+        const r = await window.storage.get(SUPPORT_KEY);
+        const n = r && r.value ? parseInt(r.value, 10) : 0;
+        if (alive && n > 0) setCount(n);
+      } catch {}
+    })();
+    return () => { alive = false; };
+  }, []);
+  const watch = async () => {
+    if (busy || !window.__rewardAd) return;
+    setBusy(true);
+    try {
+      const ok = await window.__rewardAd();
+      if (ok) {
+        setCount((c) => {
+          const n = c + 1;
+          try { window.storage.set(SUPPORT_KEY, String(n)).catch(() => {}); } catch {}
+          return n;
+        });
+        onToast("toastThanks");
+      }
+    } catch {
+      onToast("errRewardAd");
+    } finally {
+      setBusy(false);
+    }
+  };
+  return (
+    <div className="backup-zone sup-zone" data-testid="support-zone">
+      <div className="dz-text">
+        <h2 className="bz-h"><span aria-hidden="true">♥</span> {t.supTitle}</h2>
+        <p className="dz-p">{t.supBody}</p>
+        {count > 0 && <p className="sup-count" data-testid="support-count">{t.supCount(count)}</p>}
+      </div>
+      <div className="bz-actions">
+        <button type="button" className="btn btn-primary" onClick={watch} disabled={busy} data-testid="support-watch">
+          <span aria-hidden="true">▶</span> {busy ? t.supLoading : t.supBtn}
+        </button>
       </div>
     </div>
   );
@@ -4385,6 +4451,7 @@ export default function App() {
       {tab === "stats" && (
         <main className="main main-tab">
           <StatsTab races={races} tracking={state.tracking} onOpen={setDetailId} onFind={findRaces} onShare={setShareCard}>
+            {typeof window !== "undefined" && window.__rewardAd && <SupportZone onToast={setToast} />}
             {cloudAvailable() && (
               <AccountZone
                 acct={acct}
@@ -4816,6 +4883,9 @@ input[type="date"]::-webkit-date-and-time-value { text-align: left; }
 }
 .bz-h { font-family: var(--disp); font-size: 21px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--snow); }
 .bz-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+.sup-zone { border-color: rgba(224,166,60,.45); background: linear-gradient(180deg, rgba(224,166,60,.10), var(--panel)); }
+.sup-zone .bz-h span { color: var(--ochre, #E0A63C); }
+.sup-count { font-size: 13px; color: var(--snow); margin-top: 6px; }
 .acct-who { font-size: 14px; color: var(--snow); margin-top: 4px; overflow-wrap: anywhere; }
 .acct-err { color: #FFB3C0; }
 .btn.acct-del { color: #FFB3C0; border-color: rgba(214,70,95,.5); }
