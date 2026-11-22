@@ -20,7 +20,7 @@ module.exports = [
   ["istanbul-marathon-2026", "Istanbul Marathon", "Istanbul", "TR", "city", "2026-11-01", [[42.195,0],[15.5,0]]],
   ["athens-marathon-2026", "Athens Marathon — The Authentic", "Maraton — Atina", "GR", "city", "2026-11-08", [[42.195,0],[10,0],[5,0]]],
   ["porto-marathon-2026", "Porto Marathon", "Porto", "PT", "city", "2026-11-08", [[42.195,0],[10,0],[6,0]]],
-  ["florence-marathon-2026", "Firenze Marathon", "Firenca", "IT", "city", "2026-11-28", [[42.195,0],[10,0]]],
+  ["florence-marathon-2026", "Firenze Marathon", "Firenca", "IT", "city", "2026-11-29", [[42.195,0],[10,0]]],
   ["valencia-marathon-2026", "Maratón Valencia", "Valensija", "ES", "city", "2026-12-06", [[42.195,0]]],
 
   // --- 2027 ---
@@ -40,7 +40,7 @@ module.exports = [
   // --- polumaratoni ---
   ["valencia-half-2026", "Medio Maratón Valencia", "Valensija", "ES", "city", "2026-10-25", [[21.097,0]]],
   ["boulogne-half-2026", "Semi-marathon de Boulogne-Billancourt", "Boulogne-Billancourt, Pariz", "FR", "city", "2026-11-15", [[21.097,0]]],
-  ["seville-half-2026", "Medio Maratón de Sevilla", "Sevilja", "ES", "city", "2026-11-29", [[21.097,0]]],
+  ["seville-half-2026", "Medio Maratón de Sevilla", "Sevilja", "ES", "city", "2026-12-13", [[21.097,0]]],
   ["barcelona-half-2027", "Mitja Marató de Barcelona", "Barselona", "ES", "city", "2027-02-14", [[21.097,0]]],
   ["roma-ostia-2027", "Roma-Ostia Half Marathon", "Rim — Ostija", "IT", "city", "2027-02-28", [[21.097,0]]],
   ["paris-half-2027", "Semi-marathon de Paris", "Pariz", "FR", "city", "2027-03-07", [[21.097,0]]],
@@ -512,4 +512,8 @@ module.exports = [
   ["frankfurt-marathon-2027", "Mainova Frankfurt Marathon", "Frankfurt", "DE", "city", "2027-10-31", [[42.195,0]]],
   ["roentgenlauf-2027", "Röntgenlauf (ultramaraton)", "Remšajd", "DE", "trail", "2027-10-31", [[63.3,0],[42.195,0]]],
   ["dresden-marathon-2027", "Dresden Marathon", "Drezden", "DE", "city", "2027-10-31", [[42.195,0],[21.097,0]]],
+  // --- Ažuriranje 22.11.2026 (irun42.com) ---
+  ["cordoba-half-2026", "Media Maratón de Córdoba", "Kordoba", "ES", "city", "2026-11-29", [[21.097,0]]],
+  ["lisboa-descobrimentos-half-2026", "Meia Maratona dos Descobrimentos", "Lisabon", "PT", "city", "2026-11-29", [[21.097,40],[10,0],[5,0]]],
+  ["cagliari-respira-2026", "CagliariRespira — Mezza Maratona di Cagliari", "Kaljari", "IT", "city", "2026-12-06", [[21.097,30],[6,0]]],
 ];

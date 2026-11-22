@@ -394,4 +394,7 @@ module.exports = {
   "iron-ultra-trail-2027": "https://trka.rs/events/984-3-iron-ultra-trail/",
   "sencanski-polumaraton-2027": "https://trka.rs/events/983-2-sencanski-polumaraton/",
   "gradac-night-trail-2027": "https://trka.rs/events/963-gradac-night-trail/",
+  "florence-marathon-2026": "https://www.endu.net/en/events/firenze-marathon-3/",
+  "lisboa-descobrimentos-half-2026": "https://www.discoveries-half-marathon.com/en/home.html",
+  "cagliari-respira-2026": "https://cagliarirespira.it/cr/",
 };
