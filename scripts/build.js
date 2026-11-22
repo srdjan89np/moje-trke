@@ -170,6 +170,24 @@ function androidShell(shell) {
       });
     };
   }
+  // Nalog (Google prijava) i sinhronizacija (Firestore) — samo kad postoji assets/android/google-services.json.
+  var FB_ON = ${JSON.stringify(fs.existsSync(path.join(ROOT, "assets", "android", "google-services.json")))};
+  var FA = FB_ON ? (P.FirebaseAuthentication || (reg ? reg("FirebaseAuthentication") : null)) : null;
+  var FF = FB_ON ? (P.FirebaseFirestore || (reg ? reg("FirebaseFirestore") : null)) : null;
+  if (FA && FF) {
+    var who = function (u) { return u && u.uid ? { uid: u.uid, email: u.email || "", name: u.displayName || "" } : null; };
+    window.__auth = {
+      current: function () { return FA.getCurrentUser().then(function (r) { return who(r && r.user); }); },
+      signIn: function () { return FA.signInWithGoogle().then(function (r) { return who(r && r.user); }); },
+      signOut: function () { return FA.signOut(); },
+      remove: function () { return FA.deleteUser(); }
+    };
+    window.__cloud = {
+      get: function (ref) { return FF.getDocument({ reference: ref }).then(function (r) { return r && r.snapshot ? r.snapshot.data || null : null; }); },
+      set: function (ref, data) { return FF.setDocument({ reference: ref, data: data, merge: false }); },
+      del: function (ref) { return FF.deleteDocument({ reference: ref }); }
+    };
+  }
   var setH = function (h) { document.documentElement.style.setProperty("--ad-h", (h || 0) + "px"); };
   if (AD) {
     AD.addListener("bannerAdSizeChanged", function (s) { setH(s && s.height); });

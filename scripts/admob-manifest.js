@@ -25,6 +25,9 @@ for (const p of ["READ_EXTERNAL_STORAGE", "WRITE_EXTERNAL_STORAGE"]) {
 if (!xml.includes("requestLegacyExternalStorage")) xml = xml.replace("<application", '<application android:requestLegacyExternalStorage="true"');
 fs.writeFileSync(file, xml);
 
+// Firebase (Google prijava + Firestore): google-services.json u android/app i Google dodatak u variables.gradle.
+require("./android-firebase.js");
+
 // R8 (smanjivanje i maskiranje koda) za release verziju.
 require("./android-r8.js");
 console.log("AdMob APPLICATION_ID:", id.startsWith("ca-app-pub-3940256099942544") ? "probni (Google test)" : "pravi");

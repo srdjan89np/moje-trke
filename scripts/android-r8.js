@@ -30,6 +30,7 @@ ${MARK}
 -keepclassmembers class * { @android.webkit.JavascriptInterface <methods>; }
 -keep class com.capacitorjs.plugins.** { *; }
 -keep class com.getcapacitor.community.admob.** { *; }
+-keep class io.capawesome.capacitorjs.plugins.firebase.** { *; }
 # Čitljivi izveštaji o rušenju (brojevi linija)
 -keepattributes SourceFile,LineNumberTable,*Annotation*,Signature,InnerClasses,EnclosingMethod
 -renamesourcefileattribute SourceFile
