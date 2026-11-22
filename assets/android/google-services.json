@@ -1,0 +1,71 @@
+{
+  "project_info": {
+    "project_number": "660724594145",
+    "project_id": "moje-trke",
+    "storage_bucket": "moje-trke.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660724594145:android:06901e2326dec4b185cea0",
+        "android_client_info": {
+          "package_name": "rs.mojetrke.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660724594145-1sdq2t9o6u7dusjpveiatt49a1fpn1dg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rs.mojetrke.app",
+            "certificate_hash": "5fa942b529aa8e208e871beea3cfb0b6c23b097d"
+          }
+        },
+        {
+          "client_id": "660724594145-6k5vngqq0jpr9ke3q687kp3tpr119i5s.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rs.mojetrke.app",
+            "certificate_hash": "f8b336e7e75f0c08d089e31f558e54575e5ee0dd"
+          }
+        },
+        {
+          "client_id": "660724594145-dmmnuog2rcbmo52lofrjtog7rdrph2me.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rs.mojetrke.app",
+            "certificate_hash": "5dadf1bab41907b9c1bf70ab535b641610190eaa"
+          }
+        },
+        {
+          "client_id": "660724594145-ed00jfbsi17qj7env0g9tfggtuedckqd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "rs.mojetrke.app",
+            "certificate_hash": "48f5b1c936ee33cf134d9e1c840ae7b486b2209a"
+          }
+        },
+        {
+          "client_id": "660724594145-ru3nfpd8kdde3ccf6uc58goegjqqmk47.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCYtJ7Ug-NvyrRyR0m6D-jKH7RhG8dQ700"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660724594145-ru3nfpd8kdde3ccf6uc58goegjqqmk47.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
