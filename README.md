@@ -8,54 +8,54 @@ Jedna React komponenta koja radi kao web stranica, PWA i Android aplikacija.
 
 ## Kalendar
 
-1130 trka iz 42 zemlje: region, susedne zemlje i veliki evropski maratoni, polumaratoni i trail trke, sezona 2026. i 2027. (poslednje ažuriranje 22.11.2026; „Predstojećih” = od tog datuma)
+1251 trka iz 42 zemlje: region, susedne zemlje i veliki evropski maratoni, polumaratoni i trail trke, sezona 2026. i 2027. (poslednje ažuriranje 23.11.2026; „Predstojećih” = od tog datuma)
 
 | Zemlja | Ukupno | Predstojećih |
 |---|---|---|
-| Srbija | 176 | 51 |
-| Hrvatska | 167 | 97 |
-| Bosna i Hercegovina | 100 | 25 |
-| Slovenija | 64 | 25 |
+| Hrvatska | 203 | 130 |
+| Srbija | 180 | 54 |
+| Bosna i Hercegovina | 120 | 45 |
+| Slovenija | 89 | 50 |
+| Velika Britanija | 69 | 63 |
+| Španija | 63 | 53 |
+| Italija | 62 | 49 |
 | Nemačka | 62 | 51 |
-| Velika Britanija | 61 | 55 |
-| Španija | 60 | 51 |
-| Italija | 56 | 44 |
-| Francuska | 44 | 33 |
+| Francuska | 48 | 37 |
 | Austrija | 31 | 26 |
-| Portugal | 25 | 17 |
+| Portugal | 26 | 18 |
 | Crna Gora | 24 | 7 |
 | Poljska | 22 | 13 |
 | Češka | 21 | 13 |
+| Švajcarska | 21 | 21 |
 | Severna Makedonija | 20 | 6 |
-| Švajcarska | 20 | 20 |
-| Danska | 15 | 11 |
-| Holandija | 15 | 12 |
-| Grčka | 14 | 9 |
-| Norveška | 13 | 9 |
-| Belgija | 12 | 9 |
+| Holandija | 17 | 14 |
+| Danska | 16 | 12 |
+| Grčka | 15 | 10 |
+| Belgija | 14 | 11 |
+| Norveška | 14 | 10 |
+| Švedska | 13 | 10 |
 | Turska | 12 | 4 |
-| Švedska | 11 | 8 |
 | Finska | 10 | 8 |
 | Irska | 10 | 8 |
 | Malta | 8 | 6 |
+| Rumunija | 8 | 6 |
 | Slovačka | 8 | 5 |
 | Mađarska | 7 | 5 |
-| Rumunija | 7 | 5 |
 | Bugarska | 6 | 3 |
 | Island | 6 | 5 |
+| Estonija | 5 | 3 |
 | Andora | 4 | 1 |
 | Kipar | 4 | 3 |
-| Estonija | 3 | 1 |
 | Moldavija | 3 | 2 |
 | Letonija | 2 | 2 |
 | Litvanija | 2 | 1 |
+| Luksemburg | 2 | 2 |
 | Albanija | 1 | 0 |
 | Gruzija | 1 | 0 |
 | Lihtenštajn | 1 | 0 |
-| Luksemburg | 1 | 1 |
 | Ukrajina | 1 | 1 |
 
-401 trka ima link za prijavu (stanje 22.11.2026) — dugme se ne prikazuje kad trka prođe.
+465 trka ima link za prijavu (stanje 23.11.2026) — dugme se ne prikazuje kad trka prođe.
 
 ### Odakle podaci
 
