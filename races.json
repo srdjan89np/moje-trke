@@ -1,4 +1,4 @@
-{"generated": "2026-11-22T22:33:22Z", "count": 1130, "races": [
+{"generated": "2026-11-23T14:11:56Z", "count": 1131, "races": [
   {"id":"bbkt","name":"BBKT","city":"Smederevska Palanka","country":"RS","type":"trail","date":"2026-01-11","distances":[{"km":12,"gain":320},{"km":6,"gain":165},{"km":3,"gain":84}]},
   {"id":"unusual-marathon-2026","name":"Unusual Marathon","city":"Vilsonovo šetalište, Sarajevo","country":"BA","type":"city","date":"2026-01-11","distances":[{"km":30,"gain":0},{"km":15,"gain":0},{"km":5,"gain":0}]},
   {"id":"sidski-maraton","name":"Šidski novogodišnji maraton","city":"Šid","country":"RS","type":"city","date":"2026-01-14","distances":[{"km":42,"gain":0},{"km":32,"gain":0},{"km":16,"gain":0},{"km":12,"gain":0}]},
@@ -574,6 +574,7 @@
   {"id":"christmas-run-zapresic-2026","name":"Christmas Run AK Fit","city":"Zaprešić","country":"HR","type":"city","date":"2026-12-27","distances":[],"reg":"https://www.utrka.com/utrke/wgbozicna/2026/"},
   {"id":"corrida-houilles-2026","name":"Corrida de Houilles","city":"Uj","country":"FR","type":"city","date":"2026-12-27","distances":[{"km":10,"gain":0},{"km":5,"gain":0}],"reg":"https://www.corrida-de-houilles.fr"},
   {"id":"krug-osijek-2026","name":"KRUG (Copacabana)","city":"Osijek","country":"HR","type":"city","date":"2026-12-27","distances":[{"km":3.1,"gain":0},{"km":0.2,"gain":0}]},
+  {"id":"usce-novogodisnja-trka-2026","name":"Ušće Novogodišnja trka","city":"Ušće, Beograd","country":"RS","type":"city","date":"2026-12-27","distances":[],"reg":"https://bgdmarathon.org/"},
   {"id":"winter-fg","name":"Winter Trail Race Fruška gora","city":"Fruška gora","country":"RS","type":"trail","date":"2026-12-27","distances":[{"km":17,"gain":0},{"km":10,"gain":0}],"reg":"https://trka.rs/events/872-7-winter-trail-race-na-fru%C5%A1koj-gori/"},
   {"id":"berliner-silvesterlauf-2026","name":"Berliner Silvesterlauf","city":"Berlin","country":"DE","type":"city","date":"2026-12-31","distances":[{"km":10.2,"gain":0},{"km":6.3,"gain":0},{"km":4,"gain":0}]},
   {"id":"bietigheimer-silvesterlauf-2026","name":"Bietigheimer Silvesterlauf","city":"Bitighajm-Bisingen","country":"DE","type":"city","date":"2026-12-31","distances":[{"km":10.5,"gain":0}],"reg":"https://www.bietigheimer-silvesterlauf.de/68/silvesterlauf/anmeldung"},
